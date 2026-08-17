@@ -1,0 +1,42 @@
+% Q1 v1.1 synchronized paper section. v1.0 remains in sections/q1.tex.
+\section{问题一：主流大语言模型综合性能评价（Q1 v1.1）}
+
+\subsection{4.1 问题分析}
+本文保留 v1.0 的 Missing-aware Spearman、Benchmark Family 分层、Family-balanced Margin-weighted Pairwise Comparison、正则化 Bradley--Terry 及 C1--C5 五维体系。v1.1 仅修正 C5 适用性、稳定性、综合排名层次、来源集中度和论文审计表达，不改变 frozen/v1.0 中的任何成绩。
+
+\subsection{4.2 数据与指标体系}
+冻结数据包含 10 个模型、21 个 Exact Settings、14 个 Benchmark Families 和 164 条有效观测（覆盖率 0.780952）。五个能力维度仍为 C1 复杂推理、C2 知识与事实可靠性、C3 长上下文、C4 代码与软件工程和 C5 多模态。正式来源按 registry 汇总为 LiveBench、Artificial Analysis、官方技术报告/模型卡、Kimi 官方技术比较和第三方标准化平台，详见 \texttt{tables/paper\_table\_q1\_v11\_sources.xlsx}。
+
+对 C5 缺失进行适用性审计。DeepSeek-V4-Pro Max 和 DeepSeek-V4-Flash Max 由 SRC003 技术报告判定为 Type A（结构性能力缺位）；GLM-5.2 的冻结证据不足以区分能力缺位与测评缺失，标记为 \texttt{REQUIRES\_MANUAL\_CONFIRMATION}，不得赋 benchmark 分数 0。其余七个模型属于 Type C（至少有一项正式 C5 观测），部分缺少另一项 benchmark 的记录仍保留为 benchmark missing。
+
+令多模态可用性为 $A_i\in\{0,1\}$，则 $S_{i5}^{*}=A_iS_{i5}^{BT}$。这里 Type A 的 0 只表示综合能力体系中的可用性为 0，不是把 MMMU-Pro 或 MathVision 的原始分数伪造为 0；Type B 仍为 NA。
+
+\subsection{4.3 指标相关性和筛选}
+筛选分为两层：21 个 Exact Settings 先按同源、同任务或同一 Benchmark 归并为 14 个 Families；随后综合 $|\rho|$、共同样本数 $n_{jk}$、模型覆盖率、语义独立性、比较网络连通性和来源独立性进行关键性审查。$|\rho|\ge0.85$ 仅作为冗余候选标记。对于 $n=3$ 的高相关指标以及承担网络桥接作用的指标，采用“保留—冗余标记—敏感性删除”，不机械删除。详细表见 \texttt{tables/paper\_table\_q1\_v11\_indicator\_screening.xlsx}。
+
+\subsection{4.4 成对比较构造}
+成对比较、Margin 权重和 Family balancing 与 v1.0 相同，仅对同一 Exact Setting 的有效观测构造关系，缺失值不插补。
+
+\subsection{4.5 Bradley--Terry}
+继续使用带 $L_2$ 正则项的 Bradley--Terry 模型并约束 $\sum_i\theta_{id}=0$。各维度 BT 均收敛，原始 latent ability 先用于稳定性审计，再在维度内转换为 0--100 的解释性分数。
+
+\subsection{4.6 五维客观权重}
+v1.0 的稳定度审计显示 C2、C3、C5 的 $T_d=1$ 主要源于单 setting Family 在 bootstrap 中始终存在以及每轮 Min--Max 端点固定，属于伪稳定。v1.1 改用 latent ranking stability：
+\[
+T_d=\frac{1+\operatorname{median}_b\rho_d^{(b)}}{2},
+\]
+其中 $\rho_d^{(b)}$ 为第 $b$ 次 bootstrap 的原始 BT-$\theta$ 排名与主模型排名的 Spearman 相关。Ranking A 的新权重为 $(0.125734,0.210410,0.138221,0.108204,0.417432)$，权重只表示当前数据集中的有效信息贡献，不代表现实应用中的先验重要程度。
+
+\subsection{4.7 综合评价与三类排名}
+不再输出单一缺失感知榜单。Ranking A 使用 C1--C5*，对九个已解析模型给出统一综合评价，并对 GLM-5.2 给出条件得分区间 $[15.417,57.160]$；Ranking B 在全部十个模型上重新计算 C1--C4 权重；Ranking C 仅使用七个具有完整多模态有效信息的模型并重新计算五维权重。正式结果分别见 \texttt{paper\_table\_q1\_v11\_ranking\_A.xlsx}、\texttt{paper\_table\_q1\_v11\_ranking\_B\_C1\_C4.xlsx} 和 \texttt{paper\_table\_q1\_v11\_ranking\_C\_complete\_multimodal.xlsx}。
+
+\subsection{4.8 稳健性}
+Bootstrap 保留 2000 次，重采样单位为在固定 Benchmark、来源结构和能力适用性下的成对比较结果，并逐次重新拟合 BT；95\% 区间为经验百分位区间。LOFO 检查 Family 删除，LOSO 按正式 source registry 删除来源；网络不连通时标记 \texttt{NETWORK\_DISCONNECTED}，不强行计算排名。等权结果仅作为 sensitivity benchmark，详见 \texttt{table\_q1\_v11\_equal\_weight\_sensitivity.xlsx}。
+
+在固定 Benchmark 集合、来源结构及模型能力适用性条件下，Kimi K3 在 Ranking A 的 2000 次 Bootstrap 中进入前三的经验频率为 0.417。该频率不解释为模型客观上必然稳定第三。
+
+\subsection{4.9 Kimi K3}
+Kimi K3 的 Ranking A、B、C 名次分别为 3、2、3。C4 代码与软件工程得分相对 Ranking A 中位数高 31.707，属于 strong evidence advantage。C3 的直接观测仍主要为 AA-LCR，CorpusQA 1M 和 MRCR 1M 缺少直接公开观测，因此只能表述为“在当前 AA-LCR 及模型比较网络下潜在能力高于样本中位水平”，属于 model-inferred advantage / moderate evidence。C5 与完整多模态模型中位数的差值为 -20.513；该差值来自有效 C5 能力比较，不将 Type A 缺位模型的 0 混入多模态同类中位数。
+
+\subsection{4.10 小结}
+v1.1 保留正则化 Bradley--Terry 主线和五维体系，修正了 C5 能力缺位与测评缺失的混淆、稳定度伪稳定、表3覆盖率错误以及来源集中度遗漏。当前唯一未决事项是 GLM-5.2 的 C5 适用性人工确认；在确认前，Q1 不进入最终冻结。

@@ -1,0 +1,193 @@
+{
+  "filename": "paper_table_q1_v12_indicator_screening.xlsx",
+  "description": "Two-layer 21-setting to 14-family screening with correlation, common-n, semantics, network and source roles.",
+  "sheets": [
+    {
+      "name": "Family_Screening",
+      "records": [
+        {
+          "dimension": "C1",
+          "benchmark_family": "GPQA Diamond",
+          "model_coverage": 0.8,
+          "max_abs_spearman": 0.7,
+          "most_correlated_family": "FrontierSWE",
+          "common_n": 5,
+          "semantic_role": "GPQA Diamond",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC007: OpenRouter GPQA Diamond benchmark page",
+          "decision": "KEEP_KEY_INDICATOR",
+          "reason": "Provides nonredundant semantic evidence with adequate network support."
+        },
+        {
+          "dimension": "C1",
+          "benchmark_family": "LiveBench Logic",
+          "model_coverage": 1.0,
+          "max_abs_spearman": 0.9276336570439174,
+          "most_correlated_family": "ProgramBench",
+          "common_n": 6,
+          "semantic_role": "LiveBench logic_with_navigation; LiveBench zebra_puzzle",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC006: LiveBench official table release 2026-06-25",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "Retained for semantic/source independence and tested by LOFO."
+        },
+        {
+          "dimension": "C1",
+          "benchmark_family": "LiveBench Math",
+          "model_coverage": 1.0,
+          "max_abs_spearman": 1.0,
+          "most_correlated_family": "CorpusQA",
+          "common_n": 3,
+          "semantic_role": "LiveBench AMPS_Hard; LiveBench math_comp; LiveBench olympiad",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC006: LiveBench official table release 2026-06-25",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "High correlation is not deletion proof; common_n is small or semantic/source roles differ."
+        },
+        {
+          "dimension": "C2",
+          "benchmark_family": "AA-Omniscience",
+          "model_coverage": 0.6,
+          "max_abs_spearman": 0.942857142857143,
+          "most_correlated_family": "Humanity's Last Exam",
+          "common_n": 6,
+          "semantic_role": "AA-Omniscience",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC017: AA-Omniscience public leaderboard snapshot 2026-08-16",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "Retained for semantic/source independence and tested by LOFO."
+        },
+        {
+          "dimension": "C2",
+          "benchmark_family": "Humanity's Last Exam",
+          "model_coverage": 1.0,
+          "max_abs_spearman": 0.942857142857143,
+          "most_correlated_family": "AA-Omniscience",
+          "common_n": 6,
+          "semantic_role": "HLE Text-Only",
+          "network_role": "structurally indispensable",
+          "source": "SRC016: Humanity's Last Exam public leaderboard snapshot 2026-08-16",
+          "decision": "KEEP_STRUCTURALLY_INDISPENSABLE",
+          "reason": "Removal changes the active comparison network or its connectivity."
+        },
+        {
+          "dimension": "C3",
+          "benchmark_family": "AA-LCR",
+          "model_coverage": 1.0,
+          "max_abs_spearman": 0.6377481392176932,
+          "most_correlated_family": "AA-Omniscience",
+          "common_n": 6,
+          "semantic_role": "AA-LCR",
+          "network_role": "structurally indispensable",
+          "source": "SRC014: AA-LCR public leaderboard snapshot 2026-08-16",
+          "decision": "KEEP_STRUCTURALLY_INDISPENSABLE",
+          "reason": "Removal changes the active comparison network or its connectivity."
+        },
+        {
+          "dimension": "C3",
+          "benchmark_family": "CorpusQA",
+          "model_coverage": 0.3,
+          "max_abs_spearman": 1.0,
+          "most_correlated_family": "LiveBench Math",
+          "common_n": 3,
+          "semantic_role": "CorpusQA 1M",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC003: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "High correlation is not deletion proof; common_n is small or semantic/source roles differ."
+        },
+        {
+          "dimension": "C3",
+          "benchmark_family": "MRCR",
+          "model_coverage": 0.3,
+          "max_abs_spearman": 1.0,
+          "most_correlated_family": "CorpusQA",
+          "common_n": 3,
+          "semantic_role": "MRCR 1M",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC003: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "High correlation is not deletion proof; common_n is small or semantic/source roles differ."
+        },
+        {
+          "dimension": "C4",
+          "benchmark_family": "FrontierSWE",
+          "model_coverage": 0.6,
+          "max_abs_spearman": 0.7999999999999999,
+          "most_correlated_family": "AA-Omniscience",
+          "common_n": 4,
+          "semantic_role": "FrontierSWE",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC001: Kimi K3 README / Technical Release",
+          "decision": "KEEP_KEY_INDICATOR",
+          "reason": "Provides nonredundant semantic evidence with adequate network support."
+        },
+        {
+          "dimension": "C4",
+          "benchmark_family": "LiveBench Coding",
+          "model_coverage": 1.0,
+          "max_abs_spearman": 0.8857142857142858,
+          "most_correlated_family": "AA-Omniscience",
+          "common_n": 6,
+          "semantic_role": "LiveBench code_completion; LiveBench code_generation; LiveBench javascript; LiveBench python; LiveBench typescript",
+          "network_role": "structurally indispensable",
+          "source": "SRC006: LiveBench official table release 2026-06-25",
+          "decision": "KEEP_STRUCTURALLY_INDISPENSABLE",
+          "reason": "Removal changes the active comparison network or its connectivity."
+        },
+        {
+          "dimension": "C4",
+          "benchmark_family": "ProgramBench",
+          "model_coverage": 0.6,
+          "max_abs_spearman": 0.9276336570439175,
+          "most_correlated_family": "LiveBench Logic",
+          "common_n": 6,
+          "semantic_role": "ProgramBench",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC001: Kimi K3 README / Technical Release",
+          "decision": "KEEP_REDUNDANCY_FLAG_SENSITIVITY_DELETE",
+          "reason": "Retained for semantic/source independence and tested by LOFO."
+        },
+        {
+          "dimension": "C4",
+          "benchmark_family": "SWE-bench Verified",
+          "model_coverage": 0.2,
+          "max_abs_spearman": null,
+          "most_correlated_family": "NONE",
+          "common_n": 0,
+          "semantic_role": "SWE Verified",
+          "network_role": "supporting/redundant-tested",
+          "source": "SRC003: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "decision": "KEEP_KEY_INDICATOR",
+          "reason": "Provides nonredundant semantic evidence with adequate network support."
+        },
+        {
+          "dimension": "C5",
+          "benchmark_family": "MMMU-Pro",
+          "model_coverage": 0.5,
+          "max_abs_spearman": 1.0,
+          "most_correlated_family": "MathVision",
+          "common_n": 3,
+          "semantic_role": "MMMU-Pro",
+          "network_role": "structurally indispensable",
+          "source": "SRC018: MMMU-Pro public leaderboard snapshot 2026-08-16",
+          "decision": "KEEP_STRUCTURALLY_INDISPENSABLE",
+          "reason": "Removal changes the active comparison network or its connectivity."
+        },
+        {
+          "dimension": "C5",
+          "benchmark_family": "MathVision",
+          "model_coverage": 0.5,
+          "max_abs_spearman": 1.0,
+          "most_correlated_family": "MMMU-Pro",
+          "common_n": 3,
+          "semantic_role": "MathVision",
+          "network_role": "structurally indispensable",
+          "source": "SRC001: Kimi K3 README / Technical Release",
+          "decision": "KEEP_STRUCTURALLY_INDISPENSABLE",
+          "reason": "Removal changes the active comparison network or its connectivity."
+        }
+      ]
+    }
+  ]
+}

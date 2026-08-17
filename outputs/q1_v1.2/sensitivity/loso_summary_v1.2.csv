@@ -1,0 +1,6 @@
+analysis,removed,status,comparison,common_models,spearman,kendall_tau,kimi_rank_A,kimi_rank_other,top3_overlap_count,top3_membership_A,top3_membership_other
+LOSO,LiveBench,NETWORK_DISCONNECTED,LiveBench,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOSO,Artificial Analysis,NETWORK_DISCONNECTED,Artificial Analysis,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOSO,Kimi official/technical comparison,NETWORK_DISCONNECTED,Kimi official/technical comparison,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOSO,DeepSeek technical report,OK,DeepSeek technical report,10.0,0.9999999999999999,0.9999999999999999,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOSO,OpenRouter,OK,OpenRouter,10.0,0.9878787878787878,0.9555555555555554,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max

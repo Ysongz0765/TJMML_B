@@ -1,0 +1,243 @@
+{
+  "filename": "table_q1_v12_equal_weight_sensitivity.xlsx",
+  "description": "Equal-weight benchmark sensitivity; objective weighting remains the main model.",
+  "sheets": [
+    {
+      "name": "Ranking_A",
+      "records": [
+        {
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_rank": 1,
+          "main_score": 80.49837465220403,
+          "equal_weight_rank": 1,
+          "equal_weight_score": 73.59190655829357,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_rank": 2,
+          "main_score": 70.82244404278597,
+          "equal_weight_rank": 2,
+          "equal_weight_score": 72.09652454388673,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_rank": 3,
+          "main_score": 53.71951005579109,
+          "equal_weight_rank": 3,
+          "equal_weight_score": 64.2379972523847,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_rank": 4,
+          "main_score": 52.2760274218932,
+          "equal_weight_rank": 4,
+          "equal_weight_score": 49.839182622866474,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_rank": 5,
+          "main_score": 46.59543432414334,
+          "equal_weight_rank": 5,
+          "equal_weight_score": 46.99811758484411,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_rank": 6,
+          "main_score": 33.485069123391845,
+          "equal_weight_rank": 8,
+          "equal_weight_score": 45.745428146001245,
+          "rank_change": 2,
+          "perspective": "A"
+        },
+        {
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_rank": 7,
+          "main_score": 32.455631118534825,
+          "equal_weight_rank": 6,
+          "equal_weight_score": 46.2922063487684,
+          "rank_change": -1,
+          "perspective": "A"
+        },
+        {
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_rank": 8,
+          "main_score": 28.141755092885656,
+          "equal_weight_rank": 7,
+          "equal_weight_score": 46.1056239275037,
+          "rank_change": -1,
+          "perspective": "A"
+        },
+        {
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "main_rank": 9,
+          "main_score": 14.905681000955749,
+          "equal_weight_rank": 9,
+          "equal_weight_score": 22.86174302158772,
+          "rank_change": 0,
+          "perspective": "A"
+        },
+        {
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_rank": 10,
+          "main_score": 9.503667165920382,
+          "equal_weight_rank": 10,
+          "equal_weight_score": 13.247083423628505,
+          "rank_change": 0,
+          "perspective": "A"
+        }
+      ]
+    },
+    {
+      "name": "Ranking_B",
+      "records": [
+        {
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_rank": 1,
+          "main_score": 79.57704113099587,
+          "equal_weight_rank": 1,
+          "equal_weight_score": 74.76779648685184,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_rank": 2,
+          "main_score": 67.47506091725245,
+          "equal_weight_rank": 2,
+          "equal_weight_score": 71.65535652451399,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_rank": 3,
+          "main_score": 65.98955887059607,
+          "equal_weight_rank": 3,
+          "equal_weight_score": 66.98988319786696,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_rank": 4,
+          "main_score": 56.1716927717902,
+          "equal_weight_rank": 4,
+          "equal_weight_score": 57.8652579359605,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_rank": 5,
+          "main_score": 52.171843407145545,
+          "equal_weight_rank": 6,
+          "equal_weight_score": 55.43820800988591,
+          "rank_change": 1,
+          "perspective": "B"
+        },
+        {
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_rank": 6,
+          "main_score": 47.412425030800634,
+          "equal_weight_rank": 7,
+          "equal_weight_score": 47.4226830990869,
+          "rank_change": 1,
+          "perspective": "B"
+        },
+        {
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_rank": 7,
+          "main_score": 46.92168073560302,
+          "equal_weight_rank": 5,
+          "equal_weight_score": 57.632029909379625,
+          "rank_change": -2,
+          "perspective": "B"
+        },
+        {
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_rank": 8,
+          "main_score": 39.29882393949788,
+          "equal_weight_rank": 8,
+          "equal_weight_score": 44.977159266529355,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "main_rank": 9,
+          "main_score": 24.89133546071706,
+          "equal_weight_rank": 9,
+          "equal_weight_score": 28.57717877698465,
+          "rank_change": 0,
+          "perspective": "B"
+        },
+        {
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_rank": 10,
+          "main_score": 15.823376203109998,
+          "equal_weight_rank": 10,
+          "equal_weight_score": 16.55885427953563,
+          "rank_change": 0,
+          "perspective": "B"
+        }
+      ]
+    },
+    {
+      "name": "Summary",
+      "records": [
+        {
+          "comparison": "A: objective vs equal",
+          "common_models": 10,
+          "spearman": 0.9636363636363635,
+          "kendall_tau": 0.911111111111111,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B: objective vs equal",
+          "common_models": 10,
+          "spearman": 0.9636363636363635,
+          "kendall_tau": 0.911111111111111,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    }
+  ]
+}

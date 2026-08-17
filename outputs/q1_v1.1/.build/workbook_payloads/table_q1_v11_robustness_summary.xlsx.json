@@ -1,0 +1,387 @@
+{
+  "filename": "table_q1_v11_robustness_summary.xlsx",
+  "description": "Compact robustness and v1.0 stability audit summary.",
+  "sheets": [
+    {
+      "name": "Rank_Comparison",
+      "records": [
+        {
+          "comparison": "A vs B (common models)",
+          "common_models": 9,
+          "spearman": 0.75,
+          "kendall_tau": 0.5555555555555556,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "A vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.9642857142857145,
+          "kendall_tau": 0.9047619047619049,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.5357142857142858,
+          "kendall_tau": 0.23809523809523814,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    },
+    {
+      "name": "Equal_Weight",
+      "records": [
+        {
+          "comparison": "A: objective vs equal",
+          "common_models": 9,
+          "spearman": 0.9500000000000001,
+          "kendall_tau": 0.8888888888888888,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B: objective vs equal",
+          "common_models": 10,
+          "spearman": 0.9636363636363635,
+          "kendall_tau": 0.911111111111111,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    },
+    {
+      "name": "LOFO",
+      "records": [
+        {
+          "analysis": "LOFO",
+          "removed": "GPQA Diamond",
+          "status": "OK",
+          "comparison": "GPQA Diamond",
+          "common_models": 9.0,
+          "spearman": 0.9333333333333332,
+          "kendall_tau": 0.8333333333333334,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "LiveBench Logic",
+          "status": "OK",
+          "comparison": "LiveBench Logic",
+          "common_models": 9.0,
+          "spearman": 0.9833333333333333,
+          "kendall_tau": 0.9444444444444445,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 4.0,
+          "top3_overlap_count": 2.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gemini_3_1_pro_high; gpt_5_6_sol_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "LiveBench Math",
+          "status": "OK",
+          "comparison": "LiveBench Math",
+          "common_models": 9.0,
+          "spearman": 1.0,
+          "kendall_tau": 1.0,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "AA-Omniscience",
+          "status": "OK",
+          "comparison": "AA-Omniscience",
+          "common_models": 9.0,
+          "spearman": 1.0,
+          "kendall_tau": 1.0,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "Humanity's Last Exam",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "Humanity's Last Exam",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "AA-LCR",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "AA-LCR",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "CorpusQA",
+          "status": "OK",
+          "comparison": "CorpusQA",
+          "common_models": 9.0,
+          "spearman": 0.9833333333333333,
+          "kendall_tau": 0.9444444444444445,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "MRCR",
+          "status": "OK",
+          "comparison": "MRCR",
+          "common_models": 9.0,
+          "spearman": 1.0,
+          "kendall_tau": 1.0,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "FrontierSWE",
+          "status": "OK",
+          "comparison": "FrontierSWE",
+          "common_models": 9.0,
+          "spearman": 0.9833333333333333,
+          "kendall_tau": 0.9444444444444445,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 4.0,
+          "top3_overlap_count": 2.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gemini_3_1_pro_high; gpt_5_6_sol_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "LiveBench Coding",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "LiveBench Coding",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "ProgramBench",
+          "status": "OK",
+          "comparison": "ProgramBench",
+          "common_models": 9.0,
+          "spearman": 1.0,
+          "kendall_tau": 1.0,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "SWE-bench Verified",
+          "status": "OK",
+          "comparison": "SWE-bench Verified",
+          "common_models": 9.0,
+          "spearman": 1.0,
+          "kendall_tau": 1.0,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "MMMU-Pro",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "MMMU-Pro",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOFO",
+          "removed": "MathVision",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "MathVision",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        }
+      ]
+    },
+    {
+      "name": "LOSO",
+      "records": [
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "LiveBench",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "Artificial Analysis",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "Kimi official/technical comparison",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "comparison": "DeepSeek technical report",
+          "common_models": 9.0,
+          "spearman": 0.9833333333333333,
+          "kendall_tau": 0.9444444444444445,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "comparison": "OpenRouter",
+          "common_models": 9.0,
+          "spearman": 0.9333333333333332,
+          "kendall_tau": 0.8333333333333334,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    },
+    {
+      "name": "Old_Stability",
+      "records": [
+        {
+          "dimension": "C1",
+          "old_median_score_sd": 13.94593249460011,
+          "old_unique_bootstrap_score_vectors": 94,
+          "old_median_endpoint_frequency": 0.037,
+          "audit_conclusion": "VARIATION_PRESENT"
+        },
+        {
+          "dimension": "C2",
+          "old_median_score_sd": 0.0,
+          "old_unique_bootstrap_score_vectors": 1,
+          "old_median_endpoint_frequency": 0.0,
+          "audit_conclusion": "PSEUDO_STABLE_RESAMPLING_DEGENERACY"
+        },
+        {
+          "dimension": "C3",
+          "old_median_score_sd": 0.0,
+          "old_unique_bootstrap_score_vectors": 1,
+          "old_median_endpoint_frequency": 0.0,
+          "audit_conclusion": "PSEUDO_STABLE_RESAMPLING_DEGENERACY"
+        },
+        {
+          "dimension": "C4",
+          "old_median_score_sd": 2.2514209782704304,
+          "old_unique_bootstrap_score_vectors": 681,
+          "old_median_endpoint_frequency": 0.0,
+          "audit_conclusion": "VARIATION_PRESENT"
+        },
+        {
+          "dimension": "C5",
+          "old_median_score_sd": 0.0,
+          "old_unique_bootstrap_score_vectors": 1,
+          "old_median_endpoint_frequency": 0.0,
+          "audit_conclusion": "PSEUDO_STABLE_RESAMPLING_DEGENERACY"
+        }
+      ]
+    }
+  ]
+}

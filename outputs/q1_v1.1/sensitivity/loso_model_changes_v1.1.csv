@@ -1,0 +1,19 @@
+analysis,removed,status,model_id,model,main_rank,scenario_rank,rank_change,scenario_score
+LOSO,DeepSeek technical report,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,75.13920356254194
+LOSO,DeepSeek technical report,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,64.74254581397507
+LOSO,DeepSeek technical report,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,64.43686325350978
+LOSO,DeepSeek technical report,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,61.22842376880578
+LOSO,DeepSeek technical report,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,5,-1,39.78434105492973
+LOSO,DeepSeek technical report,OK,qwen3_8_max,Qwen3.8-Max,5,6,1,37.83689660786874
+LOSO,DeepSeek technical report,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,25.131445815762824
+LOSO,DeepSeek technical report,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,14.536493403470278
+LOSO,DeepSeek technical report,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,8.899778608284084
+LOSO,OpenRouter,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,79.2940087994032
+LOSO,OpenRouter,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,75.31501083556651
+LOSO,OpenRouter,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,51.31524115577318
+LOSO,OpenRouter,OK,qwen3_8_max,Qwen3.8-Max,5,4,-1,45.75152258114527
+LOSO,OpenRouter,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,5,1,45.10244457132248
+LOSO,OpenRouter,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,6,-1,31.944232797386714
+LOSO,OpenRouter,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,7,-1,30.8363273622124
+LOSO,OpenRouter,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,8,2,30.143939046531024
+LOSO,OpenRouter,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,11.296238122086494

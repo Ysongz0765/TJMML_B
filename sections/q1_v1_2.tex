@@ -1,0 +1,213 @@
+% Formal Chinese mathematical-modelling paper section for Q1 final analysis.
+\section{问题一：主流大语言模型综合性能评价}
+
+\subsection{问题分析与建模思路}
+大语言模型的综合性能不是单一分数可以充分描述的。本文面对三个困难：其一，不同 Benchmark 的量纲、满分、难度与测试协议不同，原始分数不能直接相加；其二，21 个 Exact Setting 并非相互独立，同源或同类测试可能重复反映相近能力；其三，公开结果存在非随机缺失，缺失可能来自尚未公开，也可能来自模型不具备相应能力。因此，普通加权平均既会混合不可比的量纲，也可能重复计权或把结构性缺位误当作低分。
+
+为此，本文将不可直接比较的绝对分数转化为同一 Exact Setting 内的模型相对胜负关系，再以正则化 Bradley--Terry 模型估计五个能力维度的潜在水平。整体流程为：数据审计与能力适用性识别，21 个 Exact Setting 的两层筛选，Family-balanced Pairwise Comparison，Margin weighting，正则化 BT，C1--C5 能力估计，Information--Redundancy--Ranking Stability 客观赋权，C5 能力适用性修正，Ranking A/B/C，以及 Bootstrap、LOFO、LOSO 和 Kimi K3 竞争力分析。图~\ref{fig:q1_v12_flow}给出总体结构。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{figures/figure_q1_v12_01_flow.pdf}
+  \caption{问题一总体建模流程。流程图仅表示方法结构，不写入随数据重跑而变化的具体权重。}
+  \label{fig:q1_v12_flow}
+\end{figure}
+
+\subsection{数据预处理与评价指标体系}
+\subsubsection{数据来源与数据特征}
+评价对象为十个具体模型版本。数据包含 21 个 Exact Setting、14 个 Benchmark Family 和 164 条有效观测，理论组合数为 $10\times21=210$，整体覆盖率为
+\begin{equation}
+\eta=\frac{164}{210}=0.780952.
+\end{equation}
+数据来源包括 LiveBench 官方表格、Artificial Analysis 公共快照、模型官方技术报告或模型卡、Kimi 官方技术材料以及 OpenRouter 的统一端点页面。表~\ref{tab:q1_v12_sources}列出正文所需的主要来源；所有快照均记录访问日期，详细 source ID 与风险审计保留在配套数据表中。
+
+\begin{table}[htbp]
+\centering
+\caption{主要数据来源与用途}
+\label{tab:q1_v12_sources}
+\resizebox{\textwidth}{!}{\begin{tabular}{llll}
+\toprule
+Benchmark Family & 主要来源 & 来源类型 & 用途 \\
+\midrule
+LiveBench Logic/Math/Coding & LiveBench 官方表格（2026-06-25） & 统一平台快照 & 推理、数学与代码 \\
+AA-Omniscience/AA-LCR/MMMU-Pro & Artificial Analysis（2026-08-16） & 标准化公开榜单 & 知识、长上下文与多模态 \\
+CorpusQA/MRCR/SWE-bench & DeepSeek 官方技术报告 & 技术报告 & 长上下文与软件工程 \\
+FrontierSWE/ProgramBench/MathVision & Kimi 官方技术材料 & 官方技术比较 & 代码与多模态 \\
+GPQA Diamond & OpenRouter 统一端点页面 & 独立比较页面 & 复杂推理 \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+五个一级能力维度定义为：$C_1$ 复杂推理，$C_2$ 知识与事实可靠性，$C_3$ 长上下文，$C_4$ 代码与软件工程，$C_5$ 多模态。原始分数只在同一 Exact Setting 内参与比较，不进行跨 Benchmark 的直接加总。
+
+\subsubsection{模型能力适用性处理}
+对 C5 先核验“是否具备本题定义的原生多模态能力”，再核验是否存在公开 Benchmark。DeepSeek-V4-Pro Max、DeepSeek-V4-Flash Max 和 GLM-5.2 (max) 均被核验为不具备该原生能力。对于这三个模型，原始 MMMU-Pro 与 MathVision 单元仍保持缺失，不改写为 Benchmark 得分 0；只在综合能力体系中令可用性 $A_i=0$。其余七个模型属于具有可估计 C5 潜在能力的多模态模型集合，某一具体 Benchmark 缺失仍按缺失处理。
+
+定义
+\begin{equation}
+A_i=\begin{cases}1,&\text{模型具备本题定义的原生多模态能力},\\0,&\text{模型不具备该能力},\end{cases}
+\qquad S_{i5}^{*}=A_iS_{i5}^{BT}.
+\end{equation}
+因此，$S_{i5}^{*}=0$只表示综合能力体系中的多模态能力可用性为 0，不代表模型在 MMMU-Pro、MathVision 等原始测试中的成绩为 0。GLM 的人工核验证据单独记录在 capability applicability 补充表中。
+
+\subsubsection{分层评价指标体系}
+评价层次为“综合性能--能力维度--Benchmark Family--Exact Setting”。Exact Setting 是成对比较的最小单元；Family 用于控制同类指标的隐含权重；能力维度用于形成最终的 C1--C5 结构。C5 的论文展示采用“C5* 多模态有效能力”列，并以 $0^*$ 表示结构性能力缺位。
+
+\subsection{评价指标相关性分析与筛选}
+\subsubsection{Missing-aware Spearman}
+对 Benchmark $j,k$，令共同有效模型集合为
+\begin{equation}
+I_{jk}=\{i:x_{ij}\text{ 与 }x_{ik}\text{ 均有效}\},\qquad n_{jk}=|I_{jk}|,
+\end{equation}
+并在 $I_{jk}$ 上计算 Spearman 秩相关 $\rho_{jk}$。这样既不插补缺失值，也不把缺失模式误当成能力差异。相关性只作为冗余候选的证据，不能替代语义和比较网络判断。
+
+\subsubsection{两阶段指标筛选}
+第一阶段将 21 个 Exact Setting 归并为 14 个 Family；第二阶段综合 $|\rho|$、共同样本数、模型覆盖率、语义独立性、比较网络连通性和来源独立性进行筛选。$|\rho|\ge0.85$ 只标记高相关候选；若共同样本数很小或该指标承担网络桥接作用，则采用“保留并进行删除敏感性分析”，不机械删除。模型--Exact Setting 覆盖结构见图~\ref{fig:q1_v12_coverage}，Family 相关热力图见图~\ref{fig:q1_v12_spearman}。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.94\textwidth]{figures/figure_q1_v12_02_coverage.pdf}
+  \caption{模型--Exact Setting 数据覆盖热力图。}
+  \label{fig:q1_v12_coverage}
+\end{figure}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.82\textwidth]{figures/figure_q1_v12_03_spearman.pdf}
+  \caption{Benchmark Family 的缺失感知 Spearman 相关热力图。}
+  \label{fig:q1_v12_spearman}
+\end{figure}
+
+\subsection{基于成对比较的五维能力评价模型}
+对于同一 Exact Setting $s$ 上的模型 $i,j$，定义
+\begin{equation}
+y_{ijs}=\begin{cases}1,&x_{is}>x_{js},\\0.5,&x_{is}=x_{js},\\0,&x_{is}<x_{js}.
+\end{cases}
+\end{equation}
+任一模型缺少该设置的有效观测时，不构造成对关系。为保留领先幅度，令
+\begin{equation}
+m_{ijs}=\frac{|x_{is}-x_{js}|}{\max_lx_{ls}-\min_lx_{ls}+\varepsilon},\qquad
+w^{(m)}_{ijs}=\varepsilon_m+(1-\varepsilon_m)m_{ijs},
+\end{equation}
+其中 $\varepsilon_m=0.1$。随后在每个能力维度内对 Family 和 Setting 分层归一化，使含有更多设置的 Family 不会自动获得更高权重。该处理将不同量纲的原始成绩转化为同一设置内的可比较信息。
+
+\subsection{正则化 Bradley--Terry 模型}
+第 $d$ 个能力维度中，模型 $i$ 的潜在能力为 $\theta_{id}$，则
+\begin{equation}
+P(i\succ j)=\sigma(\theta_{id}-\theta_{jd})
+ =\frac{\exp(\theta_{id})}{\exp(\theta_{id})+\exp(\theta_{jd})}.
+\end{equation}
+在全部有效成对比较 $r$ 上，采用带 $L_2$ 正则项的加权似然：
+\begin{align}
+\hat{\boldsymbol\theta}_d=\arg\min_{\boldsymbol\theta}\left\{-\sum_r w_r[y_r\log p_r+(1-y_r)\log(1-p_r)]+\frac{\lambda}{2}\sum_i\theta_{id}^2\right\},\\
+\text{s.t.}\quad\sum_i\theta_{id}=0,\qquad \lambda=1.0.
+\end{align}
+各维度模型均收敛。为便于解释，将同一维度内的 $\theta$ 线性转换到 $0$--$100$，得到 $S_{id}^{BT}$；该转换不改变维度内排序，也不把不同 Benchmark 的原始分数放到同一量纲中。五维能力热力图见图~\ref{fig:q1_v12_scores}。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\textwidth]{figures/figure_q1_v12_04_dimension_scores.pdf}
+  \caption{十个模型的 C1--C5 潜在能力标准化得分；C5* 的结构性零仅在综合评价层使用。}
+  \label{fig:q1_v12_scores}
+\end{figure}
+
+\subsection{信息--冗余--稳定性客观赋权}
+令 $S_{id}$ 为维度内标准化得分，$p_{id}=(S_{id}+\epsilon)/\sum_i(S_{id}+\epsilon)$，则信息量为
+\begin{equation}
+I_d=1+\frac{1}{\ln n_d}\sum_i p_{id}\ln p_{id}.
+\end{equation}
+以维度得分之间的缺失感知秩相关衡量冗余，定义 $R_d=1-D_d^{-1}\sum_{k\ne d}|\rho_{dk}|$。稳定度不再依赖 Min--Max 端点，而由潜在能力排序的一致性给出。设第 $b$ 次 Bootstrap 中维度 $d$ 的 BT-$\theta$ 排名与主模型排名的 Spearman 相关为 $\rho_d^{(b)}$，则
+\begin{equation}
+T_d=\frac{1+\operatorname{median}_b\rho_d^{(b)}}{2},\qquad q_d=I_dR_dT_d,\qquad w_d=\frac{q_d}{\sum_kq_k}.
+\end{equation}
+该定义避免标准化端点造成的机械伪稳定。Ranking A 的五维权重见表~\ref{tab:q1_v12_weights}，其和为 1。
+
+\begin{table}[htbp]
+\centering
+\caption{Ranking A 的五维客观权重}
+\label{tab:q1_v12_weights}
+\begin{tabular}{lrrrr}
+\toprule
+维度 & $I_d$ & $R_d$ & $T_d$ & $w_d$\\
+\midrule
+C1 复杂推理 & 0.075410 & 0.700254 & 0.575758 & 0.128212\\
+C2 知识与事实可靠性 & 0.136024 & 0.573484 & 0.618182 & 0.203358\\
+C3 长上下文 & 0.061956 & 0.787390 & 0.600000 & 0.123432\\
+C4 代码与软件工程 & 0.081235 & 0.611941 & 0.563636 & 0.118157\\
+C5 多模态 & 0.294454 & 0.583331 & 0.589286 & 0.426840\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{综合性能评价与模型排名}
+\subsubsection{Ranking A：统一综合评价}
+Ranking A 是问题一的主要结果。全部十个模型统一使用 $C_1,C_2,C_3,C_4,C_5^{*}$，综合得分为 $G_i=\sum_{d=1}^{5}w_dS_{id}^{*}$。表~\ref{tab:q1_v12_rankA}中的 $0^*$ 仅表示多模态能力可用性为 0，不是原始 Benchmark 分数。GPT-5.6 Sol 与 Claude Fable 5 分居前两位，Kimi K3 以 53.720 分列第三；第一名与第二名差距为 9.676 分，Kimi 与第四名 Gemini-3.1-Pro 的差距仅为 1.443 分，说明前三之外的相邻名次仍需结合稳健性检验解释。
+
+\begin{table}[htbp]
+\centering
+\caption{Ranking A：统一 C1--C5* 综合评价}
+\label{tab:q1_v12_rankA}
+\resizebox{\textwidth}{!}{\begin{tabular}{rllrrrrrr}
+\toprule
+排名 & 模型 & C1 & C2 & C3 & C4 & C5* 多模态有效能力 & 综合得分 & 备注\\
+\midrule
+1 & GPT-5.6 Sol & 80.618 & 59.358 & 54.028 & 73.955 & 100.000 & 80.498 & \\
+2 & Claude Fable 5 & 48.008 & 100.000 & 51.063 & 100.000 & 61.411 & 70.822 & \\
+3 & Kimi K3 & 80.222 & 46.257 & 66.362 & 93.780 & 34.569 & 53.720 & \\
+4 & Gemini-3.1-Pro & 95.972 & 41.062 & 0.000 & 52.657 & 59.505 & 52.276 & \\
+5 & Qwen3.8-Max & 62.030 & 11.369 & 44.436 & 62.073 & 55.082 & 46.595 & \\
+6 & GPT-5.5 & 88.998 & 36.467 & 57.731 & 38.556 & 6.974 & 33.485 & \\
+7 & Claude Opus 4.8 & 100.000 & 45.610 & 40.819 & 45.032 & 0.000 & 32.456 & \\
+8 & DeepSeek-V4-Pro & 37.365 & 0.000 & 100.000 & 93.163 & $0^*$ & 28.142 & Type A\\
+9 & GLM-5.2 & 29.305 & 9.804 & 51.063 & 24.138 & $0^*$ & 14.906 & Type A\\
+10 & DeepSeek-V4-Flash & 0.000 & 16.616 & 49.619 & 0.000 & $0^*$ & 9.504 & Type A\\
+\bottomrule
+\end{tabular}}
+\end{table}
+\noindent 注：$^*$表示模型不具备本题定义的原生多模态能力，综合能力可用性记为 0；该值不是 MMMU-Pro、MathVision 等原始测试成绩。
+
+\subsubsection{Ranking B：C1--C4 共同能力评价}
+Ranking B 排除 C5 差异，使用十个模型共同可比较的 C1--C4 并重新计算四维权重。排名前三为 Claude Fable 5（79.577）、Kimi K3（67.475）和 GPT-5.6 Sol（65.990）。因此 Kimi 在共同文本、推理、知识、长上下文和代码能力评价中列第二，说明其第三名主要由 C5* 的综合修正拉低，而不是 C1--C4 的整体竞争力不足。
+
+\subsubsection{Ranking C：具有可估计 C5 能力的多模态模型子集评价}
+Ranking C 正式名称为“具有可估计 C5 能力的多模态模型子集评价”，对象为七个能够估计 C5 latent ability 的模型。该榜单不意味着所有多模态 Benchmark 均有直接观测，因为其中部分模型仍存在单项 C5 Benchmark 缺失。Ranking C 的前三仍为 GPT-5.6 Sol（77.430）、Claude Fable 5（67.172）和 Kimi K3（50.155）。Ranking A 与 Ranking C 在七个共同模型上的 Spearman 相关为 0.964，表明 C5* 修正没有改变该子集的前三结构。
+
+\subsection{模型稳健性与敏感性分析}
+\subsubsection{Bootstrap}
+采用 $B=2000$ 次参数 Bootstrap。重采样单位为固定 Benchmark 集合、来源结构和能力适用性条件下的成对比较结果；每次重新拟合五个维度的 BT，并重新计算信息量与非冗余度，潜在排序稳定度 $T_d$ 固定以避免嵌套 Bootstrap。95\% 区间为经验百分位区间；网络结构在固定边集下保持不变，BT 不收敛时不丢弃而直接使运行失败。Kimi 在 Ranking A 中的得分区间为 $[17.012,81.843]$，排名区间为 $[1,10]$，进入前三的经验频率为 0.4225。这里的频率只表示“在本文既定 Benchmark 集合、来源结构及能力适用性条件下”的经验频率，不证明 Kimi 必然稳定第三。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.82\textwidth]{figures/figure_q1_v12_05_ranking_A_ci.pdf}
+  \caption{Ranking A 综合得分及 Bootstrap 95\% 区间。}
+  \label{fig:q1_v12_rankA_ci}
+\end{figure}
+
+\subsubsection{LOFO 与 LOSO}
+LOFO 检验单个 Benchmark Family 的影响，LOSO 检验单一来源集中度的影响。删除 AA-LCR、Humanity's Last Exam、LiveBench Coding、MathVision 或 MMMU-Pro 后比较网络不连通，说明这些公开测试在当前网络中具有结构桥接作用，而非程序失败。在其余有效 LOFO 情景中，Kimi 名次为 3--4；删除 LiveBench Logic 或 FrontierSWE 时名次为 4，其余多数有效情景保持第三。LOSO 中删除 LiveBench、Artificial Analysis 或 Kimi 官方来源会导致网络不连通；删除 DeepSeek technical report 或 OpenRouter 后网络仍连通，Kimi 均为第三。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.86\textwidth]{figures/figure_q1_v12_06_lofo_rank_change.pdf}
+  \caption{LOFO 模型排名变化与网络可识别性。}
+  \label{fig:q1_v12_lofo}
+\end{figure}
+
+\subsubsection{等权敏感性}
+以各维度等权替代客观权重，Ranking A 与主模型的 Spearman 相关为 0.964、Kendall 相关为 0.911，Kimi 仍列第三且前三集合完全一致；Ranking B 中 Kimi 仍列第二。由此可见，Kimi 的主要结论不依赖某一个小数位的权重设定，但 C5 的结构性修正会改变其相对综合分数。
+
+\subsection{Kimi K3 竞争优势与短板}
+以 Kimi 在维度 $d$ 上的得分减去相应比较组中位数定义差值 $\Delta_d$。C4 的差值为 $+36.415$，属于具有直接 Benchmark 支撑的强证据优势，可视为 Kimi 的主要竞争优势。C3 的差值为正，但在当前 AA-LCR 公开结果及 C3 比较网络下，Kimi K3 的长上下文潜在能力估计高于样本中位水平，但其 CorpusQA 1M 和 MRCR 1M 缺少直接观测，因此该结论属于模型推断优势，直接证据强度低于 C4。C5 与七个可估计 C5 能力模型的中位数相比为 $-20.513$，是主要相对短板；该差值没有混入三款结构性能力缺位模型的 $0^*$。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.70\textwidth]{figures/figure_q1_v12_07_kimi_gap.pdf}
+  \caption{Kimi K3 相对于比较组中位能力的差值。}
+  \label{fig:q1_v12_kimi_gap}
+\end{figure}
+
+综合来看，Kimi K3 在 Ranking A/B/C 中分别为第 3、2、3 名。其 C4 优势足以支撑较高的共同能力排名，但多模态有效能力较弱使统一综合评价分数降至 53.720。Ranking A 与 Ranking B 的十模型秩相关为 0.818，说明将 C5* 纳入统一体系确实改变了部分中后段次序；而 Ranking A 与 Ranking C 在七个共同模型上的相关性较高，说明该修正的主要作用是对能力适用性进行诚实表达，而不是制造额外的排序波动。
+
+\subsection{本问小结}
+本文针对 Benchmark 不可直接加总、同类指标存在冗余以及缺失性质不一致三个问题，建立了基于同设置成对比较、Family balancing、Margin weighting 和正则化 Bradley--Terry 的五维能力评价方法，并以信息量、非冗余度和潜在排序稳定度确定客观权重。经能力适用性核验，DeepSeek-V4-Pro Max、DeepSeek-V4-Flash Max 和 GLM-5.2 均不具备本题定义的原生多模态能力，三者的 C5* 可用性记为 0，但原始 Benchmark 数据保持缺失。
+
+计算结果表明，GPT-5.6 Sol、Claude Fable 5 和 Kimi K3 位居 Ranking A 前三；Kimi 在共同 C1--C4 评价中列第二，在具有可估计 C5 能力的多模态子集中列第三。C4 是 Kimi 的强证据优势，C3 结论需要谨慎解释，C5 是主要短板。Bootstrap、LOFO、LOSO 和等权敏感性共同表明，结论应限定在本文既定 Benchmark 集合、来源结构和能力适用性条件下；对局部指标和相邻名次差异不作超出证据范围的外推。

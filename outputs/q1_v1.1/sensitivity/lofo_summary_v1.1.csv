@@ -1,0 +1,15 @@
+analysis,removed,status,comparison,common_models,spearman,kendall_tau,kimi_rank_A,kimi_rank_other,top3_overlap_count,top3_membership_A,top3_membership_other
+LOFO,GPQA Diamond,OK,GPQA Diamond,9.0,0.9333333333333332,0.8333333333333334,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,LiveBench Logic,OK,LiveBench Logic,9.0,0.9833333333333333,0.9444444444444445,3,4.0,2.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gemini_3_1_pro_high; gpt_5_6_sol_max
+LOFO,LiveBench Math,OK,LiveBench Math,9.0,1.0,1.0,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,AA-Omniscience,OK,AA-Omniscience,9.0,1.0,1.0,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,Humanity's Last Exam,NETWORK_DISCONNECTED,Humanity's Last Exam,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOFO,AA-LCR,NETWORK_DISCONNECTED,AA-LCR,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOFO,CorpusQA,OK,CorpusQA,9.0,0.9833333333333333,0.9444444444444445,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,MRCR,OK,MRCR,9.0,1.0,1.0,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,FrontierSWE,OK,FrontierSWE,9.0,0.9833333333333333,0.9444444444444445,3,4.0,2.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gemini_3_1_pro_high; gpt_5_6_sol_max
+LOFO,LiveBench Coding,NETWORK_DISCONNECTED,LiveBench Coding,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOFO,ProgramBench,OK,ProgramBench,9.0,1.0,1.0,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,SWE-bench Verified,OK,SWE-bench Verified,9.0,1.0,1.0,3,3.0,3.0,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max,claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max
+LOFO,MMMU-Pro,NETWORK_DISCONNECTED,MMMU-Pro,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED
+LOFO,MathVision,NETWORK_DISCONNECTED,MathVision,,,,3,,,gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max,NETWORK_DISCONNECTED

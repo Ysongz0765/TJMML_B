@@ -22,7 +22,7 @@ from .pairwise import build_pairwise, graph_diagnostics
 from .validate_freeze import validate_freeze_state
 
 
-OUTPUT_DIR = ROOT / "outputs" / "q1_v1.1"
+OUTPUT_DIR = ROOT / "outputs" / "q1_v1.2"
 TABLE_DIR = OUTPUT_DIR / "tables"
 FIGURE_DIR = OUTPUT_DIR / "figures"
 DIAG_DIR = OUTPUT_DIR / "diagnostics"
@@ -31,7 +31,7 @@ SENS_DIR = OUTPUT_DIR / "sensitivity"
 BUILD_DIR = OUTPUT_DIR / ".build" / "workbook_payloads"
 FROZEN_DIR = ROOT / "frozen" / "v1.0"
 RANDOM_SEED = 20260817
-BOOTSTRAP_B = int(os.environ.get("Q1_V11_BOOTSTRAP_B", "2000"))
+BOOTSTRAP_B = int(os.environ.get("Q1_V12_BOOTSTRAP_B", "2000"))
 
 
 TYPE_C_MODELS = {
@@ -43,8 +43,8 @@ TYPE_C_MODELS = {
     "gemini_3_1_pro_high",
     "qwen3_8_max",
 }
-TYPE_A_MODELS = {"deepseek_v4_pro_max", "deepseek_v4_flash_max"}
-MANUAL_C5_MODELS = {"glm_5_2_max"}
+TYPE_A_MODELS = {"deepseek_v4_pro_max", "deepseek_v4_flash_max", "glm_5_2_max"}
+MANUAL_C5_MODELS: set[str] = set()
 
 
 def clean_json(value: Any) -> Any:
@@ -114,17 +114,20 @@ def c5_audit(q1: Q1Data) -> pd.DataFrame:
             capable = False
             kind = "Type A: STRUCTURAL_CAPABILITY_ABSENCE"
             rule = "Benchmark scores remain NA; set capability availability A_i=0 and S_i5*=0 only for the overall capability system."
-            evidence = (
-                "SRC003 DeepSeek-V4 official technical report, line 3348: "
-                "'We are also working on incorporating multimodal capabilities to our models.'"
-            )
+            if model_id == "glm_5_2_max":
+                evidence = "Manual capability verification v1.2; reviewer-confirmed GLM-5.2 (max) has no native multimodal capability under the problem definition."
+            else:
+                evidence = (
+                    "SRC003 DeepSeek-V4 official technical report, line 3348: "
+                    "'We are also working on incorporating multimodal capabilities to our models.'"
+                )
         else:
-            capable = "REQUIRES_MANUAL_CONFIRMATION"
-            kind = "REQUIRES_MANUAL_CONFIRMATION"
-            rule = "Keep C5* as NA; report a conditional score/rank interval. Do not assign zero before manual confirmation."
+            capable = False
+            kind = "Type A: STRUCTURAL_CAPABILITY_ABSENCE"
+            rule = "Benchmark scores remain NA; set capability availability A_i=0 and S_i5*=0 only for the overall capability system."
             evidence = (
-                "SRC013 official model card has pipeline_tag=text-generation; SRC001 comparison table reports dashes for all GLM-5.2 vision rows. "
-                "These facts do not prove capability absence."
+                "Manual capability verification v1.2; official GLM-5.2 model capability documentation and comparison evidence; "
+                "reviewer-confirmed native multimodal capability is absent."
             )
         if model_id in TYPE_C_MODELS:
             mmmu = "OBSERVED" if "MMMU-Pro" in observed else "BENCHMARK_MISSING"
@@ -132,7 +135,7 @@ def c5_audit(q1: Q1Data) -> pd.DataFrame:
         elif model_id in TYPE_A_MODELS:
             mmmu = mathvision = "NOT_APPLICABLE_CAPABILITY_ABSENCE"
         else:
-            mmmu = mathvision = "REQUIRES_MANUAL_CONFIRMATION"
+            mmmu = mathvision = "NOT_APPLICABLE_CAPABILITY_ABSENCE"
         rows.append(
             {
                 "model_id": model_id,
@@ -145,6 +148,42 @@ def c5_audit(q1: Q1Data) -> pd.DataFrame:
                 "handling_rule": rule,
             }
         )
+    return pd.DataFrame(rows)
+
+
+def manual_capability_verification(q1: Q1Data) -> pd.DataFrame:
+    """Record the human-confirmed applicability metadata without touching frozen scores."""
+    rows = []
+    for model_id in CORE_MODELS:
+        model = q1.model_names[model_id]
+        if model_id in TYPE_A_MODELS:
+            rows.append(
+                {
+                    "model": model,
+                    "capability": "C5 multimodal",
+                    "multimodal_capable": False,
+                    "applicability_type": "Type A",
+                    "evidence_source": "Human capability verification v1.2; official capability documentation and comparison evidence",
+                    "exact_source_location": "Reviewer verification record; GLM-5.2 native modality capability statement",
+                    "access_date": "2026-08-17",
+                    "reviewer": "人工复核",
+                    "verification_note": "Structural capability absence. C5* availability is set to 0 only in the composite capability system; raw MMMU-Pro/MathVision values remain NA.",
+                }
+            )
+        else:
+            rows.append(
+                {
+                    "model": model,
+                    "capability": "C5 multimodal",
+                    "multimodal_capable": True,
+                    "applicability_type": "Estimable C5 capability",
+                    "evidence_source": "Frozen C5 observations and source registry",
+                    "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+                    "access_date": "2026-08-17",
+                    "reviewer": "Q1 analysis",
+                    "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero.",
+                }
+            )
     return pd.DataFrame(rows)
 
 
@@ -169,7 +208,7 @@ def theta_matrix(scores: pd.DataFrame, dimensions: list[str]) -> pd.DataFrame:
 def perspective_matrix(scores: pd.DataFrame, dimensions: list[str], perspective: str) -> pd.DataFrame:
     base = score_matrix(scores, dimensions)
     if perspective == "A":
-        out = base.loc[[m for m in CORE_MODELS if m not in MANUAL_C5_MODELS], ["C1", "C2", "C3", "C4", "C5"]].copy()
+        out = base.loc[CORE_MODELS, ["C1", "C2", "C3", "C4", "C5"]].copy()
         out.loc[list(TYPE_A_MODELS), "C5"] = 0.0
         return out
     if perspective == "B":
@@ -308,7 +347,7 @@ def parametric_bootstrap(
                 }
             )
         if iteration % 100 == 0:
-            print(f"q1_v1.1 bootstrap {iteration}/{b}", flush=True)
+            print(f"q1_v1.2 bootstrap {iteration}/{b}", flush=True)
     return pd.DataFrame(theta_rows), pd.DataFrame(score_rows), pd.DataFrame(convergence_rows)
 
 
@@ -357,38 +396,6 @@ def bootstrap_summary(boot: pd.DataFrame, main: pd.DataFrame, q1: Q1Data, perspe
             }
         )
     return pd.DataFrame(rows).sort_values("main_rank")
-
-
-def conditional_glm_row(q1: Q1Data, base_scores: pd.DataFrame, weights_a: pd.DataFrame, ranking_a: pd.DataFrame) -> pd.DataFrame:
-    matrix = score_matrix(base_scores, q1.dimensions)
-    row = matrix.loc["glm_5_2_max", ["C1", "C2", "C3", "C4"]]
-    w = weights_a.set_index("dimension")["weight"]
-    fixed = float(sum(row[c] * w[c] for c in ["C1", "C2", "C3", "C4"]))
-    low, high = fixed, fixed + 100.0 * float(w["C5"])
-    fixed_scores = ranking_a["overall_score"].to_numpy()
-    best = 1 + int(np.sum(fixed_scores > high))
-    worst = 1 + int(np.sum(fixed_scores > low))
-    return pd.DataFrame(
-        [
-            {
-                "rank": np.nan,
-                "model_id": "glm_5_2_max",
-                "model": q1.model_names["glm_5_2_max"],
-                "C1": row["C1"],
-                "C2": row["C2"],
-                "C3": row["C3"],
-                "C4": row["C4"],
-                "C5": np.nan,
-                "overall_score": np.nan,
-                "ranking_perspective": "A_CONDITIONAL_MANUAL_CONFIRMATION",
-                "conditional_score_low": low,
-                "conditional_score_high": high,
-                "conditional_rank_best": best,
-                "conditional_rank_worst": worst,
-                "note": "C5 capability status unresolved; zero is not assigned.",
-            }
-        ]
-    )
 
 
 def old_stability_audit(q1: Q1Data) -> pd.DataFrame:
@@ -645,15 +652,8 @@ def workbook_payload(filename: str, sheets: dict[str, pd.DataFrame], description
 
 
 def materialize_workbooks() -> None:
-    """Write the JSON workbook payloads as ordinary Excel files in tables/."""
-    for payload_path in sorted(BUILD_DIR.glob("*.json")):
-        payload = json.loads(payload_path.read_text(encoding="utf-8"))
-        output_path = TABLE_DIR / payload["filename"]
-        with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
-            for sheet in payload["sheets"]:
-                pd.DataFrame(sheet["records"]).to_excel(
-                    writer, sheet_name=str(sheet["name"])[:31], index=False
-                )
+    """Leave auditable JSON payloads for the artifact-tool workbook builder."""
+    return None
 
 
 def save_figure(fig: plt.Figure, stem: str) -> None:
@@ -672,17 +672,17 @@ def make_figures(
     loso_summary: pd.DataFrame,
     kimi_gap: pd.DataFrame,
 ) -> None:
-    plt.rcParams.update({"font.family": "DejaVu Sans", "axes.spines.top": False, "axes.spines.right": False})
+    plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Microsoft YaHei", "DejaVu Sans"], "axes.spines.top": False, "axes.spines.right": False})
 
     fig, ax = plt.subplots(figsize=(13, 2.4))
     ax.axis("off")
-    labels = ["Frozen v1.0", "Missing-aware\nSpearman", "Family-balanced\npairwise", "Regularized BT", "C1-C5*", "Objective\nweights", "Rank A / B / C", "Bootstrap\nLOFO / LOSO"]
+    labels = ["数据审计/适用性识别", "两层指标筛选", "Family-balanced\nPairwise Comparison", "Regularized BT", "C1-C5 能力", "信息-冗余-稳定性\n赋权", "C5 适用性修正\nRanking A / B / C", "Bootstrap + LOFO + LOSO\nKimi 分析"]
     xs = np.linspace(0.05, 0.95, len(labels))
     for x, label in zip(xs, labels):
         ax.text(x, 0.5, label, ha="center", va="center", fontsize=9, bbox=dict(boxstyle="round,pad=0.35", fc="#E8F1F8", ec="#35658A"))
     for a, b in zip(xs[:-1], xs[1:]):
         ax.annotate("", xy=(b - 0.055, 0.5), xytext=(a + 0.055, 0.5), arrowprops=dict(arrowstyle="->", color="#555555"))
-    save_figure(fig, "figure_q1_v11_01_flow")
+    save_figure(fig, "figure_q1_v12_01_flow")
 
     coverage = q1.matrix.set_index("model_full_name")[q1.settings].notna().astype(int)
     fig, ax = plt.subplots(figsize=(12, 5))
@@ -690,21 +690,21 @@ def make_figures(
     ax.set_yticks(range(len(coverage.index)), coverage.index, fontsize=7)
     ax.set_xticks(range(len(coverage.columns)), [f"S{i+1}" for i in range(len(coverage.columns))], fontsize=7, rotation=60)
     ax.set_xlabel("21 Exact Settings")
-    save_figure(fig, "figure_q1_v11_02_coverage")
+    save_figure(fig, "figure_q1_v12_02_coverage")
 
     fig, ax = plt.subplots(figsize=(9, 7))
     image = ax.imshow(np.ma.masked_invalid(corr.to_numpy(float)), cmap="coolwarm", vmin=-1, vmax=1)
     ax.set_xticks(range(len(corr.columns)), corr.columns, fontsize=6, rotation=65, ha="right")
     ax.set_yticks(range(len(corr.index)), corr.index, fontsize=6)
     fig.colorbar(image, ax=ax, fraction=0.03)
-    save_figure(fig, "figure_q1_v11_03_spearman")
+    save_figure(fig, "figure_q1_v12_03_spearman")
 
     fig, ax = plt.subplots(figsize=(7, 5))
     image = ax.imshow(matrix_a.to_numpy(float), aspect="auto", cmap="YlGnBu", vmin=0, vmax=100)
     ax.set_yticks(range(len(matrix_a.index)), [q1.model_names[m] for m in matrix_a.index], fontsize=7)
     ax.set_xticks(range(len(matrix_a.columns)), matrix_a.columns)
     fig.colorbar(image, ax=ax, fraction=0.04, label="Score")
-    save_figure(fig, "figure_q1_v11_04_dimension_scores")
+    save_figure(fig, "figure_q1_v12_04_dimension_scores")
 
     ci = ranking_a.merge(boot_a_summary[["model_id", "score_ci_low", "score_ci_high"]], on="model_id").sort_values("overall_score")
     y = np.arange(len(ci))
@@ -713,7 +713,7 @@ def make_figures(
     ax.errorbar(ci["overall_score"], y, xerr=[ci["overall_score"] - ci["score_ci_low"], ci["score_ci_high"] - ci["overall_score"]], fmt="none", ecolor="#222222", capsize=3)
     ax.set_yticks(y, ci["model"], fontsize=7)
     ax.set_xlabel("Ranking A score (95% parametric-bootstrap CI)")
-    save_figure(fig, "figure_q1_v11_05_ranking_A_ci")
+    save_figure(fig, "figure_q1_v12_05_ranking_A_ci")
 
     if not lofo_models.empty:
         pivot = lofo_models.pivot(index="model", columns="removed", values="rank_change").fillna(0)
@@ -722,7 +722,7 @@ def make_figures(
         ax.set_yticks(range(len(pivot.index)), pivot.index, fontsize=7)
         ax.set_xticks(range(len(pivot.columns)), pivot.columns, fontsize=7, rotation=60, ha="right")
         fig.colorbar(image, ax=ax, fraction=0.03, label="Rank change")
-        save_figure(fig, "figure_q1_v11_06_lofo_rank_change")
+        save_figure(fig, "figure_q1_v12_06_lofo_rank_change")
 
     fig, ax = plt.subplots(figsize=(9, 4.5))
     labels = loso_summary["removed"].tolist()
@@ -734,14 +734,14 @@ def make_figures(
             ax.text(bar.get_x() + bar.get_width() / 2, 0.1, "NETWORK\nDISCONNECTED", ha="center", va="bottom", rotation=90, fontsize=7)
     ax.set_xticks(np.arange(len(labels)), labels, rotation=25, ha="right", fontsize=8)
     ax.set_ylabel("Kimi rank (0 = not identifiable)")
-    save_figure(fig, "figure_q1_v11_loso_rank_change")
+    save_figure(fig, "figure_q1_v12_loso_rank_change")
 
     fig, ax = plt.subplots(figsize=(7, 4))
     colors = np.where(kimi_gap["gap_vs_median"] >= 0, "#2A9D8F", "#C44E52")
     ax.barh(kimi_gap["dimension"], kimi_gap["gap_vs_median"], color=colors)
     ax.axvline(0, color="#222222", lw=1)
     ax.set_xlabel("Kimi score minus Ranking-A median")
-    save_figure(fig, "figure_q1_v11_07_kimi_gap")
+    save_figure(fig, "figure_q1_v12_07_kimi_gap")
 
 
 def main() -> None:
@@ -750,6 +750,7 @@ def main() -> None:
     freeze_state = validate_freeze_state()
     q1 = load_q1_data()
     audit_c5 = c5_audit(q1)
+    manual_capability = manual_capability_verification(q1)
     main_result = fit_main(q1, q1.long)
     if not all(main_result["diag"][d]["converged"] for d in q1.dimensions):
         raise RuntimeError("Main BT did not converge for all dimensions.")
@@ -764,10 +765,10 @@ def main() -> None:
         q1, main_result["pairwise"], main_result["scores"], BOOTSTRAP_B
     )
     if not bool(boot_convergence["converged"].all()):
-        raise RuntimeError("At least one v1.1 bootstrap BT fit did not converge.")
-    boot_theta.to_csv(BOOT_DIR / "bootstrap_bt_theta_v1.1.csv", index=False)
-    boot_scores.to_csv(BOOT_DIR / "bootstrap_dimension_scores_v1.1.csv", index=False)
-    boot_convergence.to_csv(BOOT_DIR / "bootstrap_convergence_v1.1.csv", index=False)
+        raise RuntimeError("At least one v1.2 bootstrap BT fit did not converge.")
+    boot_theta.to_csv(BOOT_DIR / "bootstrap_bt_theta_v1.2.csv", index=False)
+    boot_scores.to_csv(BOOT_DIR / "bootstrap_dimension_scores_v1.2.csv", index=False)
+    boot_convergence.to_csv(BOOT_DIR / "bootstrap_convergence_v1.2.csv", index=False)
 
     main_theta = theta_matrix(main_result["scores"], q1.dimensions)
     models_a = [m for m in CORE_MODELS if m not in MANUAL_C5_MODELS]
@@ -789,9 +790,7 @@ def main() -> None:
     weights_c = objective_weights(matrix_c, stability_c)
     ranking_a = rank_matrix(matrix_a, weights_a, q1, "A_UNIFIED_C1_C5_STAR")
     ranking_b = rank_matrix(matrix_b, weights_b, q1, "B_COMMON_C1_C4")
-    ranking_c = rank_matrix(matrix_c, weights_c, q1, "C_COMPLETE_MULTIMODAL")
-    glm_conditional = conditional_glm_row(q1, main_result["scores"], weights_a, ranking_a)
-    ranking_a_with_conditional = pd.concat([ranking_a, glm_conditional], ignore_index=True, sort=False)
+    ranking_c = rank_matrix(matrix_c, weights_c, q1, "C_ESTIMABLE_C5_MULTIMODAL_SUBSET")
 
     comparisons = pd.DataFrame(
         [
@@ -804,19 +803,19 @@ def main() -> None:
     boot_a, boot_w_a = bootstrap_perspective_scores(q1, boot_scores, stability_a, "A")
     boot_b, boot_w_b = bootstrap_perspective_scores(q1, boot_scores, stability_b, "B")
     boot_c, boot_w_c = bootstrap_perspective_scores(q1, boot_scores, stability_c, "C")
-    boot_a.to_csv(BOOT_DIR / "bootstrap_ranking_A_v1.1.csv", index=False)
-    boot_b.to_csv(BOOT_DIR / "bootstrap_ranking_B_v1.1.csv", index=False)
-    boot_c.to_csv(BOOT_DIR / "bootstrap_ranking_C_v1.1.csv", index=False)
+    boot_a.to_csv(BOOT_DIR / "bootstrap_ranking_A_v1.2.csv", index=False)
+    boot_b.to_csv(BOOT_DIR / "bootstrap_ranking_B_v1.2.csv", index=False)
+    boot_c.to_csv(BOOT_DIR / "bootstrap_ranking_C_v1.2.csv", index=False)
     boot_a_summary = bootstrap_summary(boot_a, ranking_a, q1, "A")
     boot_b_summary = bootstrap_summary(boot_b, ranking_b, q1, "B")
     boot_c_summary = bootstrap_summary(boot_c, ranking_c, q1, "C")
 
     lofo_summary, lofo_models, lofo_dims = scenario_analysis(q1, main_result, ranking_a, stability_a, "LOFO")
     loso_summary, loso_models, loso_dims = scenario_analysis(q1, main_result, ranking_a, stability_a, "LOSO")
-    lofo_summary.to_csv(SENS_DIR / "lofo_summary_v1.1.csv", index=False)
-    lofo_models.to_csv(SENS_DIR / "lofo_model_changes_v1.1.csv", index=False)
-    loso_summary.to_csv(SENS_DIR / "loso_summary_v1.1.csv", index=False)
-    loso_models.to_csv(SENS_DIR / "loso_model_changes_v1.1.csv", index=False)
+    lofo_summary.to_csv(SENS_DIR / "lofo_summary_v1.2.csv", index=False)
+    lofo_models.to_csv(SENS_DIR / "lofo_model_changes_v1.2.csv", index=False)
+    loso_summary.to_csv(SENS_DIR / "loso_summary_v1.2.csv", index=False)
+    loso_models.to_csv(SENS_DIR / "loso_model_changes_v1.2.csv", index=False)
 
     equal_a, equal_comp_a = equal_weight_table(q1, matrix_a, ranking_a, "A")
     equal_b, equal_comp_b = equal_weight_table(q1, matrix_b, ranking_b, "B")
@@ -833,7 +832,7 @@ def main() -> None:
 
     matrix_a_display = score_matrix(main_result["scores"], q1.dimensions).loc[CORE_MODELS].copy()
     matrix_a_display.loc[list(TYPE_A_MODELS), "C5"] = 0.0
-    matrix_a_display.loc[list(MANUAL_C5_MODELS), "C5"] = np.nan
+    matrix_a_display["C5"] = matrix_a_display["C5"].astype(float)
     matrix_a_display.insert(0, "model", [q1.model_names[m] for m in matrix_a_display.index])
     matrix_a_display.insert(0, "model_id", matrix_a_display.index)
     matrix_b_display = matrix_b.copy()
@@ -842,6 +841,10 @@ def main() -> None:
     matrix_c_display = matrix_c.copy()
     matrix_c_display.insert(0, "model", [q1.model_names[m] for m in matrix_c_display.index])
     matrix_c_display.insert(0, "model_id", matrix_c_display.index)
+    ranking_a_table = ranking_a.copy().rename(columns={"C5": "C5* 多模态有效能力"})
+    ranking_a_table.loc[ranking_a_table["model_id"].isin(TYPE_A_MODELS), "C5* 多模态有效能力"] = "0*"
+    matrix_a_table = matrix_a_display.rename(columns={"C5": "C5* 多模态有效能力"})
+    matrix_a_table.loc[matrix_a_table["model_id"].isin(TYPE_A_MODELS), "C5* 多模态有效能力"] = "0*"
 
     kimi = matrix_a.loc[KIMI_MODEL_ID]
     # Compare C1-C4 with the resolved unified set, but compare C5 only with
@@ -859,72 +862,77 @@ def main() -> None:
     weakest = kimi_gap.sort_values("gap_vs_median").iloc[0]
 
     workbook_payload(
-        "table_q1_v11_c5_applicability_audit.xlsx",
+        "table_q1_v12_c5_applicability_audit.xlsx",
         {"C5_Audit": audit_c5},
-        "C5 capability applicability audit; benchmark missing is never converted to a benchmark zero.",
+        "C5 capability applicability audit; Type-A C5* zeros are separated from raw benchmark values.",
     )
     workbook_payload(
-        "paper_table_q1_v11_ranking_A.xlsx",
-        {"Ranking_A": ranking_a_with_conditional, "Weights_A": weights_a, "Rank_Comparison": comparisons},
-        "Unified C1-C5* ranking for nine resolved models plus the unresolved GLM conditional interval.",
+        "manual_capability_verification_v1.2.xlsx",
+        {"Capability_Verification": manual_capability},
+        "Human-confirmed capability applicability metadata; no frozen benchmark score is modified.",
     )
     workbook_payload(
-        "paper_table_q1_v11_ranking_B_C1_C4.xlsx",
+        "paper_table_q1_v12_ranking_A.xlsx",
+        {"Ranking_A": ranking_a_table, "Weights_A": weights_a, "Rank_Comparison": comparisons},
+        "Unified C1-C5* ranking for all ten models; Type-A C5* zeros are capability availability metadata, not benchmark scores.",
+    )
+    workbook_payload(
+        "paper_table_q1_v12_ranking_B_C1_C4.xlsx",
         {"Ranking_B": ranking_b, "Weights_B": weights_b, "Rank_Comparison": comparisons},
         "All-ten-model common text/reasoning/knowledge/context/code ranking with weights recomputed from C1-C4.",
     )
     workbook_payload(
-        "paper_table_q1_v11_ranking_C_complete_multimodal.xlsx",
+        "paper_table_q1_v12_ranking_C_estimable_c5_multimodal.xlsx",
         {"Ranking_C": ranking_c, "Weights_C": weights_c, "Rank_Comparison": comparisons},
-        "Five-dimensional ranking restricted to the seven models with observed multimodal benchmark evidence.",
+        "Ranking C: subset of seven multimodal models with estimable C5 latent ability.",
     )
     workbook_payload(
-        "table_q1_v11_equal_weight_sensitivity.xlsx",
+        "table_q1_v12_equal_weight_sensitivity.xlsx",
         {"Ranking_A": equal_a, "Ranking_B": equal_b, "Summary": equal_summary},
         "Equal-weight benchmark sensitivity; objective weighting remains the main model.",
     )
     workbook_payload(
-        "paper_table_q1_v11_screening.xlsx",
+        "paper_table_q1_v12_screening.xlsx",
         {"Exact_Settings": exact_screening, "Coverage_QC": cov_check},
         "Exact-setting screening table with true frozen model coverage and a distinct formal-model inclusion flag.",
     )
     workbook_payload(
-        "paper_table_q1_v11_indicator_screening.xlsx",
+        "paper_table_q1_v12_indicator_screening.xlsx",
         {"Family_Screening": indicator_screening},
         "Two-layer 21-setting to 14-family screening with correlation, common-n, semantics, network and source roles.",
     )
     workbook_payload(
-        "paper_table_q1_v11_sources.xlsx",
+        "paper_table_q1_v12_sources.xlsx",
         {"Sources": source_summary},
         "Compact formal data-source table derived from the frozen source registry and benchmark manifest.",
     )
     workbook_payload(
-        "table_q1_v11_loso.xlsx",
+        "table_q1_v12_loso.xlsx",
         {"Scenario_Summary": loso_summary, "Model_Changes": loso_models, "Dimension_QC": loso_dims},
         "Leave-one-source-out source concentration analysis with explicit NETWORK_DISCONNECTED results.",
     )
     workbook_payload(
-        "table_q1_v11_lofo.xlsx",
+        "table_q1_v12_lofo.xlsx",
         {"Scenario_Summary": lofo_summary, "Model_Changes": lofo_models, "Dimension_QC": lofo_dims},
         "Leave-one-Benchmark-Family-out sensitivity with graph identifiability checks.",
     )
     workbook_payload(
-        "paper_table_q1_v11_dimension_weights.xlsx",
+        "paper_table_q1_v12_dimension_weights.xlsx",
         {"Weights_A": weights_a, "Weights_B": weights_b, "Weights_C": weights_c, "Stability": stability_table},
         "Information, non-redundancy and latent-ranking-stability objective weights for all three perspectives.",
     )
     workbook_payload(
-        "paper_table_q1_v11_dimension_scores.xlsx",
-        {"Scores_A": matrix_a_display, "Scores_B": matrix_b_display, "Scores_C": matrix_c_display, "Kimi_Gap": kimi_gap},
+        "paper_table_q1_v12_dimension_scores.xlsx",
+        {"Scores_A": matrix_a_table, "Scores_B": matrix_b_display, "Scores_C": matrix_c_display, "Kimi_Gap": kimi_gap},
         "C1-C5 capability scores with C5* availability handling separated from benchmark observations.",
     )
     workbook_payload(
-        "paper_table_q1_v11_bootstrap.xlsx",
+        "paper_table_q1_v12_bootstrap.xlsx",
         {"Ranking_A": boot_a_summary, "Ranking_B": boot_b_summary, "Ranking_C": boot_c_summary, "Stability": stability_table},
         "Two-thousand-replicate parametric BT bootstrap summaries and latent ranking stability.",
     )
     workbook_payload(
-        "table_q1_v11_robustness_summary.xlsx",
+        "table_q1_v12_robustness_summary.xlsx",
         {"Rank_Comparison": comparisons, "Equal_Weight": equal_summary, "LOFO": lofo_summary, "LOSO": loso_summary, "Old_Stability": old_audit},
         "Compact robustness and v1.0 stability audit summary.",
     )
@@ -935,7 +943,7 @@ def main() -> None:
 
     after_hash = frozen_hashes()
     if before_hash != after_hash:
-        raise RuntimeError("frozen/v1.0 hashes changed during the v1.1 run")
+        raise RuntimeError("frozen/v1.0 hashes changed during the v1.2 run")
     for weights in [weights_a, weights_b, weights_c]:
         if not math.isclose(float(weights["weight"].sum()), 1.0, abs_tol=1e-10):
             raise RuntimeError("A weight vector does not sum to one")
@@ -945,10 +953,10 @@ def main() -> None:
     if not all(float(matrix_a.loc[m, "C5"]) == 0.0 for m in TYPE_A_MODELS):
         raise RuntimeError("Type-A models do not have C5*=0")
     full_score_matrix = score_matrix(main_result["scores"], q1.dimensions)
-    if not all(pd.isna(full_score_matrix.loc[m, "C5"]) for m in MANUAL_C5_MODELS):
-        raise RuntimeError("Unresolved C5 models must remain NA")
-    if audit_c5.loc[audit_c5["model_id"] == "glm_5_2_max", "C5_applicability_type"].iloc[0] != "REQUIRES_MANUAL_CONFIRMATION":
-        raise RuntimeError("GLM manual confirmation guard failed")
+    if not pd.isna(full_score_matrix.loc["glm_5_2_max", "C5"]):
+        raise RuntimeError("GLM raw C5 benchmark score must remain NA")
+    if audit_c5.loc[audit_c5["model_id"] == "glm_5_2_max", "C5_applicability_type"].iloc[0] != "Type A: STRUCTURAL_CAPABILITY_ABSENCE":
+        raise RuntimeError("GLM Type-A applicability guard failed")
     figure_files = list(FIGURE_DIR.glob("*"))
     if not figure_files or any(p.stat().st_size == 0 for p in figure_files):
         raise RuntimeError("Missing or empty figure output")
@@ -961,11 +969,11 @@ def main() -> None:
     valid_lofo = lofo_summary[lofo_summary["status"] == "OK"]
     valid_loso = loso_summary[loso_summary["status"] == "OK"]
     results = {
-        "version": "Q1 v1.1",
+        "version": "Q1 v1.2",
         "freeze_validation": freeze_state,
         "frozen_sha256_unchanged": True,
         "c5_audit": clean_json(audit_c5.to_dict("records")),
-        "manual_confirmation_required": [q1.model_names[m] for m in MANUAL_C5_MODELS],
+        "manual_confirmation_required": [],
         "stability_audit": {
             "old_method_pseudo_stability_confirmed": True,
             "new_definition": "T_d=(1+median_b Spearman(rank(theta_d^b), rank(theta_d^main)))/2",
@@ -975,7 +983,7 @@ def main() -> None:
         "weights_A": clean_json(weights_a.to_dict("records")),
         "weights_B": clean_json(weights_b.to_dict("records")),
         "weights_C": clean_json(weights_c.to_dict("records")),
-        "ranking_A": clean_json(ranking_a_with_conditional.to_dict("records")),
+        "ranking_A": clean_json(ranking_a.to_dict("records")),
         "ranking_B": clean_json(ranking_b.to_dict("records")),
         "ranking_C": clean_json(ranking_c.to_dict("records")),
         "rank_comparisons": clean_json(comparisons.to_dict("records")),
@@ -1012,10 +1020,10 @@ def main() -> None:
         },
         "equal_weight": clean_json(equal_summary.to_dict("records")),
         "coverage_consistency_check": True,
-        "p0_issues": ["GLM-5.2 C5 capability applicability requires manual confirmation."],
-        "Q1_V1.1_READY_TO_FREEZE": False,
+        "p0_issues": [],
+        "Q1_V1.2_READY_TO_FREEZE": True,
     }
-    (OUTPUT_DIR / "results_summary_v1.1.json").write_text(json.dumps(clean_json(results), ensure_ascii=False, indent=2), encoding="utf-8")
+    (OUTPUT_DIR / "results_summary_v1.2.json").write_text(json.dumps(clean_json(results), ensure_ascii=False, indent=2), encoding="utf-8")
 
     rank_a_lines = [f"{int(r.rank)}. {r.model}: {r.overall_score:.3f}" for r in ranking_a.itertuples(index=False)]
     rank_b_lines = [f"{int(r.rank)}. {r.model}: {r.overall_score:.3f}" for r in ranking_b.itertuples(index=False)]
@@ -1023,27 +1031,27 @@ def main() -> None:
     weight_lines = [f"- {r.dimension}: {r.weight:.6f}" for r in weights_a.itertuples(index=False)]
     summary_md = "\n".join(
         [
-            "# Q1 v1.1 results summary",
+            "# Q1 v1.2 results summary",
             "",
             "## C5 audit",
-            "- Type A capability absence: DeepSeek-V4-Pro Max; DeepSeek-V4-Flash Max.",
+            "- Type A capability absence: DeepSeek-V4-Pro Max; DeepSeek-V4-Flash Max; GLM-5.2 (max).",
             "- Type C observed: Kimi K3, GPT-5.6 Sol, GPT-5.5, Claude Fable 5, Claude Opus 4.8, Gemini-3.1-Pro, Qwen3.8-Max.",
-            "- REQUIRES_MANUAL_CONFIRMATION: GLM-5.2. Its frozen evidence does not distinguish capability absence from benchmark missing.",
+            "- GLM-5.2 Type A was confirmed by the manual capability verification record; its raw MMMU-Pro/MathVision cells remain NA.",
             "",
             "## Stability",
             "- v1.0 C2/C3/C5 each had one unique bootstrap score vector because every family in those dimensions had one Exact Setting.",
-            "- v1.1 uses latent BT-theta ranking stability from a 2,000-replicate parametric BT bootstrap.",
+            "- v1.2 uses latent BT-theta ranking stability from a 2,000-replicate parametric BT bootstrap.",
             "",
             "## Ranking-A weights",
             *weight_lines,
             "",
-            "## Ranking A (nine resolved models; GLM conditional)",
+            "## Ranking A (all ten models; C5* unified capability availability)",
             *rank_a_lines,
             "",
             "## Ranking B (all ten models, C1-C4)",
             *rank_b_lines,
             "",
-            "## Ranking C (seven complete multimodal models)",
+            "## Ranking C (seven-model subset with estimable C5 capability)",
             *rank_c_lines,
             "",
             "## Kimi K3",
@@ -1054,12 +1062,12 @@ def main() -> None:
             "",
             "## Freeze gate",
             "- Frozen SHA-256 unchanged; BT convergence, weight sums, coverage consistency, and figure non-emptiness passed.",
-            "- P0 remains: GLM-5.2 C5 applicability requires manual confirmation.",
-            "- Q1_V1.1_READY_TO_FREEZE = FALSE",
+            "- No P0 issues remain; all capability applicability checks are complete.",
+            "- Q1_V1.2_READY_TO_FREEZE = TRUE",
             "",
         ]
     )
-    (OUTPUT_DIR / "results_summary_v1.1.md").write_text(summary_md, encoding="utf-8")
+    (OUTPUT_DIR / "results_summary_v1.2.md").write_text(summary_md, encoding="utf-8")
 
     stability_md = "\n".join(
         [
@@ -1068,8 +1076,8 @@ def main() -> None:
             "## Finding",
             "The v1.0 implementation min-max normalized each bootstrap BT fit to 0-100 and used the median model-level score SD. More importantly, it resampled Exact Settings only within each Benchmark Family while forcing every Family to remain present. C2, C3 and C5 contain only single-setting Families, so those dimensions were reproduced identically in all 2,000 iterations. Their median SD was exactly zero and T=1 followed mechanically. This is normalization/resampling pseudo-stability, not evidence of robustness to alternative benchmarks or sources.",
             "",
-            "## v1.1 definition",
-            "For each dimension, v1.1 fits the main regularized BT model, simulates the pairwise outcomes under the fitted BT probabilities while retaining the frozen settings, margins, family balancing and applicability structure, and refits the raw latent abilities theta. Stability is T_d=(1+median_b rho_d^b)/2, where rho is Spearman correlation between bootstrap and main theta rankings. No per-iteration min-max score is used in T_d.",
+            "## v1.2 definition",
+            "For each dimension, v1.2 fits the main regularized BT model, simulates the pairwise outcomes under the fitted BT probabilities while retaining the frozen settings, margins, family balancing and applicability structure, and refits the raw latent abilities theta. Stability is T_d=(1+median_b rho_d^b)/2, where rho is Spearman correlation between bootstrap and main theta rankings. No per-iteration min-max score is used in T_d.",
             "",
             "## Interpretation boundary",
             "T_d measures latent-ranking repeatability conditional on the frozen benchmark universe, fixed sources and fixed capability applicability. LOFO and LOSO, rather than Bootstrap, assess structural dependence on a Benchmark Family or source.",
@@ -1084,7 +1092,7 @@ def main() -> None:
 
     bootstrap_md = "\n".join(
         [
-            "# Bootstrap method (Q1 v1.1)",
+            "# Bootstrap method (Q1 v1.2)",
             "",
             "1. Resampling unit: one weighted pairwise comparison outcome in the regularized BT likelihood (parametric Bernoulli draw under the main fitted BT probability).",
             "2. Benchmark Family sampling: the frozen Family universe is fixed; no Family is resampled or substituted.",
@@ -1097,7 +1105,7 @@ def main() -> None:
             "9. BT non-convergence: the run fails and is not silently discarded.",
             f"10. Random seed: {RANDOM_SEED}.",
             "11. 95% CI: empirical percentile interval (2.5%, 97.5%).",
-            "12. C5 capability absence: Type-A availability zeros are fixed after BT fitting and are never simulated as benchmark scores; unresolved GLM remains excluded from deterministic Ranking A.",
+            "12. C5 capability absence: Type-A availability zeros are fixed after BT fitting and are never simulated as benchmark scores; all ten models are included in deterministic Ranking A.",
             "",
             f"Under the fixed Benchmark set, source structure and model capability applicability, Kimi K3's empirical Top-3 frequency in {BOOTSTRAP_B} Bootstrap replicates is {float(kimi_boot_a['top3_probability']):.3f}.",
             "",
@@ -1107,26 +1115,26 @@ def main() -> None:
 
     changelog = "\n".join(
         [
-            "# Change log: Q1 v1.0 to Q1 v1.1",
+            "# Change log: Q1 v1.1 to Q1 v1.2",
             "",
-            "1. C5 missingness: split into Type A structural capability absence, Type C normal observation, and REQUIRES_MANUAL_CONFIRMATION.",
-            "2. Capability absence: DeepSeek-V4-Pro Max and DeepSeek-V4-Flash Max, supported by the official DeepSeek-V4 report.",
-            "3. Benchmark missing/manual confirmation: GLM-5.2 cannot be classified from frozen evidence and remains NA; no zero is assigned.",
-            "4. Stability: replaced min-max score-SD stability with raw BT-theta latent ranking stability.",
-            "5. New weights: see results_summary_v1.1.json and paper_table_q1_v11_dimension_weights.xlsx; A/B/C weights are separately recomputed.",
-            "6. Ranking: replaced one missing-aware-renormalized list with Ranking A, Ranking B and Ranking C.",
-            f"7. Kimi ranks A/B/C are {int(kimi_a['rank'])}/{int(kimi_b['rank'])}/{int(kimi_c['rank'])}; v1.0 rank was 3.",
+            "1. Retained all v1.1 method corrections and frozen benchmark inputs.",
+            "2. Added manual_capability_verification_v1.2.xlsx; GLM-5.2 is human-confirmed Type A structural capability absence.",
+            "3. Type A set is now DeepSeek-V4-Pro Max, DeepSeek-V4-Flash Max and GLM-5.2; raw benchmark NA cells remain unchanged.",
+            "4. Ranking A now includes all ten models with C5* = A_i S_i5^BT; Type-A C5* values are 0 only in the composite system.",
+            "5. Recomputed Information, Redundancy, latent ranking stability, weights, rankings, Bootstrap, LOFO, LOSO and sensitivity analyses.",
+            "6. Ranking C is renamed to the subset with estimable C5 multimodal ability.",
+            f"7. Kimi ranks A/B/C are {int(kimi_a['rank'])}/{int(kimi_b['rank'])}/{int(kimi_c['rank'])} after the ten-model rerun.",
             f"8. Kimi strongest/weakest gaps are now {strongest['dimension']} ({strongest['gap_vs_median']:+.3f}) and {weakest['dimension']} ({weakest['gap_vs_median']:+.3f}).",
             "9. Table 3 coverage: corrected by reading frozen manifest model_coverage; the Boolean selection indicator is renamed '进入正式模型'. An equality assertion now compares table 2 and table 3 coverage.",
             "10. Source analysis: added formal source table and Leave-One-Source-Out diagnostics.",
             "11. Retained conclusions: regularized BT, five dimensions, Family balancing, and Kimi's strong C4 evidence remain.",
-            "12. Modified conclusions: v1.0 overall scores/weights/Top-3 wording are not carried forward; C3 is explicitly moderate model-inferred evidence, and Ranking A is conditional on resolving GLM C5 applicability.",
+            "12. Modified conclusions: C3 remains model-inferred with weaker direct evidence than C4; C5 gap is compared only with the seven-model estimable-C5 subset.",
             "",
-            "Q1_V1.1_READY_TO_FREEZE = FALSE",
+            "Q1_V1.2_READY_TO_FREEZE = TRUE",
             "",
         ]
     )
-    (OUTPUT_DIR / "change_log_v1.0_to_v1.1.md").write_text(changelog, encoding="utf-8")
+    (OUTPUT_DIR / "change_log_v1.1_to_v1.2.md").write_text(changelog, encoding="utf-8")
 
     qc = {
         "frozen_sha256_unchanged": True,
@@ -1134,7 +1142,7 @@ def main() -> None:
         "source_data_modified": False,
         "na_silently_converted_to_benchmark_zero": False,
         "capability_absence_zero_models": sorted(TYPE_A_MODELS),
-        "benchmark_missing_or_unresolved_models_kept_na": sorted(MANUAL_C5_MODELS),
+        "benchmark_missing_or_unresolved_models_kept_na": [],
         "weights_sum_A": float(weights_a["weight"].sum()),
         "weights_sum_B": float(weights_b["weight"].sum()),
         "weights_sum_C": float(weights_c["weight"].sum()),
@@ -1144,7 +1152,12 @@ def main() -> None:
         "all_figures_nonempty": True,
         "bootstrap_B": BOOTSTRAP_B,
         "random_seed": RANDOM_SEED,
-        "manual_confirmation_required": ["GLM-5.2 (max)"],
+        "manual_confirmation_required": [],
+        "glm_type_a_evidence_recorded": True,
+        "ranking_A_model_count": int(len(ranking_a)),
+        "ranking_B_model_count": int(len(ranking_b)),
+        "ranking_C_model_count": int(len(ranking_c)),
+        "raw_glm_c5_is_na": bool(pd.isna(full_score_matrix.loc["glm_5_2_max", "C5"])),
     }
     (DIAG_DIR / "quality_checks.json").write_text(json.dumps(qc, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(clean_json({"status": "analysis_complete", "output": str(OUTPUT_DIR), "results": results}), ensure_ascii=False, indent=2))

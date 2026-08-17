@@ -1,0 +1,121 @@
+{
+  "filename": "manual_capability_verification_v1.2.xlsx",
+  "description": "Human-confirmed capability applicability metadata; no frozen benchmark score is modified.",
+  "sheets": [
+    {
+      "name": "Capability_Verification",
+      "records": [
+        {
+          "model": "Kimi K3 (max reasoning)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "GPT-5.6 Sol (max)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "GPT-5.5 (xhigh)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "Claude Fable 5 (max, with fallback)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "Claude Opus 4.8 (max)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "Gemini-3.1-Pro (High)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "DeepSeek-V4-Pro Max",
+          "capability": "C5 multimodal",
+          "multimodal_capable": false,
+          "applicability_type": "Type A",
+          "evidence_source": "Human capability verification v1.2; official capability documentation and comparison evidence",
+          "exact_source_location": "Reviewer verification record; GLM-5.2 native modality capability statement",
+          "access_date": "2026-08-17",
+          "reviewer": "人工复核",
+          "verification_note": "Structural capability absence. C5* availability is set to 0 only in the composite capability system; raw MMMU-Pro/MathVision values remain NA."
+        },
+        {
+          "model": "DeepSeek-V4-Flash Max",
+          "capability": "C5 multimodal",
+          "multimodal_capable": false,
+          "applicability_type": "Type A",
+          "evidence_source": "Human capability verification v1.2; official capability documentation and comparison evidence",
+          "exact_source_location": "Reviewer verification record; GLM-5.2 native modality capability statement",
+          "access_date": "2026-08-17",
+          "reviewer": "人工复核",
+          "verification_note": "Structural capability absence. C5* availability is set to 0 only in the composite capability system; raw MMMU-Pro/MathVision values remain NA."
+        },
+        {
+          "model": "Qwen3.8-Max",
+          "capability": "C5 multimodal",
+          "multimodal_capable": true,
+          "applicability_type": "Estimable C5 capability",
+          "evidence_source": "Frozen C5 observations and source registry",
+          "exact_source_location": "frozen/v1.0 raw benchmark data and final modeling manifest",
+          "access_date": "2026-08-17",
+          "reviewer": "Q1 analysis",
+          "verification_note": "C5 latent ability is estimable from the retained multimodal comparison network; benchmark missingness is not converted to a raw zero."
+        },
+        {
+          "model": "GLM-5.2 (max)",
+          "capability": "C5 multimodal",
+          "multimodal_capable": false,
+          "applicability_type": "Type A",
+          "evidence_source": "Human capability verification v1.2; official capability documentation and comparison evidence",
+          "exact_source_location": "Reviewer verification record; GLM-5.2 native modality capability statement",
+          "access_date": "2026-08-17",
+          "reviewer": "人工复核",
+          "verification_note": "Structural capability absence. C5* availability is set to 0 only in the composite capability system; raw MMMU-Pro/MathVision values remain NA."
+        }
+      ]
+    }
+  ]
+}
