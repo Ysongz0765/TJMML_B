@@ -1,0 +1,34 @@
+{
+  "main_bt_converged": {
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "C5": true
+  },
+  "generated_files": [
+    "README_Q2_DATA.md",
+    "data/benchmark_family_mapping.csv",
+    "data/q1_bt_latent_scores.csv",
+    "data/q1_capability_scores.csv",
+    "data/q1_dimension_weights_reference.csv",
+    "data/q1_evidence_strength.csv",
+    "data/q1_model_applicability.csv",
+    "data/q1_model_rankings.csv",
+    "data/q1_uncertainty.csv",
+    "data/q2_model_master_table.csv",
+    "data/source_registry_summary.csv",
+    "metadata/q1_to_q2_mapping.md",
+    "metadata/q2_data_dictionary.md",
+    "metadata/q2_data_provenance.md",
+    "scripts/build_q2_workbooks.mjs",
+    "scripts/generate_q2_inputs.py",
+    "scripts/validate_q2_inputs.py"
+  ],
+  "C5_status_enum": [
+    "ESTIMABLE",
+    "STRUCTURAL_CAPABILITY_ABSENCE",
+    "BENCHMARK_MISSING"
+  ],
+  "evidence_strength_rule": "HIGH if observed benchmark-family coverage >=75% and source_count >=2; MEDIUM if at least one direct family is observed; LOW if none or structural C5 absence."
+}
