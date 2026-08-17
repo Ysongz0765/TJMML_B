@@ -1,0 +1,11 @@
+{
+  "q1_finalized": false,
+  "q1_freeze_version": null,
+  "q1_freeze_date": null,
+  "ability_scale": "0-100",
+  "objective_weights_available": false,
+  "objective_weights": null,
+  "q1_missing_policy_applied": false,
+  "q1_missing_policy_name": null,
+  "mock_data_only": false
+}

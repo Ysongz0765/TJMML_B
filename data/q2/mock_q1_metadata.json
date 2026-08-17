@@ -1,0 +1,18 @@
+{
+  "q1_finalized": false,
+  "q1_freeze_version": null,
+  "q1_freeze_date": null,
+  "ability_scale": "0-100",
+  "objective_weights_available": true,
+  "objective_weights": {
+    "C1": 0.22,
+    "C2": 0.20,
+    "C3": 0.18,
+    "C4": 0.25,
+    "C5": 0.15
+  },
+  "q1_missing_policy_applied": false,
+  "q1_missing_policy_name": null,
+  "mock_data_only": true,
+  "warning": "MOCK_DATA_ONLY = TRUE. Anonymous synthetic values for Q2 software tests only."
+}
