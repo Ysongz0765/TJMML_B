@@ -1,0 +1,31 @@
+﻿model_id,model,scene,ces_utility,ces_rank,linear_utility,linear_rank,rank_ces_minus_linear
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",research,0.9183374822531004,1,0.9221673961009231,1,0
+kimi_k3_max,Kimi K3 (max reasoning),research,0.9012926282950031,2,0.9035633301862835,2,0
+gpt_5_6_sol_max,GPT-5.6 Sol (max),research,0.8992413504614967,3,0.9017668199862298,3,0
+gpt_5_5_xhigh,GPT-5.5 (xhigh),research,0.8861624515886894,4,0.8901612920010735,4,0
+claude_opus_4_8_max,Claude Opus 4.8 (max),research,0.8794135287469893,5,0.8853284991039079,6,-1
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,research,0.8777936799153787,6,0.8882251476065814,5,1
+qwen3_8_max,Qwen3.8-Max,research,0.8397485755751156,7,0.845147565172623,7,0
+glm_5_2_max,GLM-5.2 (max),research,0.8335860041360706,8,0.8369509594190824,9,-1
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),research,0.8281204723179951,9,0.8423028570277962,8,1
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,research,0.8272893300307572,10,0.8287911617194743,10,0
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",dialogue,0.932418708623976,1,0.9343069685862607,1,0
+gpt_5_6_sol_max,GPT-5.6 Sol (max),dialogue,0.932145427852394,2,0.933962650860898,2,0
+kimi_k3_max,Kimi K3 (max reasoning),dialogue,0.8687069582921643,3,0.8709152336318428,3,0
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),dialogue,0.8661586954130576,4,0.8705614183801403,4,0
+qwen3_8_max,Qwen3.8-Max,dialogue,0.8383797086565321,5,0.8414881360354695,7,-2
+claude_opus_4_8_max,Claude Opus 4.8 (max),dialogue,0.8383394649502275,6,0.8444511285915771,5,1
+gpt_5_5_xhigh,GPT-5.5 (xhigh),dialogue,0.837174749199171,7,0.8419768212943635,6,1
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,dialogue,0.6542860728359404,8,0.7023497167624497,8,0
+glm_5_2_max,GLM-5.2 (max),dialogue,0.6481379677469584,9,0.691858941666474,9,0
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,dialogue,0.6468756848029605,10,0.689168814280134,10,0
+kimi_k3_max,Kimi K3 (max reasoning),coding,0.9813020054113565,1,0.9813195098757044,1,0
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",coding,0.9762038301568621,2,0.9769233024074161,2,0
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,coding,0.9610626303156368,3,0.9617181231868319,3,0
+gpt_5_6_sol_max,GPT-5.6 Sol (max),coding,0.9512731717446156,4,0.9514872667357596,4,0
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),coding,0.9259813234950288,5,0.9277563052621833,5,0
+qwen3_8_max,Qwen3.8-Max,coding,0.9257001776879481,6,0.9259601657287218,6,0
+claude_opus_4_8_max,Claude Opus 4.8 (max),coding,0.9163907203396128,7,0.9189981161354419,7,0
+gpt_5_5_xhigh,GPT-5.5 (xhigh),coding,0.9025140728523974,8,0.9051305587073886,8,0
+glm_5_2_max,GLM-5.2 (max),coding,0.8587896658995123,9,0.8599264603151546,9,0
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,coding,0.8155773752485842,10,0.8171867613404146,10,0

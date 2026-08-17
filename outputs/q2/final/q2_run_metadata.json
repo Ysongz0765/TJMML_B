@@ -1,0 +1,233 @@
+{
+  "git_commit": "2d54b29879fe6ed65a9137c9cd8395baad825bbb",
+  "git_branch": "q2-final-paper",
+  "working_tree_dirty": true,
+  "q1_data_commit": "754bc1b541b5b0d27e8b74b75b979849edf72cda",
+  "q1_official_results_commit": "a097c83fb5218ca2f746a63cbfbf5f12e3afd0e6",
+  "q1_freeze_version": "frozen/v1.0 + Q1 v1.2 official outputs",
+  "remote_branches_checked": [
+    "origin/main",
+    "origin/q2-data-prep"
+  ],
+  "remote_latest_data_branch": "origin/q2-data-prep",
+  "remote_acquisition": "GitHub commit-pinned codeload snapshot because Git smart-HTTP was unavailable; imported q2 files were SHA-256 matched to the snapshot",
+  "q1_input_files": [
+    {
+      "path": "q2/data/q1_capability_scores.csv",
+      "sha256": "61bf3856f5c8ba5cdb33891bcd745258d7737727bc64db388228919fc3c87816"
+    },
+    {
+      "path": "q2/data/q1_bt_latent_scores.csv",
+      "sha256": "9cadad1d3256a70ef0e15faa2fde7b12642ac73b2331da3055a9908f1ba73e10"
+    },
+    {
+      "path": "q2/data/q1_model_applicability.csv",
+      "sha256": "19cd0628fd470c3fe8a27d24133b0b0e3d1ab272d8cbd037d2c29c1a8af6d855"
+    },
+    {
+      "path": "q2/data/q1_dimension_weights_reference.csv",
+      "sha256": "e83474704be03e097fc2ce413fd021f1b8eac39c011a173ae716401a5967e061"
+    },
+    {
+      "path": "q2/data/q1_uncertainty.csv",
+      "sha256": "e6bc465b8af514ddb28795f114ffaa9854733e08eaa1ff31f1fd9491b8f23cea"
+    },
+    {
+      "path": "q2/data/q1_model_rankings.csv",
+      "sha256": "400cb859376407919b103a8f6bd5398581a5a13a8815e9171b44c47c52ea0aef"
+    },
+    {
+      "path": "q2/data/q2_model_master_table.csv",
+      "sha256": "af3b354f246473416e5c551e026af3d7653b03a487c0b8188ca5de29bfa39435"
+    },
+    {
+      "path": "q2/metadata/q1_to_q2_mapping.md",
+      "sha256": "ad99b0eeca7233e8d5640b6ea3d2cb288c65ecb81d9951fa1ab76459f234888f"
+    },
+    {
+      "path": "q2/metadata/q2_data_dictionary.md",
+      "sha256": "e0330cc5fb57da8767e53b02aae3958c26911c56613f59a526d8289430779855"
+    },
+    {
+      "path": "q2/metadata/q2_data_provenance.md",
+      "sha256": "d2735056c2df036a4e9c6865653d5f4de0e876d4e2781c830c403147254cc66a"
+    }
+  ],
+  "q2_model_spec_sha256": "5eb483577f32621802c3249d6a39fbdf81e8170fa6e1f7af2cf381fd3135482d",
+  "q2_runner_sha256": "9b47e7f4d1d2b1f718dbe778c0b5ac2ddefd0fc950a07f477d1df446b305fb3b",
+  "random_seed": 20260817,
+  "uncertainty_draws": 2000,
+  "alpha_grid": {
+    "research": [
+      0.6,
+      0.61875,
+      0.6375,
+      0.65625,
+      0.675,
+      0.69375,
+      0.7125,
+      0.73125,
+      0.75
+    ],
+    "dialogue": [
+      0.55,
+      0.5687500000000001,
+      0.5875,
+      0.60625,
+      0.625,
+      0.64375,
+      0.6625,
+      0.6812499999999999,
+      0.7
+    ],
+    "coding": [
+      0.55,
+      0.5750000000000001,
+      0.6000000000000001,
+      0.625,
+      0.65,
+      0.675,
+      0.7,
+      0.725,
+      0.75
+    ]
+  },
+  "rho_grid": {
+    "research": [
+      -0.8,
+      -0.75,
+      -0.7000000000000001,
+      -0.65,
+      -0.6,
+      -0.55,
+      -0.5,
+      -0.44999999999999996,
+      -0.39999999999999997,
+      -0.35,
+      -0.29999999999999993,
+      -0.2499999999999999,
+      -0.2
+    ],
+    "dialogue": [
+      -0.3,
+      -0.25,
+      -0.2,
+      -0.15,
+      -0.1,
+      -0.05000000000000002,
+      0.0,
+      0.04999999999999999,
+      0.09999999999999998,
+      0.14999999999999997,
+      0.19999999999999996,
+      0.24999999999999994,
+      0.3
+    ],
+    "coding": [
+      -0.7,
+      -0.6499999999999999,
+      -0.6,
+      -0.5499999999999999,
+      -0.5,
+      -0.44999999999999996,
+      -0.39999999999999997,
+      -0.35,
+      -0.3,
+      -0.25,
+      -0.2,
+      -0.15000000000000002,
+      -0.1
+    ]
+  },
+  "CES_input_transform": {
+    "name": "BT latent strength",
+    "formula": "z_ij = exp(theta_ij - max_i(theta_ij))",
+    "properties": [
+      "strictly_positive",
+      "monotone",
+      "dimensionwise_bounded_by_one"
+    ],
+    "source": "q2/data/q1_bt_latent_scores.csv"
+  },
+  "missing_policy": {
+    "policy": "structural availability anchor; never benchmark zero and never latent-score imputation",
+    "primary_anchor": 0.35,
+    "sensitivity_grid": [
+      0.2,
+      0.275,
+      0.35,
+      0.425,
+      0.5
+    ],
+    "common_dimension_check": "Recompute dialogue without C5 on C1-C3.",
+    "source": "q2/data/q1_model_applicability.csv"
+  },
+  "q2_to_q3_interface": {
+    "freeze_version": "Q2_SCENARIO_UTILITY_v1.0",
+    "nominal_rows": 30,
+    "bootstrap_rows": 60000,
+    "bootstrap_draws": 2000,
+    "scenario_codes": [
+      "Research",
+      "General",
+      "Coding"
+    ],
+    "interface_files": [
+      {
+        "path": "q2/outputs/scenario_utility.csv",
+        "sha256": "9b2f3a00324a752592dd7992469a6e3e8e471c3907964c3a04937136cf6bc018"
+      },
+      {
+        "path": "q2/outputs/scenario_utility_summary.csv",
+        "sha256": "e08e65b666dc950ac5092e2b9616014957f9c4d6c8a1b0a2ac1a3846cad53f5d"
+      },
+      {
+        "path": "q2/outputs/scenario_utility_bootstrap.csv",
+        "sha256": "8a72e211892fb1684ecb9a0da41cac6893f2e8f87dd1881b1f4a70da8251ae61"
+      },
+      {
+        "path": "q2/outputs/q2_to_q3_validation.csv",
+        "sha256": "c243e207df6aaf58431d03a2971faaf362c2c9744789fb04fbddc6b913e50cee"
+      },
+      {
+        "path": "q2/metadata/q2_to_q3_interface.md",
+        "sha256": "fd2e82b27281b086680afc4e7d2a155da140145b46e67f113cb555f230f5b914"
+      },
+      {
+        "path": "q2/metadata/q2_final_status.md",
+        "sha256": "fd3cf0a4605626995361e458b07915211378a252b3e6f66ea2d3f4338f8854f8"
+      }
+    ],
+    "Q2_MODEL_READY": true,
+    "Q2_FINAL_Q1_INPUT_READY": true,
+    "Q2_SCENARIO_UTILITY_READY": true,
+    "Q2_SCENARIO_UTILITY_VALIDATED": true,
+    "Q2_BOOTSTRAP_UTILITY_READY": true,
+    "Q2_TO_Q3_INTERFACE_READY": true,
+    "Q2_PAPER_RESULTS_MATCH_INTERFACE": true
+  },
+  "timestamp": "2026-08-17T23:10:28+08:00",
+  "validation": "q2/scripts/validate_q2_inputs.py passed in the immutable 754bc1b snapshot",
+  "q2_freeze_version": "Q2_FINAL_v1.0",
+  "final_audits": {
+    "Q1_UNCERTAINTY_SCALE_AUDIT": "PASS",
+    "MODEL_SPEC_PROVENANCE_AUDIT": "PASS",
+    "CES_INPUT_AUDIT": "PASS",
+    "SCENE_DEFINITION_AUDIT": "PASS",
+    "C5_POLICY_AUDIT": "PASS",
+    "PRI_AUDIT": "PASS",
+    "RANK_MIGRATION_AUDIT": "PASS",
+    "PAPER_LANGUAGE_AUDIT": "PASS",
+    "PDF_VISUAL_QA": "PASS"
+  },
+  "q3_wide_handoff": {
+    "path": "q2/q3_handoff/q2_to_q3_scene_utility.csv",
+    "sha256": "599ff22155c97b9895ff2967cc88d8c273f023d18191be601e7883fa3108f728",
+    "rows": 10
+  },
+  "final_pdf": {
+    "path": "output/pdf/Q2_Final_Paper.pdf",
+    "sha256": "3e7085b2a495eb8d898d51d9c3a7bd0a2fb36f7705fe4404f526fd4e41c44afe",
+    "size_bytes": 516028
+  }
+}

@@ -1,0 +1,11 @@
+﻿model_id,model,rank_q1_reference,rank_research,delta_rank_research,rank_dialogue,delta_rank_dialogue,rank_coding,delta_rank_coding
+gpt_5_6_sol_max,GPT-5.6 Sol (max),1,3,2,2,1,4,3
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,1,-1,1,-1,2,0
+kimi_k3_max,Kimi K3 (max reasoning),3,2,-1,3,0,1,-2
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,9,5,4,0,5,1
+qwen3_8_max,Qwen3.8-Max,5,7,2,5,0,6,1
+gpt_5_5_xhigh,GPT-5.5 (xhigh),6,4,-2,7,1,8,2
+claude_opus_4_8_max,Claude Opus 4.8 (max),7,5,-2,6,-1,7,0
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,6,-2,8,0,3,-5
+glm_5_2_max,GLM-5.2 (max),9,8,-1,9,0,9,0
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,10,10,0,10,0,10,0

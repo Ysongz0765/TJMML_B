@@ -1,0 +1,19 @@
+﻿check,status,expected,actual,details
+EXPECTED_ROWS,PASS,30,30,10 models x 3 scenes
+CORE_MODEL_IDS,PASS,10,10,model_id is inherited unchanged from the frozen Q1/Q2 interface
+MODELS_PER_SCENARIO,PASS,Research=10; General=10; Coding=10,"{""Coding"": 10, ""General"": 10, ""Research"": 10}",each model has one nominal utility in each scene
+DUPLICATE_ROWS,PASS,0,0,"key=(model_id, scenario)"
+MISSING_UTILITY,PASS,0,0,nominal utility must be complete
+NONFINITE_UTILITY,PASS,0,0,utility must be finite
+CONTINUOUS_RANKS,PASS,1..10 in every scene,True,descending utility
+MODEL_NAME_MATCH_Q1,PASS,0,0,exact Q1 display names
+MODEL_SETTING_PRESENT,PASS,0,0,pricing-SKU mapping field
+SCENARIO_CODE_LEGAL,PASS,Research|General|Coding,[],machine-readable codes
+SOURCE_VERSION_PRESENT,PASS,0,0,Q2_SCENARIO_UTILITY_v1.0
+SUMMARY_ROWS,PASS,30,30,ranked nominal summary
+FORMAL_Q2_RESULT_MATCH,PASS,utility diff=0; rank mismatch=0,max_utility_diff=0.000e+00; rank_mismatch=0,"same frozen reference object writes paper macros, formal Q2 scores, and Q3 interface"
+BOOTSTRAP_ROWS,PASS,60000,60000,2000 aligned draws x 10 models x 3 scenes
+BOOTSTRAP_DUPLICATES,PASS,0,0,"key=(bootstrap_id, model_id, scenario)"
+BOOTSTRAP_MISSING_UTILITY,PASS,0,0,all propagated utilities present
+BOOTSTRAP_NONFINITE_UTILITY,PASS,0,0,all propagated utilities finite
+BOOTSTRAP_SUMMARY_MATCH,PASS,max difference <= 1e-15,2.220e-16,bootstrap utility rows reproduce the formal Q2 uncertainty summary
