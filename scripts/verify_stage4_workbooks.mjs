@@ -4,6 +4,7 @@ import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
 
 const root = process.cwd();
 const previewDir = path.join(root, ".stage4_work", "workbook_previews");
+const relativeToRoot = (value) => path.relative(root, value).split(path.sep).join("/");
 await fs.rm(previewDir, { recursive: true, force: true });
 await fs.mkdir(previewDir, { recursive: true });
 
@@ -75,7 +76,7 @@ const report = {
   workbooksChecked: results.length,
   sheetsRendered: totalSheetsRendered,
   integratedWorkbookSheetCount: totalWorkbook?.sheetCount ?? 0,
-  previewDir,
+  previewDir: relativeToRoot(previewDir),
   formulaErrorMatches: errorMatches,
   workbooks: results,
 };
@@ -86,6 +87,6 @@ console.log(JSON.stringify({
   sheetsRendered: report.sheetsRendered,
   integratedWorkbookSheetCount: report.integratedWorkbookSheetCount,
   formulaErrorMatches: report.formulaErrorMatches,
-  previewDir,
+  previewDir: relativeToRoot(previewDir),
 }, null, 2));
 if (report.status !== "PASS") process.exitCode = 1;

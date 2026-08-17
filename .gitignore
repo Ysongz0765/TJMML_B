@@ -1,0 +1,27 @@
+# Python bytecode and local test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node dependencies installed outside the intentionally preserved tooling bundle
+node_modules/
+
+# Local checkpoint copies that duplicate tracked source/data artifacts
+/backups/
+
+# Re-creatable workbook/PDF render previews used for visual QA
+/.stage3_work/
+/.stage4_work/
+
+# Build intermediates produced by the root main.tex (keep final PDFs explicit)
+/main.aux
+/main.log
+/main.out
+/main.toc
+/main.fls
+/main.fdb_latexmk
+/main.synctex.gz
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db

@@ -5,6 +5,7 @@ import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
 const root = process.cwd();
 const inputPath = path.join(root, "data", "final", "LLM_Benchmark_Evaluation_Dataset.xlsx");
 const previewDir = path.join(root, ".stage3_work", "final_previews");
+const relativePath = (value) => path.relative(root, value).split(path.sep).join("/");
 await fs.rm(previewDir, { recursive: true, force: true });
 await fs.mkdir(previewDir, { recursive: true });
 
@@ -39,6 +40,18 @@ for (const [sheetId, range] of [
   keyRegions[sheetId] = inspected.ndjson;
 }
 
-const result = { inputPath, sheetCount: sheetNames.length, sheetNames, previewDir, errorScan: errors.ndjson, keyRegions };
+const result = {
+  inputPath: relativePath(inputPath),
+  sheetCount: sheetNames.length,
+  sheetNames,
+  previewDir: relativePath(previewDir),
+  errorScan: errors.ndjson,
+  keyRegions,
+};
 await fs.writeFile(path.join(root, "reports", "stage3_workbook_qc.json"), JSON.stringify(result, null, 2), "utf8");
-console.log(JSON.stringify({ sheetCount: sheetNames.length, sheetNames, previewDir, errorScan: errors.ndjson }));
+console.log(JSON.stringify({
+  sheetCount: sheetNames.length,
+  sheetNames,
+  previewDir: relativePath(previewDir),
+  errorScan: errors.ndjson,
+}));

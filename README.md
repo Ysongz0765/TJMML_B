@@ -25,6 +25,18 @@ Data freeze date: `2026-08-16`.
 - `scripts`: reproducible collection, cleaning, validation, conflict checking, coverage, correlation, and export scripts.
 - `reports`: data quality and data collection reports.
 
+## Repository hygiene
+
+- `frozen/v1.0/` is the immutable modeling input. Cleanup tasks must never
+  delete or rewrite files in this directory.
+- `.stage3_work/` and `.stage4_work/` contain re-creatable workbook/PDF render
+  previews used for visual QA. They are intentionally ignored by Git.
+- Python bytecode and LaTeX intermediates are ignored; final PDFs, figures,
+  analysis outputs, archived sources, and submission packages remain tracked.
+- `scripts/node_modules/` is local-only and must not be committed. The workbook
+  QA scripts expect their Node dependencies to be provided by the local runtime
+  or installed separately before use.
+
 ## Reproduce
 
 Run the full export:
