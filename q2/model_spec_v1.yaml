@@ -1,0 +1,110 @@
+model_spec_version: "q2-kl-ces-v1.0"
+MODEL_SPEC_FROZEN_BEFORE_RESULTS: true
+frozen_at_local_date: "2026-08-17"
+specification_principle: >-
+  Scene definitions, alpha/rho regions, transformations, and missingness rules
+  are fixed from task semantics and Q1 metadata before any Q2 scene ranking is computed.
+
+abilities:
+  C1: "复杂推理"
+  C2: "知识与事实可靠性"
+  C3: "长上下文"
+  C4: "代码与软件工程"
+  C5: "多模态"
+
+scenes:
+  research:
+    label: "科研长文本分析"
+    ces_core_dimensions: [C1, C2, C3]
+    kl_focus_dimensions: [C1, C3]
+    semantic_basis: "长上下文、复杂推理和事实可靠性共同形成科研分析能力链。"
+    kl_constraints:
+      focus_mass_minimum: "sum(w_C1,w_C3) >= alpha"
+      lower_bounds: {C2: 0.20}
+      order_constraints: []
+    alpha_range: [0.60, 0.75]
+    alpha_reference: 0.675
+    alpha_grid_size: 9
+    rho_range: [-0.80, -0.20]
+    rho_reference: -0.50
+    rho_grid_size: 13
+  dialogue:
+    label: "大众日常通用对话"
+    ces_core_dimensions: [C1, C2, C3, C5]
+    kl_focus_dimensions: [C1, C2]
+    semantic_basis: "推理与事实可靠性构成即时对话主轴，长上下文和多模态维持连续交互与输入覆盖。"
+    kl_constraints:
+      focus_mass_minimum: "sum(w_C1,w_C2) >= alpha"
+      lower_bounds: {C3: 0.10, C5: 0.10}
+      order_constraints: []
+    alpha_range: [0.55, 0.70]
+    alpha_reference: 0.625
+    alpha_grid_size: 9
+    rho_range: [-0.30, 0.30]
+    rho_reference: 0.00
+    rho_grid_size: 13
+  coding:
+    label: "计算机代码开发"
+    ces_core_dimensions: [C1, C4]
+    kl_focus_dimensions: [C4]
+    semantic_basis: "代码与软件工程能力是直接产出能力，复杂推理负责需求分解、调试和方案选择。"
+    kl_constraints:
+      focus_mass_minimum: "w_C4 >= alpha"
+      lower_bounds: {}
+      order_constraints: []
+    alpha_range: [0.55, 0.75]
+    alpha_reference: 0.65
+    alpha_grid_size: 9
+    rho_range: [-0.70, -0.10]
+    rho_reference: -0.40
+    rho_grid_size: 13
+
+kl_priors:
+  primary:
+    name: "Q1 objective prior"
+    source: "q2/data/q1_dimension_weights_reference.csv"
+    interpretation: "Q1 information contribution, non-redundancy, and stability; restricted and renormalized on each scene core."
+  robustness:
+    name: "Equal prior"
+    definition: "Uniform on each scene core."
+
+ces_input_transform:
+  primary:
+    name: "BT latent strength"
+    formula: "z_ij = exp(theta_ij - max_i(theta_ij))"
+    properties: [strictly_positive, monotone, dimensionwise_bounded_by_one]
+    source: "q2/data/q1_bt_latent_scores.csv"
+  sensitivity:
+    name: "Positive-floor score mapping"
+    formula: "z_ij = delta + (1-delta) * S_ij / 100"
+    delta_reference: 0.20
+    delta_grid: [0.10, 0.15, 0.20, 0.25, 0.30]
+    source: "q2/data/q1_capability_scores.csv"
+
+c5_structural_absence:
+  policy: "structural availability anchor; never benchmark zero and never latent-score imputation"
+  primary_anchor: 0.35
+  sensitivity_grid: [0.20, 0.275, 0.35, 0.425, 0.50]
+  common_dimension_check: "Recompute dialogue without C5 on C1-C3."
+  source: "q2/data/q1_model_applicability.csv"
+
+uncertainty_propagation:
+  source: "q2/data/q1_uncertainty.csv"
+  scope: "DIMENSION_LATENT_SCORE"
+  approximation: "theta_draw = point_theta + Normal(0, theta_bootstrap_sd); structural C5 anchors remain fixed"
+  covariance_note: "Cross-model and cross-dimension covariance is unavailable in the standardized interface; independent draws are used and disclosed."
+  draws: 2000
+  random_seed: 20260817
+  reported_statistics: [utility_ci_2_5, utility_ci_97_5, probability_rank_1, probability_top_3]
+
+reference_results:
+  ranking_method: "competition rank (method=min), descending utility"
+  q1_rank_baseline: "Q1 Ranking A all-model reference ranking"
+  linear_baseline: "Same KL weights and transformed inputs; complete compensation"
+  pri_definition: "(linear_utility - ces_utility) / linear_utility"
+  nonlinear_explanation: [ces_inner_share, marginal_utility, utility_elasticity]
+
+outputs:
+  machine_readable_directory: "outputs/q2/final"
+  figure_directory: "figures/q2"
+  standalone_pdf: "output/pdf/Q2_Final_Paper.pdf"

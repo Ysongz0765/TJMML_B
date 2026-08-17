@@ -1,0 +1,370 @@
+% 问题二正式稿：表格数值由 scripts/run_q2_final.py 生成
+% 同时兼容仓库根目录全文编译与 paper/ 独立编译。
+\IfFileExists{paper/generated/q2_generated_values.tex}{%
+  \input{paper/generated/q2_generated_values.tex}%
+  \newcommand{\QTwoFigureDir}{figures/q2}%
+}{%
+  \input{generated/q2_generated_values.tex}%
+  \newcommand{\QTwoFigureDir}{../figures/q2}%
+}
+
+\section{问题二：基于能力互补性的场景效用评价}
+\label{sec:q2}
+
+\subsection{问题分析}
+
+问题一回答的是模型具有什么基础能力，其输出是复杂推理、知识与事实可靠性、长上下文、代码与软件工程以及多模态五个维度的潜在能力画像。问题二进一步关心这些能力进入具体任务以后能够产生多大效用。二者的差别在于：基础能力强并不必然意味着模型适合所有场景；不同场景既会改变能力的重要程度，也会改变能力之间的可替代程度。例如，科研长文本任务要求长上下文、复杂推理与事实可靠性协同，单项突出而其余能力明显不足时仍可能形成任务瓶颈；代码开发则更强调代码工程能力与复杂推理的共同作用。
+
+因此，本文不直接沿用问题一综合得分，也不把问题一客观权重解释为现实场景价值权重，而构建“基础能力--场景约束--KL 最小信息偏移--CES 能力互补效用--场景排序--机理解释与稳健性”的评价链，见图~\ref{fig:q2_framework}。其中，KL 投影在尽量保留问题一信息结构的前提下引入场景需求，CES 函数则刻画关键能力之间的不完全替代关系。AHP 不作为主模型，普通线性加权仅作为完全补偿型基准。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{\QTwoFigureDir/q2_fig1_framework.pdf}
+    \caption{问题二 KL--CES 场景效用评价框架}
+    \label{fig:q2_framework}
+\end{figure}
+
+\subsubsection{模型假设与基本记号}
+
+为保证模型边界清晰，作如下假设：
+
+\begin{enumerate}
+    \item 问题一冻结输出能够作为当前公开评测条件下模型基础能力的可比估计；问题二不重新抓取 Benchmark，也不改变问题一能力结果。
+    \item 场景效用只由已有统一数据支持的 $C_1$--$C_5$ 构成，不新增覆盖不统一的 ToolUse 或 Agent 维度；成本、时延和能耗留在问题三的性能--成本决策中处理。
+    \item 对每个场景，核心能力集和参数区间由任务语义预先确定，不依据任何模型的场景排名反向调参。
+    \item Q1 latent score 的缺失保持为缺失。对 $C_5$ 的结构性能力不可用，采用单独的可用性口径，不将其解释为某个多模态 Benchmark 的观测零分。
+\end{enumerate}
+
+设模型集合为 $\mathcal I$，能力维度集合为 $\mathcal C=\{C_1,\ldots,C_5\}$，场景集合为 $\mathcal S=\{R,D,C\}$，分别表示科研长文本分析、大众日常通用对话和计算机代码开发。$z_{ij}>0$ 表示模型 $i$ 在能力 $j$ 上经正式正值变换后的 CES 输入，$\mathcal J_s$ 表示场景 $s$ 的核心互补能力集，$\boldsymbol w^{(s)}$ 表示场景权重，$\rho_s$ 表示能力替代参数。
+
+由于初始规格文件尚未纳入 Git，无法仅凭提交历史严格证明其早于所有探索性结果；因此本文采用可核验的保守表述：场景结构、参数区域、输入变换与缺失策略均在本轮最终复算前固定，并在复算前提交留痕。配置文件 SHA-256 为
+\begin{center}
+\footnotesize\ttfamily\QTwoSpecHash
+\end{center}
+该哈希与规格提交、最终运行时间、正式运行元数据和规格快照共同保存在 \texttt{outputs/q2/final/} 中。本文所有“冻结”均指该最终复算冻结版本，不声称无法由版本记录证明的更早时间顺序。
+
+\subsection{基础能力与场景需求映射}
+
+根据问题一到问题二的字段映射、能力定义及三类任务的实际流程，科研场景以 $C_1,C_2,C_3$ 为核心，日常对话以 $C_1,C_2,C_3,C_5$ 为核心，代码开发以 $C_1,C_4$ 为核心。这里的“核心”表示这些能力直接进入 CES 互补聚合，而不是五个维度无差别地共同进入负 $\rho$ 函数。三场景的冻结定义见表~\ref{tab:q2_scene_spec}。
+
+\begin{table}[htbp]
+\centering
+\caption{三场景核心能力、KL 约束与参数区域}
+\label{tab:q2_scene_spec}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lllll}
+\toprule
+场景 & 核心互补能力集 $\mathcal J_s$ & 场景需求约束 & $\alpha$ 区间 & $\rho$ 区间 \\
+\midrule
+科研长文本分析 & $C_1,C_2,C_3$ & $w_{C_1}+w_{C_3}\geq\alpha_R,\;w_{C_2}\geq0.20$ & $[0.60,0.75]$ & $[-0.80,-0.20]$ \\
+大众日常通用对话 & $C_1,C_2,C_3,C_5$ & $w_{C_1}+w_{C_2}\geq\alpha_D,\;w_{C_3},w_{C_5}\geq0.10$ & $[0.55,0.70]$ & $[-0.30,0.30]$ \\
+计算机代码开发 & $C_1,C_4$ & $w_{C_4}\geq\alpha_C$ & $[0.55,0.75]$ & $[-0.70,-0.10]$ \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+科研长文本分析中的 $C_3$ 负责跨章节信息保持，$C_1$ 负责假设推演和复杂论证，$C_2$ 负责事实与知识可靠性，三者任一明显不足都会降低研究分析的可信度。日常对话中，$C_1$ 与 $C_2$ 构成即时语言任务的主轴，$C_3$ 维持多轮连续性，$C_5$ 则覆盖图片、截图等常见输入；缺少原生多模态能力属于结构性可用性限制。代码开发以 $C_4$ 为直接产出能力，$C_1$ 支持需求分解、算法设计和调试推理。由于现有 ToolUse 数据未形成对全部模型覆盖一致的独立矩阵，本文不新增 $C_6$。
+
+\subsection{基于最小信息偏移的场景权重确定}
+
+\subsubsection{中性参考先验}
+
+设问题一给出的客观信息权重为
+\begin{equation}
+\boldsymbol w^{(0)}=(w_1^{(0)},\ldots,w_m^{(0)}),
+\qquad w_j^{(0)}>0,\quad \sum_j w_j^{(0)}=1.
+\label{eq:q2_q1_prior}
+\end{equation}
+该权重综合反映问题一数据中的信息贡献、非冗余性和潜在排序稳定性，因此只作为中性参考先验。对场景 $s$，先将其限制在 $\mathcal J_s$ 上并重新归一化。为检验结果是否过度依赖问题一先验，另设等权先验
+\begin{equation}
+\boldsymbol w^{(\mathrm{eq})}
+=\left(\frac{1}{|\mathcal J_s|},\ldots,\frac{1}{|\mathcal J_s|}\right).
+\label{eq:q2_equal_prior}
+\end{equation}
+
+\subsubsection{场景需求约束}
+
+参数 $\alpha_s$ 表示场景主导能力组必须获得的最低权重质量，而不是对现实偏好的精确统计估计。本文根据任务流程和能力角色预设表~\ref{tab:q2_scene_spec} 的合理区域，在区域内改变 $\alpha_s$，且每个网格点都重新求解 KL 权重。参考设置取区间中点附近：科研、日常和代码场景的 $\alpha_s$ 分别为 $0.675,0.625,0.650$。因此，$\alpha_s$ 的作用是表达最低需求强度并检验结论稳健性，不能解释成客观真实偏好参数。
+
+\subsubsection{KL 最小信息偏移模型}
+
+对场景 $s$，在满足单纯形和场景需求约束的可行域 $\Omega_s(\alpha_s)$ 内求解
+\begin{equation}
+\boxed{
+\boldsymbol w^{(s)}
+=\arg\min_{\boldsymbol w\in\Omega_s(\alpha_s)}
+D_{\mathrm{KL}}\!\left(\boldsymbol w\Vert\boldsymbol w^{(0)}\right)
+},
+\label{eq:q2_kl_model}
+\end{equation}
+其中
+\begin{equation}
+D_{\mathrm{KL}}\!\left(\boldsymbol w\Vert\boldsymbol w^{(0)}\right)
+=\sum_{j\in\mathcal J_s}w_j\ln\frac{w_j}{w_j^{(0)}},
+\quad w_j\geq0,
+\quad \sum_{j\in\mathcal J_s}w_j=1.
+\label{eq:q2_kl_divergence}
+\end{equation}
+KL 投影具有“最小必要改变”的解释：只有场景约束要求改变的部分才偏离问题一参考结构，从而避免完全主观地重设权重。参考设置下的正式权重见表~\ref{tab:q2_weights} 和图~\ref{fig:q2_scene_weights}。
+
+\begin{table}[htbp]
+\centering
+\caption{三场景正式 KL 权重（Q1 objective prior）}
+\label{tab:q2_weights}
+\begin{tabular}{lccccc}
+\toprule
+场景 & $C_1$ & $C_2$ & $C_3$ & $C_4$ & $C_5$ \\
+\midrule
+\QTwoWeightRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.90\textwidth]{\QTwoFigureDir/q2_fig2_scene_weights.pdf}
+    \caption{三个场景的 KL 权重结构对比}
+    \label{fig:q2_scene_weights}
+\end{figure}
+
+权重结果符合冻结语义：科研场景在三项能力之间保持接近均衡；日常对话中事实可靠性权重最高，同时为多模态保留明确质量；代码场景将 $65\%$ 权重配置给代码与软件工程能力，其余配置给复杂推理。上述权重均由约束下的 KL 投影得到，而非人为指定最终权重向量。
+
+\subsection{基于 CES 函数的能力互补型场景效用模型}
+
+\subsubsection{能力互补性的建模依据}
+
+若采用普通线性加权，一项能力的高值可以完全抵消另一项关键能力的短板。为描述关键能力之间的不完全替代关系，定义模型 $i$ 在场景 $s$ 中的 CES 效用为
+\begin{equation}
+\boxed{
+U_i^{(s)}
+=\left[
+\sum_{j\in\mathcal J_s}
+w_j^{(s)}(z_{ij}+\varepsilon)^{\rho_s}
+\right]^{1/\rho_s}
+}.
+\label{eq:q2_ces}
+\end{equation}
+其中数值平移取 $\varepsilon=10^{-6}$，仅用于统一处理 CES 的幂与对数计算；正式正值变换本身已保证 $z_{ij}>0$。当 $\rho_s\to1$ 时，式~\eqref{eq:q2_ces} 接近线性加权；当 $\rho_s\to0$ 时连续收敛到加权几何平均；当 $\rho_s<0$ 时，关键能力的短板惩罚增强。相应替代弹性为
+\begin{equation}
+\sigma_s=\frac{1}{1-\rho_s}.
+\label{eq:q2_elasticity_sigma}
+\end{equation}
+参考设置取科研、日常、代码场景的 $\rho_s$ 分别为 $-0.50,0,-0.40$，但正文结论同时接受整个冻结参数区域的稳健性检验。科研和代码任务中的关键能力存在较明显的协同链与瓶颈效应，故其合理区域置于负值；一般对话任务中的推理、事实、上下文与输入覆盖具有更高替代性，故允许 $\rho_D$ 跨越 0。上述区域依据任务语义预设，不是对所谓“真实替代参数”的客观估计。
+
+\subsubsection{CES 输入尺度处理}
+
+问题一同时给出 $0$--$100$ 能力分和 Bradley--Terry latent ability。若直接令 $z=S/100$，样本内归一化最低端会被错误解释为“完全没有能力”，在负 $\rho$ 条件下产生过强瓶颈惩罚。为此比较两类正值变换：
+
+\paragraph{方案 A：正值底板映射}
+\begin{equation}
+z_{ij}^{(A)}(\delta)
+=\delta+(1-\delta)\frac{S_{ij}}{100},
+\qquad \delta\in\{0.10,0.15,0.20,0.25,0.30\}.
+\label{eq:q2_floor_transform}
+\end{equation}
+该方案保留 $0$--$100$ 能力分顺序，同时明确承认样本最低值不等于零能力。
+
+\paragraph{方案 B：BT latent strength 映射}
+\begin{equation}
+z_{ij}^{(B)}
+=\exp\!\left(\theta_{ij}-\max_{k\in\mathcal I}\theta_{kj}\right).
+\label{eq:q2_latent_transform}
+\end{equation}
+式~\eqref{eq:q2_latent_transform} 直接利用 Bradley--Terry 模型中的相对强度含义，严格为正、保持能力顺序，并通过逐维最大值归一化把输入限制在 $(0,1]$，避免尺度爆炸。因此将方案 B 作为正式主输入，方案 A 作为敏感性对照。
+
+对于 $C_5$ 结构性能力不可用的模型，其 $C_5$ latent score 继续保持 NA。主口径使用冻结的正值可用性锚 $a_5=0.35$，并在 $[0.20,0.50]$ 上做敏感性分析。该锚并非对缺失多模态能力的统计插补，也不表示某个多模态 Benchmark 得分为 $0.35$；其作用是对模型在日常多模态交互任务中的结构性能力可用性进行显式编码。Kimi 等 $C_5$ 可估计模型继续使用观测数据导出的 latent strength，只有 metadata 标记为结构性不可用的模型使用该锚，普通缺失既不自动套用锚值，也不填 0。鉴于锚值本身具有设定性质，本文同时改变其范围，并以删除 $C_5$ 的 $C_1$--$C_3$ 共同维度口径复算日常场景。详细逐模型逐维审计记录见 \texttt{ces\_input\_transformation\_audit.csv}。
+
+\subsubsection{线性基准与能力失衡惩罚}
+
+在线性完全补偿基准下，场景效用为
+\begin{equation}
+L_i^{(s)}=\sum_{j\in\mathcal J_s}w_j^{(s)}z_{ij}.
+\label{eq:q2_linear}
+\end{equation}
+定义能力失衡惩罚指数
+\begin{equation}
+\boxed{
+\mathrm{PRI}_i^{(s)}
+=\frac{L_i^{(s)}-U_i^{(s)}}{L_i^{(s)}}
+}.
+\label{eq:q2_pri}
+\end{equation}
+PRI 表示在相同输入和相同 KL 权重下，CES 互补结构相对于完全补偿型线性聚合产生的相对效用折减；它不是模型客观能力损失百分比。正式结果的 PRI 位于 $0.00002$ 至 $0.06843$ 之间，全部非负。latent strength 的区分度较温和，因此 Kimi 在主口径下 PRI 较小；底板映射对照中其科研、日常和代码 PRI 仍保持非负，且场景名次不变，说明该指标的方向解释稳定。
+
+\subsection{三类场景评价结果}
+
+三场景正式 CES 效用与排名见表~\ref{tab:q2_scores}，完整热力图见图~\ref{fig:q2_utility_heatmap}。括号内为场景名次。
+
+\begin{table}[htbp]
+\centering
+\caption{三场景 CES 效用与排名}
+\label{tab:q2_scores}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccc}
+\toprule
+模型 & 科研长文本分析 & 大众日常通用对话 & 计算机代码开发 \\
+\midrule
+\QTwoScoreRows
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.82\textwidth]{\QTwoFigureDir/q2_fig3_utility_heatmap.pdf}
+    \caption{三场景模型 CES 效用热力图}
+    \label{fig:q2_utility_heatmap}
+\end{figure}
+
+\subsubsection{科研长文本分析}
+
+科研场景的前三名为 Claude Fable 5、Kimi K3 和 GPT-5.6 Sol。Claude Fable 5 的事实可靠性强，且三项科研核心能力没有形成严重短板，因此以 $0.918$ 位居第一；Kimi 以 $0.901$ 位居第二，与 GPT-5.6 Sol 的效用差仅约 $0.002$。Kimi 的长上下文和复杂推理相对均衡，使其相对于问题一通用能力参考排序提升 1 位。Gemini-3.1-Pro 虽然复杂推理较强，但长上下文是其科研场景瓶颈，PRI 达到该场景最高水平之一，CES 排名相对线性基准下降 1 位。
+
+\subsubsection{大众日常通用对话}
+
+日常场景的前三名为 Claude Fable 5、GPT-5.6 Sol 和 Kimi K3。前两者效用分别为 $0.932419$ 和 $0.932145$，差距很小；在等权先验下两者次序交换，说明对话场景第一名对参考先验存在轻微敏感性，但 Top3 集合稳定。Kimi 以 $0.869$ 位居第三，主要受事实可靠性与多模态相对强度影响。三个 $C_5$ 结构性不可用模型的 PRI 均超过 $0.06$，这反映的是日常场景中缺少原生多模态输入能力造成的结构性效用损失，而不是多模态 Benchmark 得分为 0。
+
+\subsubsection{计算机代码开发}
+
+代码场景的前三名为 Kimi K3、Claude Fable 5 和 DeepSeek-V4-Pro Max。Kimi 的 $C_4$ 代码工程能力处于高位，同时 $C_1$ 复杂推理没有明显短板，因此以 $0.981$ 位居第一，相对于问题一通用参考排序提升 2 位。Claude Fable 5 的 $C_4$ 领先，但 $C_1$ 较弱，在负 $\rho$ 下受到一定互补惩罚，以 $0.976$ 位列第二。DeepSeek-V4-Pro Max 凭借较强代码工程能力升至第三；这一结论只表述为相对于问题一通用能力参考排序的场景位置变化，不等同于模型“真实综合排名”发生改变。
+
+\subsection{跨场景排名迁移及作用机理}
+
+\subsubsection{排名迁移}
+
+问题一 Ranking A 是覆盖全部 10 个模型的通用能力参考排序，故定义
+\begin{equation}
+\Delta R_i^{(s)}=R_i^{(s)}-R_i^{(0)}.
+\label{eq:q2_rank_migration}
+\end{equation}
+其中 $R_i^{(0)}$ 为问题一参考名次，$R_i^{(s)}$ 为场景名次。$\Delta R<0$ 表示模型在特定场景中的相对位置提升。图~\ref{fig:q2_rank_migration} 显示，Claude Fable 5 在科研和日常场景均提升至第一；Kimi 在代码场景提升 2 位；DeepSeek-V4-Pro Max 在代码场景提升 5 位；Gemini-3.1-Pro 在科研场景下降 5 位。这些迁移来自场景权重变化和 CES 互补结构的共同作用。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.95\textwidth]{\QTwoFigureDir/q2_fig4_rank_migration.pdf}
+    \caption{Q1 参考排序与三场景排名迁移}
+    \label{fig:q2_rank_migration}
+\end{figure}
+
+\subsubsection{CES 内层份额}
+
+CES 为非线性聚合，不能把 $w_jz_{ij}$ 直接称为最终效用贡献。本文计算内层份额
+\begin{equation}
+q_{ij}^{(s)}
+=\frac{w_j^{(s)}(z_{ij}+\varepsilon)^{\rho_s}}
+{\sum_{k\in\mathcal J_s}w_k^{(s)}(z_{ik}+\varepsilon)^{\rho_s}},
+\qquad \sum_jq_{ij}^{(s)}=1.
+\label{eq:q2_inner_share}
+\end{equation}
+当 $\rho_s<0$ 时，相对较弱的能力可能在内层项中占据更高份额，这表示其成为限制效用的关键瓶颈，而不是产生了更高的正向“贡献”。
+
+\subsubsection{边际效用与弹性}
+
+对式~\eqref{eq:q2_ces} 求偏导，得
+\begin{equation}
+\frac{\partial U_i^{(s)}}{\partial z_{ij}}
+=w_j^{(s)}(z_{ij}+\varepsilon)^{\rho_s-1}
+\left(U_i^{(s)}\right)^{1-\rho_s}.
+\label{eq:q2_marginal}
+\end{equation}
+进一步定义效用弹性
+\begin{equation}
+E_{ij}^{(s)}
+=\frac{\partial U_i^{(s)}}{\partial z_{ij}}
+\frac{z_{ij}}{U_i^{(s)}}.
+\label{eq:q2_utility_elasticity}
+\end{equation}
+边际效用回答“改善哪项能力最能提高当前场景效用”。线性与 CES 的比较表明，科研场景中 Gemini-3.1-Pro 和 DeepSeek-V4-Pro Max 因短板分别相对线性基准下降 1 位；日常场景中 Qwen3.8-Max 在 CES 下相对线性基准上升 2 位，而 GPT-5.5 与 Claude Opus 4.8 各下降 1 位；代码场景在参考设置下线性与 CES 名次一致，但 PRI 仍量化了能力失衡的效用损失。
+
+\subsection{Kimi K3 场景竞争力分析}
+
+Kimi 的三场景评价见表~\ref{tab:q2_kimi}。其中排名迁移以问题一 Ranking A 第 3 名为参照，负值表示场景相对位置提升。
+
+\begin{table}[htbp]
+\centering
+\caption{Kimi K3 三场景评价与排名迁移}
+\label{tab:q2_kimi}
+\begin{tabular}{lccccc}
+\toprule
+场景 & CES 效用 & 排名 & $\Delta R$ & PRI & 最大边际收益能力 \\
+\midrule
+\QTwoKimiRows
+\bottomrule
+\end{tabular}
+\end{table}
+
+综合表~\ref{tab:q2_kimi} 与图~\ref{fig:q2_kimi_mechanism}，Kimi 最具竞争力的场景为\KimiStrongestScene，较弱场景为\KimiWeakestScene。在科研场景中，Kimi 与上一位 Claude Fable 5、下一位及效用最接近的 GPT-5.6 Sol 构成主要竞争关系；事实可靠性 $C_2$ 的边际效用最大，是提高科研效用的优先方向。在日常场景中，Kimi 前一位为 GPT-5.6 Sol，后一位且效用最接近者为 Gemini-3.1-Pro，场景第一为 Claude Fable 5；事实可靠性仍是优先改善方向。在代码场景中，Kimi 已位居第一，最直接竞争者、下一位和最近效用模型均为 Claude Fable 5，代码工程能力 $C_4$ 的边际收益最大。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{\QTwoFigureDir/q2_fig6_kimi_mechanism.pdf}
+    \caption{Kimi K3 能力强度与边际效用结构}
+    \label{fig:q2_kimi_mechanism}
+\end{figure}
+
+Kimi 主输入口径下三场景 PRI 均较低，说明其进入科研和代码场景时不存在严重的核心能力偏科；在正值底板变换下，科研和日常 PRI 上升，但名次仍分别稳定在第 2 和第 3，代码场景始终保持第 1。由此可见，Kimi 的代码优势不是由某个极端 CES 底板或单点参数制造的。
+
+\subsection{稳健性与敏感性分析}
+
+\subsubsection{\texorpdfstring{$\alpha$--$\rho$}{alpha-rho} 参数稳健性}
+
+对表~\ref{tab:q2_scene_spec} 的每个 $\alpha$--$\rho$ 网格点，重新求解 KL 权重、计算 CES 效用并排名。每个场景包含 $9\times13=117$ 个参数组合。Kimi 的区域统计见表~\ref{tab:q2_robustness}，二维名次面见图~\ref{fig:q2_kimi_surface}。
+
+\begin{table}[htbp]
+\centering
+\caption{Kimi K3 稳健性结果}
+\label{tab:q2_robustness}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+场景 & Mean Rank & Best--Worst & Q1 prior 下 Top3 & Equal prior 下 Top3 & Q1 不确定性下 Top3 \\
+\midrule
+\QTwoRobustRows
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{\QTwoFigureDir/q2_fig5_kimi_alpha_rho.pdf}
+    \caption{Kimi K3 在 $\alpha$--$\rho$ 参数区域内的场景名次}
+    \label{fig:q2_kimi_surface}
+\end{figure}
+
+科研和代码场景中，Kimi 在全部 117 个主先验网格点均进入 Top3；代码场景名次仅在 1--2 之间变化。日常场景的 Top3 稳定比例为 $0.709$，其余区域主要落在第 4 名，说明 Kimi 日常竞争力对场景需求强度和替代参数更敏感。正式输出同时记录相邻 $\alpha$ 或 $\rho$ 网格点发生名次变化的阈值区间，避免只报告单一参数点。
+
+\subsubsection{参考先验敏感性}
+
+在相同场景约束下，用等权先验替换问题一 objective prior 后，科研和代码场景的 Top3 集合与次序均不变；日常场景中 GPT-5.6 Sol 与 Claude Fable 5 交换前两名，但 Kimi 仍为第三。对 Kimi 而言，等权先验下三场景 Top3 比例均为 1；主先验与等权先验的差别集中在日常场景的参数边界，而非参考设置的 Top3 结论。全模型平均绝对 Mean Rank 变化在科研、日常和代码场景中分别约为 $0.202,0.400,0$，表明代码结果对先验最稳健。
+
+\subsubsection{Q1 能力不确定性传播}
+
+Q1 不确定性与场景参数不确定性分开处理。对 \texttt{q1\_uncertainty.csv} 中的 dimension-level latent score，使用
+\begin{equation}
+\theta_{ij}^{(b)}
+=\widehat\theta_{ij}
++\varepsilon_{ij}^{(b)},
+\qquad
+\varepsilon_{ij}^{(b)}\sim N(0,\widehat\sigma_{ij}^{2}),
+\label{eq:q2_uncertainty_draw}
+\end{equation}
+进行 2000 次重复抽样；每次重新执行式~\eqref{eq:q2_latent_transform}、式~\eqref{eq:q2_ces} 并排名。量纲审计确认，$\widehat\sigma_{ij}$ 直接由 Q1 v1.2 的原始 BT-theta bootstrap replicate 中的 \texttt{theta} 列计算，与 $\widehat\theta_{ij}$ 同为 latent-theta 量纲；0--100 分数标准差保存在独立的 \texttt{score\_bootstrap\_sd} 字段，未进入式~\eqref{eq:q2_uncertainty_draw}。标准接口未提供跨模型、跨维度协方差，因此采用独立近似并在限制中明确说明。结构性 $C_5$ 锚不作为 latent score 抽样。
+
+传播结果显示，Kimi 在科研、日常和代码场景中的 Top3 概率分别为
+\begin{equation}
+P_R(\mathrm{Top3})=0.7505,\qquad
+P_D(\mathrm{Top3})=0.4955,\qquad
+P_C(\mathrm{Top3})=0.9475.
+\label{eq:q2_kimi_uncertainty_top3}
+\end{equation}
+三个场景的效用 $95\%$ 区间分别为 $[0.825,0.958]$、$[0.800,0.928]$ 和 $[0.858,0.996]$。这说明代码场景结论最稳定；日常场景参考名次虽为第三，但考虑 Q1 能力估计误差后进入 Top3 的概率约为一半，不能把单点第三名表述为确定结论。
+
+\subsubsection{缺失与结构性不可用敏感性}
+
+对 CES 输入进行两组额外复算。第一，在 $\delta=0.10$--$0.30$ 的正值底板映射下，Kimi 的科研、日常和代码名次始终为 2、3、1；虽然绝对效用尺度和 PRI 发生变化，核心场景结论保持一致。第二，将结构性 $C_5$ 可用性锚从 $0.20$ 调整到 $0.50$，Kimi 本身因 $C_5$ 可估计而输入不变，其日常排名仍为第三；删除 $C_5$、只用 $C_1$--$C_3$ 的共同维度复算时，Kimi 仍为第三。对全模型而言，共同维度口径会削弱对结构性多模态不可用模型的惩罚，因此该结果只作为适用性对照，不替代主口径。
+
+\subsection{问题二小结}
+
+本文构建了 KL 最小信息偏移与 CES 能力互补相结合的场景效用模型。KL 层以问题一客观权重为中性参考，通过冻结的场景约束得到最小必要权重偏移；CES 层进一步描述不同能力在具体任务中的不完全替代关系。正式结果表明：科研场景由 Claude Fable 5、Kimi K3、GPT-5.6 Sol 领先；日常场景由 Claude Fable 5、GPT-5.6 Sol、Kimi K3 领先；代码场景由 Kimi K3、Claude Fable 5、DeepSeek-V4-Pro Max 领先。
+
+对 Kimi 而言，其相对于问题一通用能力参考排序在科研场景提升 1 位、日常场景保持不变、代码场景提升 2 位，最强场景为代码开发。科研与日常场景的优先改善方向均为事实可靠性，代码场景则为代码工程能力。双先验、$\alpha$--$\rho$ 参数区域、输入变换、结构性 $C_5$ 口径和 Q1 能力不确定性传播共同表明：Kimi 的代码优势较稳健，科研竞争力较强但存在相邻模型不确定性，日常 Top3 结论相对敏感。由此，问题二实现了从“基础能力”到“场景效用”的严格转换，并为后续性能--成本决策提供了可解释的场景评价输入。

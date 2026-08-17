@@ -1,0 +1,41 @@
+\documentclass[UTF8,12pt]{ctexart}
+
+\usepackage[a4paper,top=2.3cm,bottom=2.3cm,left=2.25cm,right=2.25cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\captionsetup{font=small,labelsep=quad}
+\renewcommand{\arraystretch}{1.15}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{2em}
+
+\title{主流大语言模型综合性能评价建模\\[0.5em]\Large 问题二正式稿：基于 KL--CES 的场景效用评价}
+\author{数学建模竞赛论文独立问题二版}
+\date{2026年8月17日}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+针对基础能力综合排名不能直接代表具体应用价值的问题，本文以问题一冻结的五维 Bradley--Terry 潜在能力为输入，构建 KL 最小信息偏移场景权重与 CES 能力互补效用模型。模型分别评价科研长文本分析、大众日常通用对话和计算机代码开发，使用线性加权作为完全补偿型基准，并通过 PRI、CES 内层份额、边际效用与弹性解释能力短板。正式计算同时覆盖 $\alpha$--$\rho$ 参数区域、Q1 objective prior 与等权先验、两类 CES 正值输入变换、结构性多模态不可用口径及 Q1 能力估计不确定性传播。结果给出三场景完整排名及 Kimi K3 的场景竞争力、主要竞争模型和优先改进方向。
+
+\noindent\textbf{关键词：} 大语言模型评价；KL 散度；CES 效用；能力互补；场景排名；不确定性传播
+\end{abstract}
+
+\tableofcontents
+\clearpage
+
+\input{../sections/q2_final}
+
+\end{document}

@@ -1,0 +1,51 @@
+﻿model_id,model,dimension,direct_observation_count,benchmark_family_count,source_count,network_dependency,evidence_strength,notes
+kimi_k3_max,Kimi K3 (max reasoning),C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+kimi_k3_max,Kimi K3 (max reasoning),C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+kimi_k3_max,Kimi K3 (max reasoning),C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+kimi_k3_max,Kimi K3 (max reasoning),C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+kimi_k3_max,Kimi K3 (max reasoning),C5,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: MMMU-Pro, MathVision; missing: none"
+gpt_5_6_sol_max,GPT-5.6 Sol (max),C1,5,2,1,MODERATE_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Logic, LiveBench Math; missing: GPQA Diamond"
+gpt_5_6_sol_max,GPT-5.6 Sol (max),C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+gpt_5_6_sol_max,GPT-5.6 Sol (max),C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+gpt_5_6_sol_max,GPT-5.6 Sol (max),C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+gpt_5_6_sol_max,GPT-5.6 Sol (max),C5,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: MMMU-Pro, MathVision; missing: none"
+gpt_5_5_xhigh,GPT-5.5 (xhigh),C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+gpt_5_5_xhigh,GPT-5.5 (xhigh),C2,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: Humanity's Last Exam; missing: AA-Omniscience
+gpt_5_5_xhigh,GPT-5.5 (xhigh),C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+gpt_5_5_xhigh,GPT-5.5 (xhigh),C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+gpt_5_5_xhigh,GPT-5.5 (xhigh),C5,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: MMMU-Pro, MathVision; missing: none"
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",C5,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: MathVision; missing: MMMU-Pro
+claude_opus_4_8_max,Claude Opus 4.8 (max),C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+claude_opus_4_8_max,Claude Opus 4.8 (max),C2,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: Humanity's Last Exam; missing: AA-Omniscience
+claude_opus_4_8_max,Claude Opus 4.8 (max),C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+claude_opus_4_8_max,Claude Opus 4.8 (max),C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+claude_opus_4_8_max,Claude Opus 4.8 (max),C5,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: MathVision; missing: MMMU-Pro
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),C2,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: Humanity's Last Exam; missing: AA-Omniscience
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),C3,3,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-LCR, CorpusQA, MRCR; missing: none"
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),C4,5,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Coding; missing: FrontierSWE, ProgramBench, SWE-bench Verified"
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),C5,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: MMMU-Pro; missing: MathVision
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,C3,3,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-LCR, CorpusQA, MRCR; missing: none"
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,C4,6,2,2,MODERATE_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Coding, SWE-bench Verified; missing: FrontierSWE, ProgramBench"
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,C5,0,0,0,STRUCTURAL_CAPABILITY_ABSENCE,LOW,"observed: none; missing: MMMU-Pro, MathVision"
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,C2,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: Humanity's Last Exam; missing: AA-Omniscience
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,C3,3,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-LCR, CorpusQA, MRCR; missing: none"
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,C4,6,2,2,MODERATE_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Coding, SWE-bench Verified; missing: FrontierSWE, ProgramBench"
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,C5,0,0,0,STRUCTURAL_CAPABILITY_ABSENCE,LOW,"observed: none; missing: MMMU-Pro, MathVision"
+qwen3_8_max,Qwen3.8-Max,C1,5,2,1,MODERATE_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Logic, LiveBench Math; missing: GPQA Diamond"
+qwen3_8_max,Qwen3.8-Max,C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+qwen3_8_max,Qwen3.8-Max,C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+qwen3_8_max,Qwen3.8-Max,C4,5,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: LiveBench Coding; missing: FrontierSWE, ProgramBench, SWE-bench Verified"
+qwen3_8_max,Qwen3.8-Max,C5,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,observed: MMMU-Pro; missing: MathVision
+glm_5_2_max,GLM-5.2 (max),C1,6,3,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: GPQA Diamond, LiveBench Logic, LiveBench Math; missing: none"
+glm_5_2_max,GLM-5.2 (max),C2,2,2,2,LOW_NETWORK_DEPENDENCY,HIGH,"observed: AA-Omniscience, Humanity's Last Exam; missing: none"
+glm_5_2_max,GLM-5.2 (max),C3,1,1,1,HIGH_NETWORK_DEPENDENCY,MEDIUM,"observed: AA-LCR; missing: CorpusQA, MRCR"
+glm_5_2_max,GLM-5.2 (max),C4,7,3,2,MODERATE_NETWORK_DEPENDENCY,HIGH,"observed: FrontierSWE, LiveBench Coding, ProgramBench; missing: SWE-bench Verified"
+glm_5_2_max,GLM-5.2 (max),C5,0,0,0,STRUCTURAL_CAPABILITY_ABSENCE,LOW,"observed: none; missing: MMMU-Pro, MathVision"
