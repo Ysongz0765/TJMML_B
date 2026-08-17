@@ -1,0 +1,10 @@
+scenario,scenario_name,n_calls,input_tokens,output_tokens,input_output_ratio,workload_level,source_or_rationale,notes
+Research,Scientific long-text analysis,1,10000,3000,0.3,baseline_template,analyst_parameter_template_not_empirical,Template workload for pipeline testing only; replace with documented Q2/Q3 workload assumption before final run.
+Research,Scientific long-text analysis,1,5000,1000,0.2,sensitivity_low_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.
+Research,Scientific long-text analysis,1,10000,10000,1.0,sensitivity_high_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.
+General,Daily general tasks,1,1000,500,0.5,baseline_template,analyst_parameter_template_not_empirical,Template workload for pipeline testing only; replace with documented Q2/Q3 workload assumption before final run.
+General,Daily general tasks,1,1000,200,0.2,sensitivity_low_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.
+General,Daily general tasks,1,1000,1000,1.0,sensitivity_high_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.
+Coding,Code development,1,4000,2000,0.5,baseline_template,analyst_parameter_template_not_empirical,Template workload for pipeline testing only; replace with documented Q2/Q3 workload assumption before final run.
+Coding,Code development,1,4000,800,0.2,sensitivity_low_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.
+Coding,Code development,1,4000,4000,1.0,sensitivity_high_output,analyst_parameter_template_not_empirical,Input/output ratio sensitivity template; not a claimed real average.

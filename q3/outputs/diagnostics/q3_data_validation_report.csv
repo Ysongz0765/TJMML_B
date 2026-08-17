@@ -1,0 +1,42 @@
+severity,file,field,model_id,message
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,kimi_k3_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,gpt_5_6_sol_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,gpt_5_5_xhigh,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,claude_fable_5_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,claude_opus_4_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,gemini_3_1_pro_high,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,deepseek_v4_pro_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,deepseek_v4_flash_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,qwen3_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,input_price,glm_5_2_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,kimi_k3_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,gpt_5_6_sol_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,gpt_5_5_xhigh,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,claude_fable_5_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,claude_opus_4_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,gemini_3_1_pro_high,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,deepseek_v4_pro_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,deepseek_v4_flash_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,qwen3_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,output_price,glm_5_2_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,kimi_k3_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,gpt_5_6_sol_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,gpt_5_5_xhigh,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,claude_fable_5_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,claude_opus_4_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,gemini_3_1_pro_high,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,deepseek_v4_pro_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,deepseek_v4_flash_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,qwen3_8_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+WARNING,D:\study\xiaosai\b\q3\data\model_pricing.csv,cached_input_price,glm_5_2_max,Price is missing; final Q3 cost and Pareto run cannot use this model
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,kimi_k3_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,gpt_5_6_sol_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,gpt_5_5_xhigh,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,claude_fable_5_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,claude_opus_4_8_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,gemini_3_1_pro_high,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,deepseek_v4_pro_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,deepseek_v4_flash_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,qwen3_8_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\model_pricing.csv,price_date,glm_5_2_max,price_date is missing
+BLOCKING_INPUT_MISSING,D:\study\xiaosai\b\q3\data\scenario_utility_template.csv,utility,,No Q2 scenario utility values supplied
