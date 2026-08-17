@@ -22,6 +22,10 @@ node_modules/
 /main.fdb_latexmk
 /main.synctex.gz
 
+# Q3 standalone manuscript build intermediates; keep the reviewed PDF explicit
+/q3/paper/output/*
+!/q3/paper/output/Q3_Paper_Final.pdf
+
 # Operating-system metadata
 .DS_Store
 Thumbs.db

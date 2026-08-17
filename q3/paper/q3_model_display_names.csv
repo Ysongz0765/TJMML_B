@@ -1,0 +1,11 @@
+model_id,display_name,short_name,cost_status
+claude_opus_4_8_max,Claude Opus 4.8,Claude Opus 4.8,FULL
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,DeepSeek Flash,FULL
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,DeepSeek Pro,FULL
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Gemini Pro (High),FULL
+gpt_5_5_xhigh,GPT-5.5,GPT-5.5,FULL
+gpt_5_6_sol_max,GPT-5.6 Sol,GPT-5.6 Sol,FULL
+kimi_k3_max,Kimi K3,Kimi K3,FULL
+qwen3_8_max,Qwen3.8-Max,Qwen Max,FULL
+claude_fable_5_max,Claude Fable 5,Claude Fable 5,PARTIAL
+glm_5_2_max,GLM-5.2,GLM-5.2,MISSING
