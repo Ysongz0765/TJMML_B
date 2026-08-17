@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 
 
-PRICE_UNIT = "USD / 1M tokens"
+PRICE_UNIT = "USD / 1M billable tokens"
 
 
 def _to_number(value):
@@ -15,7 +15,7 @@ def _to_number(value):
 
 
 def compute_scenario_cost(model_price: dict, workload: dict) -> dict:
-    """Compute one model-scenario workload cost using prices in USD / 1M tokens."""
+    """Compute one model-scenario workload cost using prices in USD / 1M billable tokens."""
     input_price = _to_number(model_price.get("input_price"))
     output_price = _to_number(model_price.get("output_price"))
     n_calls = _to_number(workload.get("n_calls"))
@@ -84,4 +84,3 @@ def load_and_compute(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_csv(output_path, index=False)
     return result
-

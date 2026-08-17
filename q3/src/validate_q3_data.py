@@ -23,7 +23,7 @@ REQUIRED_PRICING_COLUMNS = [
 ]
 REQUIRED_UTILITY_COLUMNS = ["model_id", "model_name", "scenario", "utility"]
 REQUIRED_WORKLOAD_COLUMNS = ["scenario", "scenario_name", "n_calls", "input_tokens", "output_tokens", "input_output_ratio", "workload_level", "source_or_rationale", "notes"]
-PRICE_UNIT = "USD / 1M tokens"
+PRICE_UNIT = "USD / 1M billable tokens"
 
 
 def _issue(issues, severity, file, field, model_id, message):
@@ -71,7 +71,7 @@ def validate_q3_data(pricing_path: Path, workload_path: Path, utility_path: Path
     if "price_unit" in pricing.columns:
         bad_unit = pricing[pricing["price_unit"] != PRICE_UNIT]
         for _, row in bad_unit.iterrows():
-            _issue(issues, "ERROR", str(pricing_path), "price_unit", row.get("model_id", ""), "Price unit must be USD / 1M tokens")
+            _issue(issues, "ERROR", str(pricing_path), "price_unit", row.get("model_id", ""), "Price unit must be USD / 1M billable tokens")
 
     for col in ["input_price", "output_price", "cached_input_price"]:
         if col in pricing.columns:
@@ -132,4 +132,3 @@ if __name__ == "__main__":
         root / "q2" / "data" / "q2_model_master_table.csv",
         root / "q3" / "outputs" / "diagnostics" / "q3_data_validation_report.csv",
     )
-

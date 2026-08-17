@@ -6,13 +6,13 @@ Audit date: 2026-08-17
 
 Q3 evaluates each model by scenario utility and workload cost as two separate objectives. A single `Performance / Price` ratio is not sufficient because API costs depend on both input and output tokens, and the input/output mix changes by scenario. A model can be cheap for input-heavy tasks but expensive for output-heavy tasks, so Q3 uses scenario-specific cost and Pareto analysis.
 
-## 2. Input and Output Tokens Are Priced Separately
+## 2. Input and Billable Output Tokens Are Priced Separately
 
-The pricing table records `input_price`, `output_price`, and, where official docs provide it, `cached_input_price`. Baseline cost uses uncached input and output prices because cache-hit ratios are workload-specific and were not observed in Q2. Cached input prices remain available for sensitivity or secondary analysis.
+The pricing table records `input_price`, `output_price`, and, where official docs provide it, `cached_input_price`. In the workload table, `output_tokens` means billable output tokens, not only user-visible answer tokens. For reasoning or thinking models, billable output can include hidden or summarized reasoning/thinking tokens when provider documentation says those tokens are billed. Baseline cost uses uncached input and billable output prices because cache-hit ratios are workload-specific and were not observed in Q2. Cached input prices remain available for sensitivity or secondary analysis.
 
 ## 3. Baseline Scenarios
 
-| scenario | n_calls | input_tokens | output_tokens | output/input ratio | rationale |
+| scenario | n_calls | input_tokens | billable output_tokens | output/input ratio | rationale |
 |---|---:|---:|---:|---:|---|
 | Research | 1 | 16000 | 4000 | 0.25 | Long-context scientific paper, report, or evidence synthesis task aligned with the Q2 research-oriented model comparison setting. |
 | General | 1 | 2000 | 1000 | 0.50 | Mixed everyday assistant workload such as question answering, summarization, and short planning. |
