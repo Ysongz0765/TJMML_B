@@ -3,6 +3,15 @@
 Audit date: 2026-08-17  
 Status: **Provisional; human verification remains incomplete.**
 
+## Final Gate
+
+The formal final rerun is currently blocked. The repository state at commit
+`441f935e8bd65b1a51866a315c1af822297df4cd` has `human_verified=FALSE` for all
+10 rows in `model_pricing.csv`, `pricing_audit.csv`, and
+`pricing_human_check.csv`. The prior results in this report are retained as
+historical provisional outputs only. See `FINAL_INPUT_AUDIT.md` and
+`Q3_FINAL_AUDIT.md`.
+
 ## 1. Data Closure
 
 The formal Q2-to-Q3 interface was synchronized from

@@ -9,11 +9,18 @@ Q2_FORMAL_SCENARIO_UTILITY_FOUND = TRUE
 Q2_SCENARIO_UTILITY_VALIDATED = TRUE
 Q2_BOOTSTRAP_UTILITY_FOUND = TRUE
 Q3_READY_FOR_FINAL_RUN = TRUE
-Q3_MAIN_ANALYSIS_COHORT_READY = TRUE
+Q3_PRICING_HUMAN_VERIFIED = FALSE
+Q3_MAIN_ANALYSIS_COHORT_READY = FALSE
 Q3_PROVISIONAL_RESULTS_READY = TRUE
 Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY = FALSE
+Q3_FINAL_RESULTS_READY = FALSE
+Q3_READY_TO_FREEZE = FALSE
+Q3_FROZEN = FALSE
+Q3_FINAL_P0_COUNT = 1
+Q3_FINAL_P1_COUNT = 2
 
 See `q3/Q3_STAGE_REPORT.md` for details. Formal Q2 utility was synchronized and
-validated, and the provisional Q3 run is complete on the 8-model FULL cohort.
-Claude Fable fallback cost, GLM-5.2 public pricing, and human verification remain
-open release gates.
+validated, and the prior provisional Q3 run is retained for comparison.
+Human verification has not been written back to the three pricing files, so the
+formal final gate remains open. Claude Fable fallback cost and GLM-5.2 public
+pricing remain transparent cohort exclusions.

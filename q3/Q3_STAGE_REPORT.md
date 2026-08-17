@@ -11,9 +11,17 @@ Q2_FORMAL_SCENARIO_UTILITY_FOUND = TRUE
 Q2_SCENARIO_UTILITY_VALIDATED = TRUE
 Q2_BOOTSTRAP_UTILITY_FOUND = TRUE
 Q3_READY_FOR_FINAL_RUN = TRUE
-Q3_MAIN_ANALYSIS_COHORT_READY = TRUE
+Q3_PRICING_HUMAN_VERIFIED = FALSE
+Q3_MAIN_ANALYSIS_COHORT_READY = FALSE
 Q3_PROVISIONAL_RESULTS_READY = TRUE
 Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY = FALSE
+Q3_FINAL_RESULTS_READY = FALSE
+Q3_READY_TO_FREEZE = FALSE
+Q3_FROZEN = FALSE
+Q3_REPRODUCIBILITY_AUDIT = NOT_RUN
+Q3_PAPER_CONSISTENCY_AUDIT = NOT_RUN
+Q3_FINAL_P0_COUNT = 1
+Q3_FINAL_P1_COUNT = 2
 
 ## Current State
 
@@ -22,20 +30,25 @@ Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY = FALSE
 - The nominal interface contains 30 rows: 10 models x 3 scenarios. The bootstrap
   interface contains 60,000 rows from 2,000 draws. All automated Q2-to-Q3
   interface checks passed.
-- The main Q3 comparison uses the 8-model `FULL` cost-observability cohort.
+- Eight models have complete observable base costs, but the strict formal main
+  cohort is currently empty because no pricing row has passed the three-file
+  human-verification gate.
 - Claude Fable 5 is retained as `PARTIAL` because its fallback configuration
   cost is unresolved. GLM-5.2 is retained as `MISSING` because an official
   public input/output API price was not observable. Neither row is imputed or
   included in the main Pareto analysis.
-- All pricing rows remain `human_verified=FALSE`; therefore the result package is
-  provisional and is not the final human-verified release.
+- All pricing rows remain `human_verified=FALSE`; therefore the result package
+  is provisional and is not the final human-verified release. See
+  `FINAL_INPUT_AUDIT.md` and `Q3_FINAL_AUDIT.md`.
 
 ## Generated Results
 
-The final run generated 24 FULL-cohort cost-utility rows, 24 budget rows,
-9 ICER rows, 16 fit rows, 504 sensitivity rows, 24 bootstrap Pareto-probability
-rows, and 42 PNG/PDF figures. See `Q3_RESULTS_REPORT.md` for the interpretation
-and exact scenario-level results.
+The previous provisional run generated 24 FULL-cohort cost-utility rows, 24
+budget rows, 9 ICER rows, 16 fit rows, 504 sensitivity rows, 24 bootstrap
+Pareto-probability rows, and 42 PNG/PDF figures. They remain historical
+provisional outputs; the final human-verified rerun is blocked by P0-1.
+See `Q3_RESULTS_REPORT.md` for the interpretation and exact provisional
+scenario-level results.
 
 ## Readiness Logic
 

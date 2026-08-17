@@ -22,7 +22,10 @@ def test_cohort_keeps_partial_and_missing_models_visible():
             {"model_id": "missing", "pricing_status": "MISSING", "fallback_issue": "FALSE", "sku_mapping_status": "EXACT", "config_mapping_status": "SUPPORTED_CONFIG"},
         ]
     )
-    cohort = build_analysis_cohort(pricing, audit)
+    pricing["human_verified"] = ["TRUE", "TRUE", "FALSE"]
+    audit["human_verified"] = ["TRUE", "TRUE", "FALSE"]
+    human_check = pricing[["model_id", "human_verified"]].copy()
+    cohort = build_analysis_cohort(pricing, audit, pricing_human_check=human_check)
     assert cohort["cost_observability"].astype(str).tolist() == ["FULL", "PARTIAL", "MISSING"]
     assert full_model_ids(cohort) == ["full"]
     assert cohort.loc[cohort["model_id"] == "partial", "included_in_main_pareto"].item() is False
@@ -63,5 +66,5 @@ def test_runner_allows_full_cohort_when_partial_and_missing_exist():
             {"model_id": "missing", "cost_observability": "MISSING"},
         ]
     )
-    assert _main_analysis_ready(True, True, [f"full_{index}" for index in range(8)], cohort, False) is True
-    assert _main_analysis_ready(True, True, ["full"], cohort, True) is False
+    assert _main_analysis_ready(True, True, [f"full_{index}" for index in range(8)], cohort, False, True) is True
+    assert _main_analysis_ready(True, True, ["full"], cohort, True, True) is False

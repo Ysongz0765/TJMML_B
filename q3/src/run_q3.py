@@ -36,11 +36,16 @@ def _has_pricing_mapping(audit_path: Path) -> bool:
     return bool(sku_ok and config_ok)
 
 
-def _has_human_verified_prices(path: Path) -> bool:
-    df = pd.read_csv(path, keep_default_na=False)
-    if "human_verified" not in df.columns:
-        return False
-    return bool(df["human_verified"].astype(str).str.upper().eq("TRUE").all())
+def _has_human_verified_prices(*paths: Path) -> bool:
+    for path in paths:
+        if not path.exists():
+            return False
+        df = pd.read_csv(path, keep_default_na=False)
+        if "human_verified" not in df.columns:
+            return False
+        if not bool(df["human_verified"].astype(str).str.upper().eq("TRUE").all()):
+            return False
+    return True
 
 
 def _validate_q2_nominal(utility: pd.DataFrame, model_ids: set[str]) -> dict:
@@ -119,6 +124,7 @@ def _main_analysis_ready(
     full_ids: list[str],
     cohort: pd.DataFrame,
     has_hard_validation_error: bool,
+    pricing_human_verified: bool,
 ) -> bool:
     """Allow a transparent FULL-cohort run when other models are excluded."""
     return bool(
@@ -127,6 +133,7 @@ def _main_analysis_ready(
         and len(full_ids) >= 3
         and len(cohort) == 10
         and not has_hard_validation_error
+        and pricing_human_verified
     )
 
 
@@ -172,6 +179,7 @@ def run(root: Path | None = None) -> dict:
     q3 = root / "q3"
     pricing_path = q3 / "data" / "model_pricing.csv"
     pricing_audit_path = q3 / "data" / "pricing_audit.csv"
+    pricing_human_check_path = q3 / "data" / "pricing_human_check.csv"
     workload_path = q3 / "data" / "workload_config.csv"
     utility_path = q3 / "data" / "scenario_utility.csv"
     bootstrap_path = q3 / "data" / "scenario_utility_bootstrap.csv"
@@ -183,6 +191,7 @@ def run(root: Path | None = None) -> dict:
 
     pricing = pd.read_csv(pricing_path, keep_default_na=False)
     pricing_audit = pd.read_csv(pricing_audit_path, keep_default_na=False)
+    pricing_human_check = pd.read_csv(pricing_human_check_path, keep_default_na=False)
     workload = pd.read_csv(workload_path, keep_default_na=False)
     utilities = pd.read_csv(utility_path, keep_default_na=False) if utility_path.exists() else pd.read_csv(utility_template, keep_default_na=False)
     bootstrap = pd.read_csv(bootstrap_path, keep_default_na=False) if bootstrap_path.exists() else pd.DataFrame()
@@ -191,12 +200,18 @@ def run(root: Path | None = None) -> dict:
     utility_check = _validate_q2_nominal(utilities, model_ids) if utility_path.exists() else {"valid": False, "reason": "formal Q2 utility file absent"}
     bootstrap_check = _validate_q2_bootstrap(bootstrap, model_ids) if bootstrap_path.exists() else {"valid": False, "reason": "formal Q2 bootstrap file absent"}
     q2_valid = bool(utility_check.get("valid", False))
-    cohort = build_analysis_cohort(pricing, pricing_audit, utilities if q2_valid else None)
+    pricing_human_verified = _has_human_verified_prices(pricing_path, pricing_audit_path, pricing_human_check_path)
+    cohort = build_analysis_cohort(
+        pricing,
+        pricing_audit,
+        utilities if q2_valid else None,
+        pricing_human_check,
+    )
     cohort_path = tables / "q3_model_analysis_cohort.csv"
     save_analysis_cohort(cohort, cohort_path)
     full_ids = full_model_ids(cohort)
     workload_ready = set(_baseline_workload(workload)["scenario"]) == EXPECTED_SCENARIOS
-    main_ready = _main_analysis_ready(q2_valid, workload_ready, full_ids, cohort, False)
+    main_ready = _main_analysis_ready(q2_valid, workload_ready, full_ids, cohort, False, pricing_human_verified)
 
     utility_for_validation = utility_path if utility_path.exists() else utility_template
     validation_report = validate_q3_data(
@@ -207,7 +222,14 @@ def run(root: Path | None = None) -> dict:
         diagnostics / "q3_data_validation_report.csv",
     )
     has_hard_validation_error = bool((validation_report["severity"] == "ERROR").any()) if not validation_report.empty else False
-    main_ready = _main_analysis_ready(q2_valid, workload_ready, full_ids, cohort, has_hard_validation_error)
+    main_ready = _main_analysis_ready(
+        q2_valid,
+        workload_ready,
+        full_ids,
+        cohort,
+        has_hard_validation_error,
+        pricing_human_verified,
+    )
 
     status = {
         "REMOTE_REPOSITORY_SYNCED": (q3 / "data" / "q2_interface_provenance.json").exists(),
@@ -219,15 +241,30 @@ def run(root: Path | None = None) -> dict:
         "Q3_PRICING_MAPPING_READY": _has_pricing_mapping(pricing_audit_path),
         "Q3_ALL_MODELS_FULL_COST_READY": set(cohort["cost_observability"]) == {"FULL"},
         "Q3_MAIN_ANALYSIS_COHORT_READY": main_ready,
-        "Q3_PRICING_HUMAN_VERIFIED": _has_human_verified_prices(pricing_path),
+        "Q3_PRICING_HUMAN_VERIFIED": pricing_human_verified,
         "Q3_PARETO_COMPLETED": False,
         "Q3_BUDGET_SELECTION_COMPLETED": False,
         "Q3_ICER_COMPLETED": False,
         "Q3_COST_PERFORMANCE_FIT_COMPLETED": False,
         "Q3_SENSITIVITY_COMPLETED": False,
         "Q3_BOOTSTRAP_PARETO_COMPLETED": False,
-        "Q3_PROVISIONAL_RESULTS_READY": False,
+        "Q3_PROVISIONAL_RESULTS_READY": all(
+            (tables / name).exists()
+            for name in [
+                "q3_cost_utility.csv",
+                "q3_pareto_frontier.csv",
+                "q3_budget_selection.csv",
+                "q3_incremental_cost_effectiveness.csv",
+            ]
+        ),
         "Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY": False,
+        "Q3_FINAL_RESULTS_READY": False,
+        "Q3_READY_TO_FREEZE": False,
+        "Q3_FROZEN": False,
+        "Q3_REPRODUCIBILITY_AUDIT": "NOT_RUN",
+        "Q3_PAPER_CONSISTENCY_AUDIT": "NOT_RUN",
+        "Q3_FINAL_P0_COUNT": 0 if pricing_human_verified else 1,
+        "Q3_FINAL_P1_COUNT": 0 if pricing_human_verified else 2,
         "FULL_COHORT_SIZE": len(full_ids),
         "PARTIAL_COHORT_SIZE": int((cohort["cost_observability"] == "PARTIAL").sum()),
         "MISSING_COHORT_SIZE": int((cohort["cost_observability"] == "MISSING").sum()),
@@ -293,6 +330,8 @@ def run(root: Path | None = None) -> dict:
             "Q3_BOOTSTRAP_PARETO_COMPLETED": bool(bootstrap_check.get("valid", False) and probability_path.exists()),
             "Q3_PROVISIONAL_RESULTS_READY": True,
             "Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY": False,
+            "Q3_FINAL_RESULTS_READY": pricing_human_verified,
+            "Q3_READY_TO_FREEZE": False,
             "generated_plot_count": len(generated_plots),
             "bootstrap_probability_rows": int(len(probabilities)),
         }
