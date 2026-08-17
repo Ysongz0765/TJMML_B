@@ -1,0 +1,462 @@
+{
+  "filename": "paper_table_q1_v11_bootstrap.xlsx",
+  "description": "Two-thousand-replicate parametric BT bootstrap summaries and latent ranking stability.",
+  "sheets": [
+    {
+      "name": "Ranking_A",
+      "records": [
+        {
+          "perspective": "A",
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_score": 79.8391878013287,
+          "main_rank": 1,
+          "score_ci_low": 20.609423810855777,
+          "score_ci_high": 83.11388071510608,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 8.0,
+          "median_rank": 3.0,
+          "top3_probability": 0.533
+        },
+        {
+          "perspective": "A",
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_score": 70.59063632703702,
+          "main_rank": 2,
+          "score_ci_low": 20.52639163056631,
+          "score_ci_high": 84.3286495784312,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 8.0,
+          "median_rank": 3.0,
+          "top3_probability": 0.523
+        },
+        {
+          "perspective": "A",
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_score": 53.569618479555594,
+          "main_rank": 3,
+          "score_ci_low": 18.19700753282627,
+          "score_ci_high": 80.3180542219495,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.417
+        },
+        {
+          "perspective": "A",
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_score": 51.24375652250192,
+          "main_rank": 4,
+          "score_ci_low": 16.870635208812075,
+          "score_ci_high": 79.9451197250654,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.3805
+        },
+        {
+          "perspective": "A",
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_score": 46.04294531790332,
+          "main_rank": 5,
+          "score_ci_low": 20.73105648218604,
+          "score_ci_high": 74.73677984125182,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 8.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.3625
+        },
+        {
+          "perspective": "A",
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_score": 33.92604852132984,
+          "main_rank": 6,
+          "score_ci_low": 19.010645798926216,
+          "score_ci_high": 79.36211264800046,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.362
+        },
+        {
+          "perspective": "A",
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_score": 32.68487208672613,
+          "main_rank": 7,
+          "score_ci_low": 19.486140342681463,
+          "score_ci_high": 79.66330453398892,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.356
+        },
+        {
+          "perspective": "A",
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_score": 28.600739683808122,
+          "main_rank": 8,
+          "score_ci_low": 6.581628243490125,
+          "score_ci_high": 53.86061977927258,
+          "rank_ci_low": 3.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 8.0,
+          "top3_probability": 0.0495
+        },
+        {
+          "perspective": "A",
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_score": 10.354639872698659,
+          "main_rank": 9,
+          "score_ci_low": 6.396288730466757,
+          "score_ci_high": 48.96951819135425,
+          "rank_ci_low": 4.0,
+          "rank_ci_high": 9.0,
+          "median_rank": 8.0,
+          "top3_probability": 0.0165
+        }
+      ]
+    },
+    {
+      "name": "Ranking_B",
+      "records": [
+        {
+          "perspective": "B",
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_score": 79.57704113099587,
+          "main_rank": 1,
+          "score_ci_low": 22.003223956388076,
+          "score_ci_high": 85.61585376845287,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.4895
+        },
+        {
+          "perspective": "B",
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_score": 67.47506091725245,
+          "main_rank": 2,
+          "score_ci_low": 21.413818123231653,
+          "score_ci_high": 78.03325910761242,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.3155
+        },
+        {
+          "perspective": "B",
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_score": 65.98955887059607,
+          "main_rank": 3,
+          "score_ci_low": 24.497329315895197,
+          "score_ci_high": 75.99585176936816,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.327
+        },
+        {
+          "perspective": "B",
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_score": 56.1716927717902,
+          "main_rank": 4,
+          "score_ci_low": 26.558983812507062,
+          "score_ci_high": 73.00668537204528,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.256
+        },
+        {
+          "perspective": "B",
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_score": 52.171843407145545,
+          "main_rank": 5,
+          "score_ci_low": 26.28627464703116,
+          "score_ci_high": 75.20987558836951,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.2825
+        },
+        {
+          "perspective": "B",
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_score": 47.412425030800634,
+          "main_rank": 6,
+          "score_ci_low": 18.99206501926638,
+          "score_ci_high": 78.30325047078388,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 6.0,
+          "top3_probability": 0.28
+        },
+        {
+          "perspective": "B",
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_score": 46.92168073560302,
+          "main_rank": 7,
+          "score_ci_low": 12.26248198090056,
+          "score_ci_high": 90.05828991770953,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 5.0,
+          "top3_probability": 0.3615
+        },
+        {
+          "perspective": "B",
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_score": 39.29882393949788,
+          "main_rank": 8,
+          "score_ci_low": 22.67734727725913,
+          "score_ci_high": 73.26840657601784,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 6.0,
+          "top3_probability": 0.2305
+        },
+        {
+          "perspective": "B",
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "main_score": 24.89133546071706,
+          "main_rank": 9,
+          "score_ci_low": 17.708176096548534,
+          "score_ci_high": 75.36346827890473,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 7.0,
+          "top3_probability": 0.213
+        },
+        {
+          "perspective": "B",
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_score": 15.823376203109998,
+          "main_rank": 10,
+          "score_ci_low": 11.583300752673196,
+          "score_ci_high": 80.5837439228068,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 10.0,
+          "median_rank": 7.0,
+          "top3_probability": 0.2445
+        }
+      ]
+    },
+    {
+      "name": "Ranking_C",
+      "records": [
+        {
+          "perspective": "C",
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_score": 77.42963291795185,
+          "main_rank": 1,
+          "score_ci_low": 16.677818249436704,
+          "score_ci_high": 87.38129139093071,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 3.0,
+          "top3_probability": 0.5305
+        },
+        {
+          "perspective": "C",
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_score": 67.17235405860113,
+          "main_rank": 2,
+          "score_ci_low": 15.485770357167238,
+          "score_ci_high": 90.24947061992998,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 3.0,
+          "top3_probability": 0.526
+        },
+        {
+          "perspective": "C",
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_score": 50.1548937015005,
+          "main_rank": 3,
+          "score_ci_low": 13.549546138973646,
+          "score_ci_high": 84.64142734263768,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.4205
+        },
+        {
+          "perspective": "C",
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_score": 44.504217270480346,
+          "main_rank": 4,
+          "score_ci_low": 16.52981358107318,
+          "score_ci_high": 78.26950574532556,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.3785
+        },
+        {
+          "perspective": "C",
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_score": 39.699167177550144,
+          "main_rank": 5,
+          "score_ci_low": 12.838400549315324,
+          "score_ci_high": 81.55378565754714,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.3585
+        },
+        {
+          "perspective": "C",
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_score": 30.89316590497225,
+          "main_rank": 6,
+          "score_ci_low": 16.077329829418588,
+          "score_ci_high": 81.18746829459091,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.393
+        },
+        {
+          "perspective": "C",
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_score": 25.237302011171632,
+          "main_rank": 7,
+          "score_ci_low": 15.97609221538315,
+          "score_ci_high": 82.4569372063978,
+          "rank_ci_low": 1.0,
+          "rank_ci_high": 7.0,
+          "median_rank": 4.0,
+          "top3_probability": 0.393
+        }
+      ]
+    },
+    {
+      "name": "Stability",
+      "records": [
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.13333333333333333,
+          "latent_ranking_stability_T": 0.5666666666666667,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.2333333333333333,
+          "latent_ranking_stability_T": 0.6166666666666667,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.2333333333333333,
+          "latent_ranking_stability_T": 0.6166666666666667,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.09999999999999999,
+          "latent_ranking_stability_T": 0.55,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C5",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1515151515151515,
+          "latent_ranking_stability_T": 0.5757575757575757,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.23636363636363633,
+          "latent_ranking_stability_T": 0.6181818181818182,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.19999999999999998,
+          "latent_ranking_stability_T": 0.6,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.12727272727272726,
+          "latent_ranking_stability_T": 0.5636363636363636,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.07142857142857144,
+          "latent_ranking_stability_T": 0.5357142857142857,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.21428571428571433,
+          "latent_ranking_stability_T": 0.6071428571428572,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.10714285714285716,
+          "latent_ranking_stability_T": 0.5535714285714286,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C5",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "C"
+        }
+      ]
+    }
+  ]
+}

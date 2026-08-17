@@ -1,0 +1,82 @@
+analysis,removed,status,model_id,model,main_rank,scenario_rank,rank_change,scenario_score
+LOFO,GPQA Diamond,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,79.2940087994032
+LOFO,GPQA Diamond,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,75.31501083556651
+LOFO,GPQA Diamond,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,51.31524115577318
+LOFO,GPQA Diamond,OK,qwen3_8_max,Qwen3.8-Max,5,4,-1,45.75152258114527
+LOFO,GPQA Diamond,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,5,1,45.10244457132248
+LOFO,GPQA Diamond,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,6,-1,31.944232797386714
+LOFO,GPQA Diamond,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,7,-1,30.8363273622124
+LOFO,GPQA Diamond,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,8,2,30.143939046531024
+LOFO,GPQA Diamond,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,11.296238122086494
+LOFO,LiveBench Logic,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,70.2048146446142
+LOFO,LiveBench Logic,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,58.41861145360015
+LOFO,LiveBench Logic,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,3,-1,56.55244683876086
+LOFO,LiveBench Logic,OK,kimi_k3_max,Kimi K3 (max reasoning),3,4,1,47.181550785902104
+LOFO,LiveBench Logic,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,40.35800361669218
+LOFO,LiveBench Logic,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,33.814795534729946
+LOFO,LiveBench Logic,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,33.70302244743902
+LOFO,LiveBench Logic,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,26.063301797795532
+LOFO,LiveBench Logic,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,11.339041134391099
+LOFO,LiveBench Math,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,79.5564796610154
+LOFO,LiveBench Math,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,66.28076070637863
+LOFO,LiveBench Math,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,58.25519039428937
+LOFO,LiveBench Math,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,51.4006304788641
+LOFO,LiveBench Math,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,47.188444539115594
+LOFO,LiveBench Math,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,38.983640770838115
+LOFO,LiveBench Math,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,32.64501429207677
+LOFO,LiveBench Math,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,29.480941962561076
+LOFO,LiveBench Math,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,10.36713658113137
+LOFO,AA-Omniscience,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,82.92277148552552
+LOFO,AA-Omniscience,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,68.97872847835248
+LOFO,AA-Omniscience,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,54.625393044493094
+LOFO,AA-Omniscience,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,53.883416985011124
+LOFO,AA-Omniscience,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,50.851502399248574
+LOFO,AA-Omniscience,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,34.43435785945694
+LOFO,AA-Omniscience,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,34.32642783271816
+LOFO,AA-Omniscience,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,32.375444613104904
+LOFO,AA-Omniscience,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,7.128697377793593
+LOFO,CorpusQA,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,76.22048701426408
+LOFO,CorpusQA,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,66.39263982867703
+LOFO,CorpusQA,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,56.17120050267587
+LOFO,CorpusQA,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,46.74908478352607
+LOFO,CorpusQA,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,42.32988382361565
+LOFO,CorpusQA,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,35.83870332312248
+LOFO,CorpusQA,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,7,-1,34.83719112253821
+LOFO,CorpusQA,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,8,1,29.13255577338397
+LOFO,CorpusQA,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,6.9746874193529775
+LOFO,MRCR,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,81.01815446587374
+LOFO,MRCR,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,72.05889056781854
+LOFO,MRCR,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,57.73569078466728
+LOFO,MRCR,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,51.43398226663764
+LOFO,MRCR,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,46.31987042998456
+LOFO,MRCR,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,36.32690374310318
+LOFO,MRCR,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,32.81423408828861
+LOFO,MRCR,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,29.970126207490054
+LOFO,MRCR,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,12.469662514154173
+LOFO,FrontierSWE,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,81.61703666848311
+LOFO,FrontierSWE,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,69.2227120756378
+LOFO,FrontierSWE,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,3,-1,52.33876176406909
+LOFO,FrontierSWE,OK,kimi_k3_max,Kimi K3 (max reasoning),3,4,1,51.29860147223146
+LOFO,FrontierSWE,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,46.136530213183136
+LOFO,FrontierSWE,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,33.99802740017107
+LOFO,FrontierSWE,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,32.43163330366253
+LOFO,FrontierSWE,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,25.82854505246143
+LOFO,FrontierSWE,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,9.609072853166792
+LOFO,ProgramBench,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,79.11358125289769
+LOFO,ProgramBench,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,71.26626847421338
+LOFO,ProgramBench,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,52.1056728422746
+LOFO,ProgramBench,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,51.56579771981596
+LOFO,ProgramBench,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,45.98436783169737
+LOFO,ProgramBench,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,34.03922068529695
+LOFO,ProgramBench,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,32.515859871625594
+LOFO,ProgramBench,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,27.879912013381478
+LOFO,ProgramBench,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,10.129148993547638
+LOFO,SWE-bench Verified,OK,gpt_5_6_sol_max,GPT-5.6 Sol (max),1,1,0,78.20188981723263
+LOFO,SWE-bench Verified,OK,claude_fable_5_max,"Claude Fable 5 (max, with fallback)",2,2,0,69.64841400774887
+LOFO,SWE-bench Verified,OK,kimi_k3_max,Kimi K3 (max reasoning),3,3,0,54.02594065178359
+LOFO,SWE-bench Verified,OK,gemini_3_1_pro_high,Gemini-3.1-Pro (High),4,4,0,48.89985016295189
+LOFO,SWE-bench Verified,OK,qwen3_8_max,Qwen3.8-Max,5,5,0,44.85217296673453
+LOFO,SWE-bench Verified,OK,gpt_5_5_xhigh,GPT-5.5 (xhigh),6,6,0,33.60348258328185
+LOFO,SWE-bench Verified,OK,claude_opus_4_8_max,Claude Opus 4.8 (max),7,7,0,32.32604973531897
+LOFO,SWE-bench Verified,OK,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,8,8,0,24.339898977250833
+LOFO,SWE-bench Verified,OK,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,9,9,0,14.106417865866714

@@ -1,0 +1,178 @@
+{
+  "filename": "paper_table_q1_v12_ranking_C_estimable_c5_multimodal.xlsx",
+  "description": "Ranking C: subset of seven multimodal models with estimable C5 latent ability.",
+  "sheets": [
+    {
+      "name": "Ranking_C",
+      "records": [
+        {
+          "rank": 1,
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "C1": 80.61841813896953,
+          "C2": 59.35824195831793,
+          "C3": 54.027946711038894,
+          "C4": 73.95492598314146,
+          "C5": 100.0,
+          "overall_score": 77.42963291795185,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 2,
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "C1": 48.008362427373925,
+          "C2": 100.0,
+          "C3": 51.06282352003342,
+          "C4": 100.0,
+          "C5": 61.41143677202628,
+          "overall_score": 67.17235405860113,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 3,
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "C1": 80.22246611688637,
+          "C2": 46.25746211394311,
+          "C3": 66.36155480567838,
+          "C4": 93.7799430615481,
+          "C5": 34.56856016386749,
+          "overall_score": 50.1548937015005,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 4,
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "C1": 62.030463835309725,
+          "C2": 11.368579925920463,
+          "C3": 44.43634483658853,
+          "C4": 62.073248468298715,
+          "C5": 55.081950858103056,
+          "overall_score": 44.504217270480346,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 5,
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "C1": 95.97204269870555,
+          "C2": 41.061524078229155,
+          "C3": 0.0,
+          "C4": 52.65716561941289,
+          "C5": 59.50518071798478,
+          "overall_score": 39.699167177550144,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 6,
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "C1": 88.99815616050248,
+          "C2": 36.467209580040624,
+          "C3": 57.73101758009519,
+          "C4": 38.55644871890536,
+          "C5": 6.974308690462572,
+          "overall_score": 30.89316590497225,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        },
+        {
+          "rank": 7,
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "C1": 100.0,
+          "C2": 45.609972782355385,
+          "C3": 40.818908559372474,
+          "C4": 45.03215040211417,
+          "C5": 0.0,
+          "overall_score": 25.237302011171632,
+          "ranking_perspective": "C_ESTIMABLE_C5_MULTIMODAL_SUBSET"
+        }
+      ]
+    },
+    {
+      "name": "Weights_C",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.012899465751862627,
+          "non_redundancy_R": 0.5089285714285714,
+          "latent_rank_stability_T": 0.5357142857142857,
+          "q": 0.0035169142914038727,
+          "weight": 0.027977260418392352
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.06800562988986514,
+          "non_redundancy_R": 0.5625,
+          "latent_rank_stability_T": 0.6071428571428572,
+          "q": 0.02322513699363698,
+          "weight": 0.18475733329982402
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.08582530647092013,
+          "non_redundancy_R": 0.7589285714285714,
+          "latent_rank_stability_T": 0.5535714285714286,
+          "q": 0.0360570284679328,
+          "weight": 0.2868357860828225
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.027787239505243533,
+          "non_redundancy_R": 0.3928571428571427,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.006432887717094004,
+          "weight": 0.05117400084025779
+        },
+        {
+          "dimension": "C5",
+          "information_I": 0.16513109864256026,
+          "non_redundancy_R": 0.5803571428571428,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.056474203856551615,
+          "weight": 0.44925561935870334
+        }
+      ]
+    },
+    {
+      "name": "Rank_Comparison",
+      "records": [
+        {
+          "comparison": "A vs B (common models)",
+          "common_models": 10,
+          "spearman": 0.8181818181818182,
+          "kendall_tau": 0.6444444444444444,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "A vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.9642857142857145,
+          "kendall_tau": 0.9047619047619049,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.5357142857142858,
+          "kendall_tau": 0.23809523809523814,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    }
+  ]
+}

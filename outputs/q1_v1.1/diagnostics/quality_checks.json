@@ -1,0 +1,25 @@
+{
+  "frozen_sha256_unchanged": true,
+  "frozen_files_checked": 17,
+  "source_data_modified": false,
+  "na_silently_converted_to_benchmark_zero": false,
+  "capability_absence_zero_models": [
+    "deepseek_v4_flash_max",
+    "deepseek_v4_pro_max"
+  ],
+  "benchmark_missing_or_unresolved_models_kept_na": [
+    "glm_5_2_max"
+  ],
+  "weights_sum_A": 1.0,
+  "weights_sum_B": 1.0,
+  "weights_sum_C": 1.0,
+  "main_bt_all_converged": true,
+  "bootstrap_bt_all_converged": true,
+  "coverage_consistency_assertion": true,
+  "all_figures_nonempty": true,
+  "bootstrap_B": 2000,
+  "random_seed": 20260817,
+  "manual_confirmation_required": [
+    "GLM-5.2 (max)"
+  ]
+}

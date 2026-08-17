@@ -1,0 +1,586 @@
+{
+  "filename": "table_q1_v12_loso.xlsx",
+  "description": "Leave-one-source-out source concentration analysis with explicit NETWORK_DISCONNECTED results.",
+  "sheets": [
+    {
+      "name": "Scenario_Summary",
+      "records": [
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "LiveBench",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "Artificial Analysis",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "status": "NETWORK_DISCONNECTED",
+          "comparison": "Kimi official/technical comparison",
+          "common_models": null,
+          "spearman": null,
+          "kendall_tau": null,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": null,
+          "top3_overlap_count": null,
+          "top3_membership_A": "gpt_5_6_sol_max; claude_fable_5_max; kimi_k3_max",
+          "top3_membership_other": "NETWORK_DISCONNECTED"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "comparison": "DeepSeek technical report",
+          "common_models": 10.0,
+          "spearman": 0.9999999999999999,
+          "kendall_tau": 0.9999999999999999,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "comparison": "OpenRouter",
+          "common_models": 10.0,
+          "spearman": 0.9878787878787878,
+          "kendall_tau": 0.9555555555555554,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3.0,
+          "top3_overlap_count": 3.0,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    },
+    {
+      "name": "Model_Changes",
+      "records": [
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_rank": 1,
+          "scenario_rank": 1,
+          "rank_change": 0,
+          "scenario_score": 75.4334737919716
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_rank": 2,
+          "scenario_rank": 2,
+          "rank_change": 0,
+          "scenario_score": 67.62347080099819
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_rank": 3,
+          "scenario_rank": 3,
+          "rank_change": 0,
+          "scenario_score": 64.78976340907282
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_rank": 4,
+          "scenario_rank": 4,
+          "rank_change": 0,
+          "scenario_score": 59.447077390027005
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_rank": 5,
+          "scenario_rank": 5,
+          "rank_change": 0,
+          "scenario_score": 39.334684018136926
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_rank": 6,
+          "scenario_rank": 6,
+          "rank_change": 0,
+          "scenario_score": 37.21157663436371
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_rank": 7,
+          "scenario_rank": 7,
+          "rank_change": 0,
+          "scenario_score": 25.406671794112366
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_rank": 8,
+          "scenario_rank": 8,
+          "rank_change": 0,
+          "scenario_score": 15.014488459267657
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "main_rank": 9,
+          "scenario_rank": 9,
+          "rank_change": 0,
+          "scenario_score": 13.996465265626714
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "status": "OK",
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_rank": 10,
+          "scenario_rank": 10,
+          "rank_change": 0,
+          "scenario_score": 9.821500244355232
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "main_rank": 1,
+          "scenario_rank": 1,
+          "rank_change": 0,
+          "scenario_score": 80.27832336419368
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "main_rank": 2,
+          "scenario_rank": 2,
+          "rank_change": 0,
+          "scenario_score": 75.15869278291186
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "main_rank": 3,
+          "scenario_rank": 3,
+          "rank_change": 0,
+          "scenario_score": 50.46694260791863
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "main_rank": 4,
+          "scenario_rank": 4,
+          "rank_change": 0,
+          "scenario_score": 46.14957507162825
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "main_rank": 5,
+          "scenario_rank": 5,
+          "rank_change": 0,
+          "scenario_score": 45.743019928486035
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "main_rank": 7,
+          "scenario_rank": 6,
+          "rank_change": -1,
+          "scenario_score": 29.74147485535393
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "main_rank": 6,
+          "scenario_rank": 7,
+          "rank_change": 1,
+          "scenario_score": 28.541127552227035
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "main_rank": 8,
+          "scenario_rank": 8,
+          "rank_change": 0,
+          "scenario_score": 28.520832443631427
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "main_rank": 9,
+          "scenario_rank": 9,
+          "rank_change": 0,
+          "scenario_score": 16.21569561812768
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "status": "OK",
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "main_rank": 10,
+          "scenario_rank": 10,
+          "rank_change": 0,
+          "scenario_score": 10.468247882736646
+        }
+      ]
+    },
+    {
+      "name": "Dimension_QC",
+      "records": [
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "dimension": "C1",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 8,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 18.048086168395248
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "dimension": "C2",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "dimension": "C3",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "dimension": "C4",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 8,
+          "baseline_active_models": 10,
+          "connected": false,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 10.287307393375938
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "LiveBench",
+          "dimension": "C5",
+          "status": "OK",
+          "active_models": 7,
+          "baseline_active_models": 7,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "dimension": "C1",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "dimension": "C2",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 0,
+          "baseline_active_models": 10,
+          "connected": false,
+          "bt_converged": false,
+          "mean_abs_dimension_score_change": null
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "dimension": "C3",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 3,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 2.167783024979608
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "dimension": "C4",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Artificial Analysis",
+          "dimension": "C5",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 5,
+          "baseline_active_models": 7,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 22.6980786545639
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "dimension": "C1",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "dimension": "C2",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "dimension": "C3",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "dimension": "C4",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 15.749454136771442
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "Kimi official/technical comparison",
+          "dimension": "C5",
+          "status": "NETWORK_DISCONNECTED",
+          "active_models": 5,
+          "baseline_active_models": 7,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 9.365011889406787
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "dimension": "C1",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "dimension": "C2",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "dimension": "C3",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 31.284508979486183
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "dimension": "C4",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 18.789681363444526
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "DeepSeek technical report",
+          "dimension": "C5",
+          "status": "OK",
+          "active_models": 7,
+          "baseline_active_models": 7,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "dimension": "C1",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 15.930469952991123
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "dimension": "C2",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "dimension": "C3",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "dimension": "C4",
+          "status": "OK",
+          "active_models": 10,
+          "baseline_active_models": 10,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        },
+        {
+          "analysis": "LOSO",
+          "removed": "OpenRouter",
+          "dimension": "C5",
+          "status": "OK",
+          "active_models": 7,
+          "baseline_active_models": 7,
+          "connected": true,
+          "bt_converged": true,
+          "mean_abs_dimension_score_change": 0.0
+        }
+      ]
+    }
+  ]
+}

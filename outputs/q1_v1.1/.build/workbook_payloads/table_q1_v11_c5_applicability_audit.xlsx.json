@@ -1,0 +1,111 @@
+{
+  "filename": "table_q1_v11_c5_applicability_audit.xlsx",
+  "description": "C5 capability applicability audit; benchmark missing is never converted to a benchmark zero.",
+  "sheets": [
+    {
+      "name": "C5_Audit",
+      "records": [
+        {
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "OBSERVED",
+          "MathVision_status": "OBSERVED",
+          "evidence_source": "Frozen C5 observation(s): MMMU-Pro, MathVision",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "OBSERVED",
+          "MathVision_status": "OBSERVED",
+          "evidence_source": "Frozen C5 observation(s): MMMU-Pro, MathVision",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "OBSERVED",
+          "MathVision_status": "OBSERVED",
+          "evidence_source": "Frozen C5 observation(s): MMMU-Pro, MathVision",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "BENCHMARK_MISSING",
+          "MathVision_status": "OBSERVED",
+          "evidence_source": "Frozen C5 observation(s): MathVision",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "BENCHMARK_MISSING",
+          "MathVision_status": "OBSERVED",
+          "evidence_source": "Frozen C5 observation(s): MathVision",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "OBSERVED",
+          "MathVision_status": "BENCHMARK_MISSING",
+          "evidence_source": "Frozen C5 observation(s): MMMU-Pro",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "multimodal_capable": false,
+          "C5_applicability_type": "Type A: STRUCTURAL_CAPABILITY_ABSENCE",
+          "MMMU_Pro_status": "NOT_APPLICABLE_CAPABILITY_ABSENCE",
+          "MathVision_status": "NOT_APPLICABLE_CAPABILITY_ABSENCE",
+          "evidence_source": "SRC003 DeepSeek-V4 official technical report, line 3348: 'We are also working on incorporating multimodal capabilities to our models.'",
+          "handling_rule": "Benchmark scores remain NA; set capability availability A_i=0 and S_i5*=0 only for the overall capability system."
+        },
+        {
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "multimodal_capable": false,
+          "C5_applicability_type": "Type A: STRUCTURAL_CAPABILITY_ABSENCE",
+          "MMMU_Pro_status": "NOT_APPLICABLE_CAPABILITY_ABSENCE",
+          "MathVision_status": "NOT_APPLICABLE_CAPABILITY_ABSENCE",
+          "evidence_source": "SRC003 DeepSeek-V4 official technical report, line 3348: 'We are also working on incorporating multimodal capabilities to our models.'",
+          "handling_rule": "Benchmark scores remain NA; set capability availability A_i=0 and S_i5*=0 only for the overall capability system."
+        },
+        {
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "multimodal_capable": true,
+          "C5_applicability_type": "Type C: NORMAL_OBSERVATION",
+          "MMMU_Pro_status": "OBSERVED",
+          "MathVision_status": "BENCHMARK_MISSING",
+          "evidence_source": "Frozen C5 observation(s): MMMU-Pro",
+          "handling_rule": "Use observed C5 Bradley-Terry score as S_i5*."
+        },
+        {
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "multimodal_capable": "REQUIRES_MANUAL_CONFIRMATION",
+          "C5_applicability_type": "REQUIRES_MANUAL_CONFIRMATION",
+          "MMMU_Pro_status": "REQUIRES_MANUAL_CONFIRMATION",
+          "MathVision_status": "REQUIRES_MANUAL_CONFIRMATION",
+          "evidence_source": "SRC013 official model card has pipeline_tag=text-generation; SRC001 comparison table reports dashes for all GLM-5.2 vision rows. These facts do not prove capability absence.",
+          "handling_rule": "Keep C5* as NA; report a conditional score/rank interval. Do not assign zero before manual confirmation."
+        }
+      ]
+    }
+  ]
+}

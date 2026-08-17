@@ -1,0 +1,151 @@
+{
+  "filename": "paper_table_q1_v11_sources.xlsx",
+  "description": "Compact formal data-source table derived from the frozen source registry and benchmark manifest.",
+  "sheets": [
+    {
+      "name": "Sources",
+      "records": [
+        {
+          "Benchmark Family": "GPQA Diamond",
+          "主要来源": "SRC007 OpenRouter: OpenRouter GPQA Diamond benchmark page",
+          "来源类型": "Independent unified endpoint benchmark page",
+          "来源等级": "C",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 8,
+          "主要风险": "authority level C",
+          "source_ids": "SRC007"
+        },
+        {
+          "Benchmark Family": "LiveBench Logic",
+          "主要来源": "SRC006 LiveBench: LiveBench official table release 2026-06-25",
+          "来源类型": "Independent unified benchmark platform / official CSV",
+          "来源等级": "A",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 10,
+          "主要风险": "protocol/version comparability",
+          "source_ids": "SRC006"
+        },
+        {
+          "Benchmark Family": "LiveBench Math",
+          "主要来源": "SRC006 LiveBench: LiveBench official table release 2026-06-25",
+          "来源类型": "Independent unified benchmark platform / official CSV",
+          "来源等级": "A",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 10,
+          "主要风险": "protocol/version comparability",
+          "source_ids": "SRC006"
+        },
+        {
+          "Benchmark Family": "AA-Omniscience",
+          "主要来源": "SRC017 Artificial Analysis: AA-Omniscience public leaderboard snapshot 2026-08-16",
+          "来源类型": "Independent standardized benchmark leaderboard",
+          "来源等级": "A",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 6,
+          "主要风险": "protocol/version comparability",
+          "source_ids": "SRC017"
+        },
+        {
+          "Benchmark Family": "Humanity's Last Exam",
+          "主要来源": "SRC016 Artificial Analysis: Humanity's Last Exam public leaderboard snapshot 2026-08-16",
+          "来源类型": "Independent standardized benchmark leaderboard",
+          "来源等级": "C",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 10,
+          "主要风险": "authority level C",
+          "source_ids": "SRC016"
+        },
+        {
+          "Benchmark Family": "AA-LCR",
+          "主要来源": "SRC014 Artificial Analysis: AA-LCR public leaderboard snapshot 2026-08-16",
+          "来源类型": "Independent standardized benchmark leaderboard",
+          "来源等级": "A",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 10,
+          "主要风险": "snapshot-sensitive",
+          "source_ids": "SRC014"
+        },
+        {
+          "Benchmark Family": "CorpusQA",
+          "主要来源": "SRC003 DeepSeek: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "来源类型": "Vendor technical report / arXiv HTML",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 3,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC003"
+        },
+        {
+          "Benchmark Family": "MRCR",
+          "主要来源": "SRC003 DeepSeek: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "来源类型": "Vendor technical report / arXiv HTML",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 3,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC003"
+        },
+        {
+          "Benchmark Family": "FrontierSWE",
+          "主要来源": "SRC001 Moonshot AI: Kimi K3 README / Technical Release",
+          "来源类型": "Vendor official GitHub / model technical release",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 6,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC001"
+        },
+        {
+          "Benchmark Family": "LiveBench Coding",
+          "主要来源": "SRC006 LiveBench: LiveBench official table release 2026-06-25",
+          "来源类型": "Independent unified benchmark platform / official CSV",
+          "来源等级": "A",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 10,
+          "主要风险": "protocol/version comparability",
+          "source_ids": "SRC006"
+        },
+        {
+          "Benchmark Family": "ProgramBench",
+          "主要来源": "SRC001 Moonshot AI: Kimi K3 README / Technical Release",
+          "来源类型": "Vendor official GitHub / model technical release",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 6,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC001"
+        },
+        {
+          "Benchmark Family": "SWE-bench Verified",
+          "主要来源": "SRC003 DeepSeek: DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence",
+          "来源类型": "Vendor technical report / arXiv HTML",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 2,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC003"
+        },
+        {
+          "Benchmark Family": "MMMU-Pro",
+          "主要来源": "SRC018 Artificial Analysis: MMMU-Pro public leaderboard snapshot 2026-08-16",
+          "来源类型": "Independent standardized benchmark leaderboard",
+          "来源等级": "C",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 5,
+          "主要风险": "authority level C",
+          "source_ids": "SRC018"
+        },
+        {
+          "Benchmark Family": "MathVision",
+          "主要来源": "SRC001 Moonshot AI: Kimi K3 README / Technical Release",
+          "来源类型": "Vendor official GitHub / model technical release",
+          "来源等级": "B",
+          "snapshot / access date": "2026-08-16",
+          "覆盖模型": 5,
+          "主要风险": "vendor-reported comparison",
+          "source_ids": "SRC001"
+        }
+      ]
+    }
+  ]
+}

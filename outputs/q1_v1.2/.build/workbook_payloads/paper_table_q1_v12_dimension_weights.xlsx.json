@@ -1,0 +1,236 @@
+{
+  "filename": "paper_table_q1_v12_dimension_weights.xlsx",
+  "description": "Information, non-redundancy and latent-ranking-stability objective weights for all three perspectives.",
+  "sheets": [
+    {
+      "name": "Weights_A",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.07540975529256178,
+          "non_redundancy_R": 0.700254363043754,
+          "latent_rank_stability_T": 0.5757575757575757,
+          "q": 0.030403460394966234,
+          "weight": 0.12821248616286932
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.136024331882188,
+          "non_redundancy_R": 0.5734837121082647,
+          "latent_rank_stability_T": 0.6181818181818182,
+          "q": 0.04822296579426704,
+          "weight": 0.20335798143732478
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.06195553894412442,
+          "non_redundancy_R": 0.7873897110977757,
+          "latent_rank_stability_T": 0.6,
+          "q": 0.02926989234607267,
+          "weight": 0.12343218892382543
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.08123512668205335,
+          "non_redundancy_R": 0.6119405618168778,
+          "latent_rank_stability_T": 0.5636363636363636,
+          "q": 0.028018966198063818,
+          "weight": 0.11815698835919133
+        },
+        {
+          "dimension": "C5",
+          "information_I": 0.29445392768787026,
+          "non_redundancy_R": 0.5833307925459373,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.10121809677164595,
+          "weight": 0.4268403551167892
+        }
+      ]
+    },
+    {
+      "name": "Weights_B",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.07540975529256178,
+          "non_redundancy_R": 0.7108097712999328,
+          "latent_rank_stability_T": 0.5757575757575757,
+          "q": 0.0308617523440153,
+          "weight": 0.2132553792915566
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.136024331882188,
+          "non_redundancy_R": 0.6585059112890155,
+          "latent_rank_stability_T": 0.6181818181818182,
+          "q": 0.055372292821836894,
+          "weight": 0.3826237465823567
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.06195553894412442,
+          "non_redundancy_R": 0.7426533198421059,
+          "latent_rank_stability_T": 0.6,
+          "q": 0.027606892007676527,
+          "weight": 0.1907642236426593
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.08123512668205335,
+          "non_redundancy_R": 0.6743477382632588,
+          "latent_rank_stability_T": 0.5636363636363636,
+          "q": 0.03087640804204966,
+          "weight": 0.2133566504834274
+        }
+      ]
+    },
+    {
+      "name": "Weights_C",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.012899465751862627,
+          "non_redundancy_R": 0.5089285714285714,
+          "latent_rank_stability_T": 0.5357142857142857,
+          "q": 0.0035169142914038727,
+          "weight": 0.027977260418392352
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.06800562988986514,
+          "non_redundancy_R": 0.5625,
+          "latent_rank_stability_T": 0.6071428571428572,
+          "q": 0.02322513699363698,
+          "weight": 0.18475733329982402
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.08582530647092013,
+          "non_redundancy_R": 0.7589285714285714,
+          "latent_rank_stability_T": 0.5535714285714286,
+          "q": 0.0360570284679328,
+          "weight": 0.2868357860828225
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.027787239505243533,
+          "non_redundancy_R": 0.3928571428571427,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.006432887717094004,
+          "weight": 0.05117400084025779
+        },
+        {
+          "dimension": "C5",
+          "information_I": 0.16513109864256026,
+          "non_redundancy_R": 0.5803571428571428,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.056474203856551615,
+          "weight": 0.44925561935870334
+        }
+      ]
+    },
+    {
+      "name": "Stability",
+      "records": [
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1515151515151515,
+          "latent_ranking_stability_T": 0.5757575757575757,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.23636363636363633,
+          "latent_ranking_stability_T": 0.6181818181818182,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.19999999999999998,
+          "latent_ranking_stability_T": 0.6,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.12727272727272726,
+          "latent_ranking_stability_T": 0.5636363636363636,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C5",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "A"
+        },
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1515151515151515,
+          "latent_ranking_stability_T": 0.5757575757575757,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.23636363636363633,
+          "latent_ranking_stability_T": 0.6181818181818182,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.19999999999999998,
+          "latent_ranking_stability_T": 0.6,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.12727272727272726,
+          "latent_ranking_stability_T": 0.5636363636363636,
+          "perspective": "B"
+        },
+        {
+          "perspective_dimension": "C1",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.07142857142857144,
+          "latent_ranking_stability_T": 0.5357142857142857,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C2",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.21428571428571433,
+          "latent_ranking_stability_T": 0.6071428571428572,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C3",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.10714285714285716,
+          "latent_ranking_stability_T": 0.5535714285714286,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C4",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "C"
+        },
+        {
+          "perspective_dimension": "C5",
+          "valid_bootstrap_replicates": 2000,
+          "median_spearman_theta_rank": 0.1785714285714286,
+          "latent_ranking_stability_T": 0.5892857142857143,
+          "perspective": "C"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "filename": "paper_table_q1_v12_ranking_B_C1_C4.xlsx",
+  "description": "All-ten-model common text/reasoning/knowledge/context/code ranking with weights recomputed from C1-C4.",
+  "sheets": [
+    {
+      "name": "Ranking_B",
+      "records": [
+        {
+          "rank": 1,
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "C1": 48.008362427373925,
+          "C2": 100.0,
+          "C3": 51.06282352003342,
+          "C4": 100.0,
+          "overall_score": 79.57704113099587,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 2,
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "C1": 80.22246611688637,
+          "C2": 46.25746211394311,
+          "C3": 66.36155480567838,
+          "C4": 93.7799430615481,
+          "overall_score": 67.47506091725245,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 3,
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "C1": 80.61841813896953,
+          "C2": 59.35824195831793,
+          "C3": 54.027946711038894,
+          "C4": 73.95492598314146,
+          "overall_score": 65.98955887059607,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 4,
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "C1": 100.0,
+          "C2": 45.609972782355385,
+          "C3": 40.818908559372474,
+          "C4": 45.03215040211417,
+          "overall_score": 56.1716927717902,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 5,
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "C1": 88.99815616050248,
+          "C2": 36.467209580040624,
+          "C3": 57.73101758009519,
+          "C4": 38.55644871890536,
+          "overall_score": 52.171843407145545,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 6,
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "C1": 95.97204269870555,
+          "C2": 41.061524078229155,
+          "C3": 0.0,
+          "C4": 52.65716561941289,
+          "overall_score": 47.412425030800634,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 7,
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "C1": 37.365299588477896,
+          "C2": 0.0,
+          "C3": 100.0,
+          "C4": 93.16282004904058,
+          "overall_score": 46.92168073560302,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 8,
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "C1": 62.030463835309725,
+          "C2": 11.368579925920463,
+          "C3": 44.43634483658853,
+          "C4": 62.073248468298715,
+          "overall_score": 39.29882393949788,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 9,
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "C1": 29.304570389924805,
+          "C2": 9.803510167641388,
+          "C3": 51.06282352003342,
+          "C4": 24.137811030338977,
+          "overall_score": 24.89133546071706,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        },
+        {
+          "rank": 10,
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "C1": 0.0,
+          "C2": 16.61647141654705,
+          "C3": 49.61894570159547,
+          "C4": 0.0,
+          "overall_score": 15.823376203109998,
+          "ranking_perspective": "B_COMMON_C1_C4"
+        }
+      ]
+    },
+    {
+      "name": "Weights_B",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.07540975529256178,
+          "non_redundancy_R": 0.7108097712999328,
+          "latent_rank_stability_T": 0.5757575757575757,
+          "q": 0.0308617523440153,
+          "weight": 0.2132553792915566
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.136024331882188,
+          "non_redundancy_R": 0.6585059112890155,
+          "latent_rank_stability_T": 0.6181818181818182,
+          "q": 0.055372292821836894,
+          "weight": 0.3826237465823567
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.06195553894412442,
+          "non_redundancy_R": 0.7426533198421059,
+          "latent_rank_stability_T": 0.6,
+          "q": 0.027606892007676527,
+          "weight": 0.1907642236426593
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.08123512668205335,
+          "non_redundancy_R": 0.6743477382632588,
+          "latent_rank_stability_T": 0.5636363636363636,
+          "q": 0.03087640804204966,
+          "weight": 0.2133566504834274
+        }
+      ]
+    },
+    {
+      "name": "Rank_Comparison",
+      "records": [
+        {
+          "comparison": "A vs B (common models)",
+          "common_models": 10,
+          "spearman": 0.8181818181818182,
+          "kendall_tau": 0.6444444444444444,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "A vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.9642857142857145,
+          "kendall_tau": 0.9047619047619049,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.5357142857142858,
+          "kendall_tau": 0.23809523809523814,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    }
+  ]
+}

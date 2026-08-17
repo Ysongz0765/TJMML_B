@@ -1,0 +1,214 @@
+{
+  "filename": "paper_table_q1_v12_ranking_A.xlsx",
+  "description": "Unified C1-C5* ranking for all ten models; Type-A C5* zeros are capability availability metadata, not benchmark scores.",
+  "sheets": [
+    {
+      "name": "Ranking_A",
+      "records": [
+        {
+          "rank": 1,
+          "model_id": "gpt_5_6_sol_max",
+          "model": "GPT-5.6 Sol (max)",
+          "C1": 80.61841813896953,
+          "C2": 59.35824195831793,
+          "C3": 54.027946711038894,
+          "C4": 73.95492598314146,
+          "overall_score": 80.49837465220403,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 100
+        },
+        {
+          "rank": 2,
+          "model_id": "claude_fable_5_max",
+          "model": "Claude Fable 5 (max, with fallback)",
+          "C1": 48.008362427373925,
+          "C2": 100,
+          "C3": 51.06282352003342,
+          "C4": 100,
+          "overall_score": 70.82244404278597,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 61.41143677202628
+        },
+        {
+          "rank": 3,
+          "model_id": "kimi_k3_max",
+          "model": "Kimi K3 (max reasoning)",
+          "C1": 80.22246611688637,
+          "C2": 46.25746211394311,
+          "C3": 66.36155480567838,
+          "C4": 93.7799430615481,
+          "overall_score": 53.71951005579109,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 34.56856016386749
+        },
+        {
+          "rank": 4,
+          "model_id": "gemini_3_1_pro_high",
+          "model": "Gemini-3.1-Pro (High)",
+          "C1": 95.97204269870555,
+          "C2": 41.061524078229155,
+          "C3": 0,
+          "C4": 52.65716561941289,
+          "overall_score": 52.2760274218932,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 59.50518071798478
+        },
+        {
+          "rank": 5,
+          "model_id": "qwen3_8_max",
+          "model": "Qwen3.8-Max",
+          "C1": 62.030463835309725,
+          "C2": 11.368579925920463,
+          "C3": 44.43634483658853,
+          "C4": 62.073248468298715,
+          "overall_score": 46.59543432414334,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 55.081950858103056
+        },
+        {
+          "rank": 6,
+          "model_id": "gpt_5_5_xhigh",
+          "model": "GPT-5.5 (xhigh)",
+          "C1": 88.99815616050248,
+          "C2": 36.467209580040624,
+          "C3": 57.73101758009519,
+          "C4": 38.55644871890536,
+          "overall_score": 33.485069123391845,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 6.974308690462572
+        },
+        {
+          "rank": 7,
+          "model_id": "claude_opus_4_8_max",
+          "model": "Claude Opus 4.8 (max)",
+          "C1": 100,
+          "C2": 45.609972782355385,
+          "C3": 40.818908559372474,
+          "C4": 45.03215040211417,
+          "overall_score": 32.455631118534825,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": 0
+        },
+        {
+          "rank": 8,
+          "model_id": "deepseek_v4_pro_max",
+          "model": "DeepSeek-V4-Pro Max",
+          "C1": 37.365299588477896,
+          "C2": 0,
+          "C3": 100,
+          "C4": 93.16282004904058,
+          "overall_score": 28.141755092885656,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": "0*"
+        },
+        {
+          "rank": 9,
+          "model_id": "glm_5_2_max",
+          "model": "GLM-5.2 (max)",
+          "C1": 29.304570389924805,
+          "C2": 9.803510167641388,
+          "C3": 51.06282352003342,
+          "C4": 24.137811030338977,
+          "overall_score": 14.905681000955749,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": "0*"
+        },
+        {
+          "rank": 10,
+          "model_id": "deepseek_v4_flash_max",
+          "model": "DeepSeek-V4-Flash Max",
+          "C1": 0,
+          "C2": 16.61647141654705,
+          "C3": 49.61894570159547,
+          "C4": 0,
+          "overall_score": 9.503667165920382,
+          "ranking_perspective": "A_UNIFIED_C1_C5_STAR",
+          "C5* 多模态有效能力": "0*"
+        }
+      ]
+    },
+    {
+      "name": "Weights_A",
+      "records": [
+        {
+          "dimension": "C1",
+          "information_I": 0.07540975529256178,
+          "non_redundancy_R": 0.700254363043754,
+          "latent_rank_stability_T": 0.5757575757575757,
+          "q": 0.030403460394966234,
+          "weight": 0.12821248616286932
+        },
+        {
+          "dimension": "C2",
+          "information_I": 0.136024331882188,
+          "non_redundancy_R": 0.5734837121082647,
+          "latent_rank_stability_T": 0.6181818181818182,
+          "q": 0.04822296579426704,
+          "weight": 0.20335798143732478
+        },
+        {
+          "dimension": "C3",
+          "information_I": 0.06195553894412442,
+          "non_redundancy_R": 0.7873897110977757,
+          "latent_rank_stability_T": 0.6,
+          "q": 0.02926989234607267,
+          "weight": 0.12343218892382543
+        },
+        {
+          "dimension": "C4",
+          "information_I": 0.08123512668205335,
+          "non_redundancy_R": 0.6119405618168778,
+          "latent_rank_stability_T": 0.5636363636363636,
+          "q": 0.028018966198063818,
+          "weight": 0.11815698835919133
+        },
+        {
+          "dimension": "C5",
+          "information_I": 0.29445392768787026,
+          "non_redundancy_R": 0.5833307925459373,
+          "latent_rank_stability_T": 0.5892857142857143,
+          "q": 0.10121809677164595,
+          "weight": 0.4268403551167892
+        }
+      ]
+    },
+    {
+      "name": "Rank_Comparison",
+      "records": [
+        {
+          "comparison": "A vs B (common models)",
+          "common_models": 10,
+          "spearman": 0.8181818181818182,
+          "kendall_tau": 0.6444444444444444,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 2,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "A vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.9642857142857145,
+          "kendall_tau": 0.9047619047619049,
+          "kimi_rank_A": 3,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        },
+        {
+          "comparison": "B vs C (common models)",
+          "common_models": 7,
+          "spearman": 0.5357142857142858,
+          "kendall_tau": 0.23809523809523814,
+          "kimi_rank_A": 2,
+          "kimi_rank_other": 3,
+          "top3_overlap_count": 3,
+          "top3_membership_A": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max",
+          "top3_membership_other": "claude_fable_5_max; gpt_5_6_sol_max; kimi_k3_max"
+        }
+      ]
+    }
+  ]
+}
