@@ -2,7 +2,10 @@
 
 Audit date: 2026-08-17
 
-Human verified: FALSE for every model. Codex prepared evidence and recommendations only.
+Human verification write-back completed on 2026-08-17. The eight FULL
+cost-observable models are `VERIFIED_FULL_PRICE`. Claude Fable 5 is
+`REVIEWED_PARTIAL_COST` and GLM-5.2 is `REVIEWED_MISSING_PUBLIC_PRICE`; neither
+is a complete FULL-cost record.
 
 ## Summary
 
@@ -25,7 +28,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use baseline price after human verification
 - Confidence: high
 - Special issue: reasoning_content tokens are billable
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## gpt_5_6_sol_max
 
@@ -44,7 +48,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use short-context standard price after human verification
 - Confidence: high
 - Special issue: reasoning tokens are billable model tokens
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## gpt_5_5_xhigh
 
@@ -63,7 +68,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use short-context standard price after human verification
 - Confidence: high
 - Special issue: xhigh is a reasoning configuration and not a separate pricing SKU
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## claude_fable_5_max
 
@@ -83,6 +89,7 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Confidence: medium
 - Special issue: fallback cost unresolved
 - Human verified: FALSE
+- Human review status: REVIEWED_PARTIAL_COST
 
 ### Claude Fable fallback
 
@@ -112,7 +119,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use base model price after human verification; no separate max price SKU found
 - Confidence: medium
 - Special issue: confirm exact effort parameter level during manual review
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## gemini_3_1_pro_high
 
@@ -131,7 +139,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use <=200K tier for current Q3 baselines after human verification
 - Confidence: high
 - Special issue: output price includes thinking tokens
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## deepseek_v4_pro_max
 
@@ -150,7 +159,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use peak realtime API price after human verification
 - Confidence: high
 - Special issue: time-of-day pricing tier
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## deepseek_v4_flash_max
 
@@ -169,7 +179,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use peak realtime API price after human verification
 - Confidence: high
 - Special issue: time-of-day pricing tier
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## qwen3_8_max
 
@@ -188,7 +199,8 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Codex recommendation: Use first-range standard API price after human verification
 - Confidence: high
 - Special issue: cache and batch discounts excluded from baseline
-- Human verified: FALSE
+- Human verified: TRUE
+- Human review status: VERIFIED_FULL_PRICE
 
 ## glm_5_2_max
 
@@ -208,3 +220,4 @@ Use `q3/data/pricing_human_check.csv` for the one-page manual check table and `q
 - Confidence: medium
 - Special issue: price unresolved but SKU/config are resolved
 - Human verified: FALSE
+- Human review status: REVIEWED_MISSING_PUBLIC_PRICE

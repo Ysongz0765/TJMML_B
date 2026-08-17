@@ -1,7 +1,7 @@
 # Q3 Figure Selection
 
-Selection status: based on the existing provisional output set; final
-human-verified rerun is still blocked by P0-1.
+Selection status: based on the regenerated final output set from the
+8-model FULL, human-verified main cohort.
 
 The PNG and PDF files with the same stem are one logical figure in two export
 formats, not two separate paper figure numbers.

@@ -1,0 +1,10 @@
+scenario,from_model,to_model,delta_cost,delta_utility,icer,near_zero_utility_gain,unusually_large_icer,extended_dominance_flag
+Coding,deepseek_v4_flash_max,deepseek_v4_pro_max,0.02112,0.1454852550670525,0.1451693506002792,False,False,False
+Coding,deepseek_v4_pro_max,kimi_k3_max,0.07515,0.0202393750957196,3.713059303688352,False,True,False
+General,deepseek_v4_flash_max,deepseek_v4_pro_max,0.0043999999999999,0.0074103880329798,0.5937610797731274,False,False,False
+General,deepseek_v4_pro_max,qwen3_8_max,0.0023025,0.1840936358205916,0.012507222152122,False,False,False
+General,qwen3_8_max,gemini_3_1_pro_high,0.0070975,0.0277789867565254,0.2554988798622308,False,False,False
+General,gemini_3_1_pro_high,kimi_k3_max,0.0047724999999999,0.0025482628791066,1.872844453815931,False,False,False
+General,kimi_k3_max,gpt_5_6_sol_max,0.0192275,0.0634384695602297,0.3030889637358771,False,False,False
+Research,deepseek_v4_flash_max,deepseek_v4_pro_max,0.02464,0.0505043498846214,0.4878787679930684,False,False,False
+Research,deepseek_v4_pro_max,kimi_k3_max,0.0698699999999999,0.0234989483796245,2.973324545049978,False,True,False

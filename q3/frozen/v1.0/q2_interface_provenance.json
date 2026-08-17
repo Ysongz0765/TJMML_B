@@ -1,0 +1,52 @@
+{
+  "source_branch": "origin/q2-final-paper",
+  "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+  "sync_date": "2026-08-17",
+  "files": [
+    {
+      "source_branch": "origin/q2-final-paper",
+      "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+      "source_path": "q2/outputs/scenario_utility.csv",
+      "target_path": "q3/data/scenario_utility.csv",
+      "source_sha256": "82bc63f0d1983775bf9a512ad8e50d011c0d556cbdd56329ed8f74267de84ca1",
+      "target_sha256": "82bc63f0d1983775bf9a512ad8e50d011c0d556cbdd56329ed8f74267de84ca1",
+      "sync_date": "2026-08-17"
+    },
+    {
+      "source_branch": "origin/q2-final-paper",
+      "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+      "source_path": "q2/outputs/scenario_utility_bootstrap.csv",
+      "target_path": "q3/data/scenario_utility_bootstrap.csv",
+      "source_sha256": "1eea0558c3df5e46c9b3135a7810f4ef6dbb2258f96e4bef4ae4e84e8c64b323",
+      "target_sha256": "1eea0558c3df5e46c9b3135a7810f4ef6dbb2258f96e4bef4ae4e84e8c64b323",
+      "sync_date": "2026-08-17"
+    },
+    {
+      "source_branch": "origin/q2-final-paper",
+      "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+      "source_path": "q2/outputs/scenario_utility_summary.csv",
+      "target_path": "q3/data/scenario_utility_summary.csv",
+      "source_sha256": "5ff7d3311920b8f752729b5e26c1ccb315bf5c795a7c7fb39e9c132b808ba110",
+      "target_sha256": "5ff7d3311920b8f752729b5e26c1ccb315bf5c795a7c7fb39e9c132b808ba110",
+      "sync_date": "2026-08-17"
+    },
+    {
+      "source_branch": "origin/q2-final-paper",
+      "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+      "source_path": "q2/outputs/q2_to_q3_validation.csv",
+      "target_path": "q3/data/q2_to_q3_validation.csv",
+      "source_sha256": "714c493d930dcf6d7c75d7f9b928a70ed40fd71077a1e48f402ae41d5ea8ef42",
+      "target_sha256": "714c493d930dcf6d7c75d7f9b928a70ed40fd71077a1e48f402ae41d5ea8ef42",
+      "sync_date": "2026-08-17"
+    },
+    {
+      "source_branch": "origin/q2-final-paper",
+      "source_commit": "bff0e185510f79bd78dd190ccedc47c81b12f137",
+      "source_path": "q2/metadata/q2_to_q3_interface.md",
+      "target_path": "q3/data/q2_to_q3_interface.md",
+      "source_sha256": "a86c57c77222632d6fed8362b725aea8d69b5852fa63c800eac5c087736056a5",
+      "target_sha256": "a86c57c77222632d6fed8362b725aea8d69b5852fa63c800eac5c087736056a5",
+      "sync_date": "2026-08-17"
+    }
+  ]
+}

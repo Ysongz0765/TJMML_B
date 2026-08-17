@@ -1,27 +1,24 @@
 # Q3 Final Audit
 
 Audit date: 2026-08-17  
-Audited commit: `441f935e8bd65b1a51866a315c1af822297df4cd`
+Audited revision: `q3-cost-pareto` final freeze working tree after `5aad139`
 
 ## P0 Findings
 
-| ID | Finding | Status |
-|---|---|---|
-| P0-1 | Human price verification is not written back: all rows in `model_pricing.csv`, `pricing_audit.csv`, and `pricing_human_check.csv` are `FALSE`. | OPEN |
+No P0 findings remain. The eight FULL models have matching
+`human_verified=TRUE` and `full_price_human_verified=TRUE` records in all three
+pricing files. Fable and GLM are transparently excluded from the strict main
+cohort and are not P0 findings.
 
-P0 count: **1**
-
-This blocks `Q3_FINAL_RESULTS_READY`, `Q3_READY_TO_FREEZE`, and creation of
-`q3/frozen/v1.0`. The audit does not modify price values or verification flags.
+P0 count: **0**
 
 ## P1 Findings
 
-| ID | Finding | Status |
-|---|---|---|
-| P1-1 | Final-only alias tables and final reproducibility/consistency reports have not been generated because the verification gate is open. | BLOCKED BY P0 |
-| P1-2 | The existing fit warning is produced by the small synthetic test fixture; it is not evidence that a formal result fit failed. Formal fit stability must be reassessed after the final run. | TO RECHECK |
+No open P1 findings remain. The existing SciPy covariance warning is produced
+by the small synthetic test fixture; formal fit rows retain explicit
+small-sample caveats.
 
-P1 count: **2**
+P1 count: **0**
 
 ## Checks Passed
 
@@ -36,16 +33,23 @@ P1 count: **2**
 - Fable fallback is not imputed.
 - GLM-5.2 price is not imputed.
 
-## Freeze Decision
+## Final Freeze Decision
 
 ```text
-Q3_FINAL_RESULTS_READY = FALSE
-Q3_READY_TO_FREEZE = FALSE
-Q3_FROZEN = FALSE
-Q3_REPRODUCIBILITY_AUDIT = NOT_RUN
-Q3_PAPER_CONSISTENCY_AUDIT = NOT_RUN
+Q3_PRICING_HUMAN_VERIFIED = TRUE
+Q3_ALL_MODELS_FULL_COST_READY = FALSE
+Q3_MAIN_ANALYSIS_COHORT_READY = TRUE
+Q3_FINAL_RESULTS_READY = TRUE
+Q3_READY_TO_FREEZE = TRUE
+Q3_FROZEN = TRUE
+Q3_REPRODUCIBILITY_AUDIT = PASS
+Q3_PAPER_CONSISTENCY_AUDIT = PASS
+Q3_FREEZE_MANIFEST_AUDIT = PASS
+Q3_FINAL_P0_COUNT = 0
+Q3_FINAL_P1_COUNT = 0
 ```
 
-The prior 8-model Pareto and related outputs are retained as provisional
-historical results. They must not be relabeled as final until the P0 gate is
-closed and the full final audit is rerun.
+The final Q3 tables were regenerated from the verified FULL cohort. The
+isolated reproducibility audit, paper-result consistency audit, and freeze
+manifest audit all pass. The `Q3_ALL_MODELS_FULL_COST_READY=FALSE` state is
+intentional because Fable and GLM remain incomplete cost-observability cases.

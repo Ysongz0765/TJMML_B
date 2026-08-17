@@ -1,0 +1,31 @@
+model_id,model_name,scenario,utility,input_tokens,output_tokens,input_price,output_price,input_cost,output_cost,total_cost,cost_observability,pricing_human_verified,included_in_main_pareto,included_in_regression,cost_basis,exclusion_reason
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",Coding,0.976203830156862,6000,6000,10.0000,50.0000,0.06,0.3,0.36,PARTIAL,False,False,False,BASE_MODEL_COST_ONLY; fallback configuration cost unresolved,base model price exists but benchmark configuration has unresolved special billing
+claude_opus_4_8_max,Claude Opus 4.8 (max),Coding,0.9163907203396128,6000,6000,5.0000,25.0000,0.03,0.15,0.18,FULL,True,True,True,complete official base API cost,
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Coding,0.8155773752485842,6000,6000,0.4400,1.3200,0.00264,0.00792,0.01056,FULL,True,True,True,complete official base API cost,
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Coding,0.9610626303156368,6000,6000,1.3200,3.9600,0.00792,0.02376,0.03168,FULL,True,True,True,complete official base API cost,
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Coding,0.9259813234950288,6000,6000,2.0000,12.0000,0.012,0.072,0.08399999999999999,FULL,True,True,True,complete official base API cost,
+glm_5_2_max,GLM-5.2 (max),Coding,0.8587896658995123,6000,6000,NA,NA,,,,MISSING,False,False,False,cost unavailable; no imputation,official input/output price is missing or not publicly observable
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Coding,0.9025140728523974,6000,6000,5.0000,30.0000,0.03,0.18,0.21,FULL,True,True,True,complete official base API cost,
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Coding,0.9512731717446156,6000,6000,5.0000,30.0000,0.03,0.18,0.21,FULL,True,True,True,complete official base API cost,
+kimi_k3_max,Kimi K3 (max reasoning),Coding,0.9813020054113564,6000,6000,2.9675,14.8375,0.017805,0.089025,0.10683000000000001,FULL,True,True,True,complete official base API cost,
+qwen3_8_max,Qwen3.8-Max,Coding,0.925700177687948,6000,6000,1.7805,5.3415,0.010683,0.032049,0.042732,FULL,True,True,True,complete official base API cost,
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",General,0.932418708623976,2000,1000,10.0000,50.0000,0.02,0.05,0.07,PARTIAL,False,False,False,BASE_MODEL_COST_ONLY; fallback configuration cost unresolved,base model price exists but benchmark configuration has unresolved special billing
+claude_opus_4_8_max,Claude Opus 4.8 (max),General,0.8383394649502275,2000,1000,5.0000,25.0000,0.01,0.025,0.035,FULL,True,True,True,complete official base API cost,
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,General,0.6468756848029605,2000,1000,0.4400,1.3200,0.00088,0.00132,0.0022,FULL,True,True,True,complete official base API cost,
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,General,0.6542860728359404,2000,1000,1.3200,3.9600,0.00264,0.00396,0.0066,FULL,True,True,True,complete official base API cost,
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),General,0.8661586954130576,2000,1000,2.0000,12.0000,0.004,0.012,0.016,FULL,True,True,True,complete official base API cost,
+glm_5_2_max,GLM-5.2 (max),General,0.6481379677469584,2000,1000,NA,NA,,,,MISSING,False,False,False,cost unavailable; no imputation,official input/output price is missing or not publicly observable
+gpt_5_5_xhigh,GPT-5.5 (xhigh),General,0.837174749199171,2000,1000,5.0000,30.0000,0.01,0.03,0.04,FULL,True,True,True,complete official base API cost,
+gpt_5_6_sol_max,GPT-5.6 Sol (max),General,0.932145427852394,2000,1000,5.0000,30.0000,0.01,0.03,0.04,FULL,True,True,True,complete official base API cost,
+kimi_k3_max,Kimi K3 (max reasoning),General,0.8687069582921643,2000,1000,2.9675,14.8375,0.005935,0.0148375,0.0207725,FULL,True,True,True,complete official base API cost,
+qwen3_8_max,Qwen3.8-Max,General,0.8383797086565321,2000,1000,1.7805,5.3415,0.003561,0.0053415,0.0089025,FULL,True,True,True,complete official base API cost,
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",Research,0.9183374822531004,16000,4000,10.0000,50.0000,0.16,0.2,0.36,PARTIAL,False,False,False,BASE_MODEL_COST_ONLY; fallback configuration cost unresolved,base model price exists but benchmark configuration has unresolved special billing
+claude_opus_4_8_max,Claude Opus 4.8 (max),Research,0.8794135287469893,16000,4000,5.0000,25.0000,0.08,0.1,0.18,FULL,True,True,True,complete official base API cost,
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Research,0.8272893300307572,16000,4000,0.4400,1.3200,0.00704,0.00528,0.012320000000000001,FULL,True,True,True,complete official base API cost,
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Research,0.8777936799153787,16000,4000,1.3200,3.9600,0.02112,0.01584,0.03696,FULL,True,True,True,complete official base API cost,
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Research,0.8281204723179951,16000,4000,2.0000,12.0000,0.032,0.048,0.08,FULL,True,True,True,complete official base API cost,
+glm_5_2_max,GLM-5.2 (max),Research,0.8335860041360706,16000,4000,NA,NA,,,,MISSING,False,False,False,cost unavailable; no imputation,official input/output price is missing or not publicly observable
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Research,0.8861624515886894,16000,4000,5.0000,30.0000,0.08,0.12,0.2,FULL,True,True,True,complete official base API cost,
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Research,0.8992413504614967,16000,4000,5.0000,30.0000,0.08,0.12,0.2,FULL,True,True,True,complete official base API cost,
+kimi_k3_max,Kimi K3 (max reasoning),Research,0.9012926282950032,16000,4000,2.9675,14.8375,0.04748,0.05935,0.10683000000000001,FULL,True,True,True,complete official base API cost,
+qwen3_8_max,Qwen3.8-Max,Research,0.8397485755751156,16000,4000,1.7805,5.3415,0.028488,0.021366,0.049853999999999996,FULL,True,True,True,complete official base API cost,

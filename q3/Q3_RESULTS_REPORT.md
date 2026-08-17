@@ -1,16 +1,15 @@
 # Q3 Results Report
 
 Audit date: 2026-08-17  
-Status: **Provisional; human verification remains incomplete.**
+Status: **Final human-verified and frozen Q3 results.**
 
 ## Final Gate
 
-The formal final rerun is currently blocked. The repository state at commit
-`441f935e8bd65b1a51866a315c1af822297df4cd` has `human_verified=FALSE` for all
-10 rows in `model_pricing.csv`, `pricing_audit.csv`, and
-`pricing_human_check.csv`. The prior results in this report are retained as
-historical provisional outputs only. See `FINAL_INPUT_AUDIT.md` and
-`Q3_FINAL_AUDIT.md`.
+The final runner was executed after the eight dynamically identified FULL
+models were marked `VERIFIED_FULL_PRICE` in all three pricing files. Fable 5
+and GLM-5.2 remain transparent PARTIAL/MISSING exclusions. The final result
+set is based on the 8-model strict main cohort; `Q3_ALL_MODELS_FULL_COST_READY`
+remains FALSE by design.
 
 ## 1. Data Closure
 
@@ -178,10 +177,9 @@ provider outages, latency, or deployment constraints.
 3. Workloads are standardized scenarios rather than measured production
    distributions.
 4. Cost--utility fits are cross-sectional and do not establish causality.
-5. Prices are time-sensitive and all pricing rows still have
-   `human_verified=FALSE`.
+5. Prices are time-sensitive. The eight FULL rows are human-verified; Fable and
+   GLM remain explicitly excluded from the strict complete-cost cohort.
 
-The generated outputs are therefore **provisional results ready for human
-review**, not a final human-verified recommendation. Source tables and figures
-are in `q3/outputs/`, with machine status in
-`q3/outputs/diagnostics/q3_run_status.json`.
+The generated outputs are final human-verified results for the stated
+standardized workloads and FULL cohort. Source tables and figures are in
+`q3/outputs/`, with machine status in `q3/outputs/diagnostics/q3_run_status.json`.

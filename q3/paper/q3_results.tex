@@ -1,10 +1,12 @@
 \section{问题三结果}
 
-正式 Q2 接口包含 10 个模型在 Research、General 和 Coding 三类场景下的
-30 个效用值，并包含 2,000 次 bootstrap 抽样、共 60,000 条效用记录。
-Q3 对价格可观测性进行分层：8 个模型属于 FULL cohort，Claude Fable 5
-属于 PARTIAL，GLM-5.2 属于 MISSING。后两者保留在数据表中，但不进入主
-Pareto 比较；本轮结果仍未完成人工价格复核。
+正式 Q2 接口包含 10 个核心模型在 Research、General 和 Coding 三类场景
+下的 30 个效用值，并包含 2,000 次 bootstrap 抽样、共 60,000 条效用记录。
+Q3 对价格可观测性进行分层：8 个模型属于 FULL cohort，且其完整
+input/output 价格已经人工核验；Claude Fable 5 属于 PARTIAL，GLM-5.2
+属于 MISSING。Q3 严格成本--效用主分析采用完整成本可观测且已人工核验的
+模型子集。Fable 和 GLM 保留在 cohort 与成本数据表中，但不进入严格主
+Pareto 比较。
 
 \subsection{场景成本}
 
@@ -34,3 +36,25 @@ bootstrap，Flash 在三个场景进入 Pareto 前沿的概率均为 1.0000；Pr
 Coding、General、Research 中分别为 0.9465、0.6745、0.8890；Kimi
 分别为 0.6150、0.5225、0.7355。General 场景还显示 Qwen3.8-Max 与
 GPT-5.6 Sol 的前沿概率分别为 1.0000 和 0.9765。
+
+完整的相邻 Pareto 升级 ICER 为：Coding 中 Flash$\rightarrow$Pro 为
+0.145169、Pro$\rightarrow$Kimi 为 3.713059；General 中
+Flash$\rightarrow$Pro、Pro$\rightarrow$Qwen、Qwen$\rightarrow$Gemini、
+Gemini$\rightarrow$Kimi、Kimi$\rightarrow$GPT-5.6 Sol 分别为
+0.593761、0.012507、0.255499、1.872844、0.303089；Research 中
+Flash$\rightarrow$Pro、Pro$\rightarrow$Kimi 分别为 0.487879 和
+2.973325 USD/utility。Coding 和 Research 的末端升级 ICER 较大，但
+没有发现等效用或扩展支配的相邻升级。
+
+\subsection{成本--性能拟合与敏感性}
+
+全体 FULL 主 cohort 的样本量为 8。按 AICc，Research 和 Coding 的最佳
+模型为 log，General 的最佳模型为 saturation；但 General 的 saturation
+模型 LOOCV error 为 9.802600，明显劣于 linear 和 log 模型。Coding 和
+Research 的 Pareto 前沿只有 3 个点，因此前沿拟合标记为
+INSUFFICIENT\_FRONTIER\_SAMPLE。当前横截面样本未提供稳定证据支持统一的
+成本边际收益递减函数关系。
+
+输入规模、输出/输入比例和价格 $\pm5\%/\pm10\%$ 扰动下，三个场景的
+nominal Pareto 成员在已测试网格中均保持；这表示测试网格内的前沿结构
+稳定，不表示对未观测生产负载或未来价格变化不敏感。

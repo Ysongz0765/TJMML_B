@@ -1,0 +1,25 @@
+model_id,model,scenario,utility,cost,pareto,dominated_by,dominance_count,pareto_status_note
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Coding,0.8155773752485842,0.01056,True,,0,complete
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Coding,0.9610626303156368,0.03168,True,,0,complete
+qwen3_8_max,Qwen3.8-Max,Coding,0.925700177687948,0.042732,False,deepseek_v4_pro_max,1,complete
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Coding,0.9259813234950288,0.0839999999999999,False,deepseek_v4_pro_max,1,complete
+kimi_k3_max,Kimi K3 (max reasoning),Coding,0.9813020054113564,0.10683,True,,0,complete
+claude_opus_4_8_max,Claude Opus 4.8 (max),Coding,0.9163907203396128,0.18,False,kimi_k3_max;gemini_3_1_pro_high;deepseek_v4_pro_max;qwen3_8_max,4,complete
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Coding,0.9025140728523974,0.21,False,kimi_k3_max;gpt_5_6_sol_max;claude_opus_4_8_max;gemini_3_1_pro_high;deepseek_v4_pro_max;qwen3_8_max,6,complete
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Coding,0.9512731717446156,0.21,False,kimi_k3_max;deepseek_v4_pro_max,2,complete
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,General,0.6468756848029605,0.0022,True,,0,complete
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,General,0.6542860728359404,0.0066,True,,0,complete
+qwen3_8_max,Qwen3.8-Max,General,0.8383797086565321,0.0089025,True,,0,complete
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),General,0.8661586954130576,0.016,True,,0,complete
+kimi_k3_max,Kimi K3 (max reasoning),General,0.8687069582921643,0.0207725,True,,0,complete
+claude_opus_4_8_max,Claude Opus 4.8 (max),General,0.8383394649502275,0.035,False,kimi_k3_max;gemini_3_1_pro_high;qwen3_8_max,3,complete
+gpt_5_5_xhigh,GPT-5.5 (xhigh),General,0.837174749199171,0.04,False,kimi_k3_max;gpt_5_6_sol_max;claude_opus_4_8_max;gemini_3_1_pro_high;qwen3_8_max,5,complete
+gpt_5_6_sol_max,GPT-5.6 Sol (max),General,0.932145427852394,0.04,True,,0,complete
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Research,0.8272893300307572,0.01232,True,,0,complete
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Research,0.8777936799153787,0.03696,True,,0,complete
+qwen3_8_max,Qwen3.8-Max,Research,0.8397485755751156,0.0498539999999999,False,deepseek_v4_pro_max,1,complete
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Research,0.8281204723179951,0.08,False,deepseek_v4_pro_max;qwen3_8_max,2,complete
+kimi_k3_max,Kimi K3 (max reasoning),Research,0.9012926282950032,0.10683,True,,0,complete
+claude_opus_4_8_max,Claude Opus 4.8 (max),Research,0.8794135287469893,0.18,False,kimi_k3_max,1,complete
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Research,0.8861624515886894,0.2,False,kimi_k3_max;gpt_5_6_sol_max,2,complete
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Research,0.8992413504614967,0.2,False,kimi_k3_max,1,complete

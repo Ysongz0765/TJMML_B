@@ -5,16 +5,18 @@ Pre-run Git commit: `441f935e8bd65b1a51866a315c1af822297df4cd`
 
 ## Gate Result
 
-`Q3_READY_TO_FREEZE = FALSE`
+`Q3_MAIN_ANALYSIS_COHORT_READY = TRUE`
 
-The repository does not contain the claimed human price verification. All
-10 rows in each of the following files still have `human_verified=FALSE`:
+The completed human review has been written back to all three formal pricing
+files. The eight dynamically identified FULL rows have
+`human_verified=TRUE` and `full_price_human_verified=TRUE` in each file.
+Fable and GLM remain explicitly reviewed but are not full-price verified:
 
 - `q3/data/model_pricing.csv`
 - `q3/data/pricing_audit.csv`
 - `q3/data/pricing_human_check.csv`
 
-No price number, SKU, or configuration value was changed in this audit.
+No price number, SKU, or configuration value was changed in the write-back.
 
 ## Q2 Interface
 
@@ -36,11 +38,15 @@ The five synchronized Q2 interface hashes are recorded in
 ## Pricing
 
 - Pricing rows: 10
-- Human-verified rows in all three price files: 0/10
+- Human-verified FULL rows in all three price files: 8/8
 - Complete base-price rows: 9
 - `FULL` cost-observability rows: 8
+- FULL models: Claude Opus 4.8, DeepSeek-V4-Flash, DeepSeek-V4-Pro,
+  Gemini-3.1-Pro, GPT-5.5, GPT-5.6 Sol, Kimi K3, Qwen3.8-Max
+- FULL human-verified models: same 8 models
 - `PARTIAL` rows: Claude Fable 5
 - `MISSING` rows: GLM-5.2
+- Main analysis cohort size: 8
 - Price date: 2026-08-17
 - Distinct non-empty price source URLs: 8
 - SKU mapping: all 10 `EXACT`
@@ -51,8 +57,10 @@ not traceable. GLM-5.2 remains `MISSING` because an official standard
 input/output API price is not observable in the checked records. No imputation
 or neighboring-SKU substitution is allowed.
 
-Because human verification is absent, the strict formal main cohort is
-currently empty even though eight rows have complete observable base costs.
+The exclusion of Fable and GLM is due to incomplete cost observability, not
+poor performance. Fable's base price is reviewed, but its fallback target,
+token, and billing trace are incomplete. GLM's SKU and configuration are
+reviewed, but its public standard input/output price remains unavailable.
 
 ## Workload
 
@@ -68,10 +76,9 @@ The current baseline rows were read without modification:
 tokens when provider billing rules include them, rather than only visible
 answer text.
 
-## Blocking Action
+## Final Input Decision
 
-The owner must write the actual manual review outcome and verification date
-into all three pricing verification files. After that change is present on
-`q3-cost-pareto`, rerun the final runner and repeat every audit. Until then,
-the existing tables remain provisional historical outputs and no Q3 freeze is
-created.
+The final input gate is passed for the strict 8-model main cohort. The
+remaining `Q3_ALL_MODELS_FULL_COST_READY=FALSE` state is expected because Fable
+and GLM do not have complete observable costs. Final freeze still additionally
+requires the result, reproducibility, paper-consistency, and manifest audits.

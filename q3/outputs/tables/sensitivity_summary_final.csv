@@ -1,0 +1,10 @@
+scenario,analysis,parameter_points,nominal_pareto_models,pareto_member_retention_rate,all_nominal_members_retained_rate,mean_frontier_size,optimal_model_mode,optimal_model_mode_rate,budget_threshold_min,budget_threshold_max,conclusion
+Coding,input_scale,3,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,deepseek_v4_pro_max,0.42857142857142855,0.00924,0.124635,STABLE_ON_TESTED_GRID
+Coding,input_output_ratio,5,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,,,,,STABLE_ON_TESTED_GRID
+Coding,price_perturbation,5,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,deepseek_v4_pro_max,0.42857142857142855,0.009504,0.117513,STABLE_ON_TESTED_GRID
+General,input_scale,3,deepseek_v4_flash_max;deepseek_v4_pro_max;gemini_3_1_pro_high;gpt_5_6_sol_max;kimi_k3_max;qwen3_8_max,1.0,1.0,6.0,kimi_k3_max,0.2857142857142857,0.00176,0.05,STABLE_ON_TESTED_GRID
+General,input_output_ratio,5,deepseek_v4_flash_max;deepseek_v4_pro_max;gemini_3_1_pro_high;gpt_5_6_sol_max;kimi_k3_max;qwen3_8_max,1.0,1.0,6.0,,,,,STABLE_ON_TESTED_GRID
+General,price_perturbation,5,deepseek_v4_flash_max;deepseek_v4_pro_max;gemini_3_1_pro_high;gpt_5_6_sol_max;kimi_k3_max;qwen3_8_max,1.0,1.0,6.0,kimi_k3_max,0.2857142857142857,0.00198,0.044,STABLE_ON_TESTED_GRID
+Research,input_scale,3,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,deepseek_v4_pro_max,0.42857142857142855,0.0088,0.15431,STABLE_ON_TESTED_GRID
+Research,input_output_ratio,5,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,,,,,STABLE_ON_TESTED_GRID
+Research,price_perturbation,5,deepseek_v4_flash_max;deepseek_v4_pro_max;kimi_k3_max,1.0,1.0,3.0,deepseek_v4_pro_max,0.42857142857142855,0.011088,0.117513,STABLE_ON_TESTED_GRID

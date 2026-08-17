@@ -4,22 +4,22 @@ Audit date: 2026-08-17
 
 ## Decision
 
-`FINAL_VS_PROVISIONAL_AUDIT = NOT_RUN`
+`PROVISIONAL_TO_FINAL_NUMERIC_CHANGE = NONE`
 
-There is no valid final human-verified result set to compare with the
-provisional outputs. The final runner stopped at the human-verification gate
-because all three pricing verification files still contain 0/10 TRUE rows.
-This report records the required comparison fields so they can be populated
-after the P0 gate is closed.
+The final runner was executed after the eight FULL rows were marked
+`VERIFIED_FULL_PRICE`. Human review changed only audit/provenance fields; it did
+not change any price number, utility value, workload, or model mapping.
 
 | Item | Final result | Comparison |
 |---|---|---|
-| Costs | NOT RUN | `max absolute change` and `max relative change` require a final cost table. |
-| Pareto membership | NOT RUN | New entrants and exits cannot be assessed. |
-| Budget switches | NOT RUN | Threshold changes cannot be assessed. |
-| ICER | NOT RUN | Numeric changes cannot be assessed. |
-| Fit selection | NOT RUN | AICc/LOOCV selection changes cannot be assessed. |
-| Sensitivity conclusion | NOT RUN | Final-price sensitivity cannot be assessed. |
+| Costs | PASS | Maximum absolute change = 0.0 USD; maximum relative change = 0.0. |
+| Pareto membership | PASS | No entrants or exits. |
+| Budget switches | PASS | Thresholds and model sequences unchanged. |
+| ICER | PASS | All 9 rows unchanged. |
+| Fit selection | PASS | All 16 fit rows unchanged. |
+| Sensitivity conclusion | PASS | All 504 sensitivity rows unchanged. |
+| Bootstrap Pareto | PASS | All 24 probabilities unchanged. |
 
 The pre-final baseline is the provisional output set from commit `441f935`.
-No price values were changed during this blocked audit.
+The final output set is generated from the same numerical inputs with the
+verified FULL cohort gate applied.
