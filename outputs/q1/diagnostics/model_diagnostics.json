@@ -1,0 +1,121 @@
+{
+  "model_diagnostics": [
+    {
+      "dimension": "C1 Complex reasoning",
+      "n_families": 3,
+      "n_settings": 6,
+      "n_models": 10,
+      "n_pairwise": 253,
+      "connected": true,
+      "largest_connected_component": 10,
+      "separation_warning": false,
+      "optimization_converged": true,
+      "lambda": 1.0,
+      "condition_note": "OK"
+    },
+    {
+      "dimension": "C2 Knowledge and factual reliability",
+      "n_families": 2,
+      "n_settings": 2,
+      "n_models": 10,
+      "n_pairwise": 60,
+      "connected": true,
+      "largest_connected_component": 10,
+      "separation_warning": true,
+      "optimization_converged": true,
+      "lambda": 1.0,
+      "condition_note": "C2 separation risk is checked with ridge BT."
+    },
+    {
+      "dimension": "C3 Long context",
+      "n_families": 3,
+      "n_settings": 3,
+      "n_models": 10,
+      "n_pairwise": 51,
+      "connected": true,
+      "largest_connected_component": 10,
+      "separation_warning": true,
+      "optimization_converged": true,
+      "lambda": 1.0,
+      "condition_note": "FRAGILE_CONNECTED: AA-LCR leave-out diagnostic required."
+    },
+    {
+      "dimension": "C4 Code and software engineering",
+      "n_families": 4,
+      "n_settings": 8,
+      "n_models": 10,
+      "n_pairwise": 256,
+      "connected": true,
+      "largest_connected_component": 10,
+      "separation_warning": false,
+      "optimization_converged": true,
+      "lambda": 1.0,
+      "condition_note": "LiveBench bridge dependence checked by leave-LiveBench-out."
+    },
+    {
+      "dimension": "C5 Multimodal",
+      "n_families": 2,
+      "n_settings": 2,
+      "n_models": 7,
+      "n_pairwise": 20,
+      "connected": true,
+      "largest_connected_component": 7,
+      "separation_warning": true,
+      "optimization_converged": true,
+      "lambda": 1.0,
+      "condition_note": "C5 only estimated for applicable multimodal models; missing scores remain NA."
+    }
+  ],
+  "special_network_diagnostics": [
+    {
+      "diagnostic": "C3 leave-AA-LCR-out",
+      "dimension": "C3 Long context",
+      "connected": true,
+      "largest_connected_component": 3,
+      "active_models": [
+        "deepseek_v4_flash_max",
+        "deepseek_v4_pro_max",
+        "gemini_3_1_pro_high"
+      ],
+      "components": [
+        [
+          "deepseek_v4_flash_max",
+          "deepseek_v4_pro_max",
+          "gemini_3_1_pro_high"
+        ]
+      ],
+      "all_model_largest_component": 3
+    },
+    {
+      "diagnostic": "C4 leave-LiveBench-out",
+      "dimension": "C4 Code and software engineering",
+      "connected": false,
+      "largest_connected_component": 6,
+      "active_models": [
+        "claude_fable_5_max",
+        "claude_opus_4_8_max",
+        "deepseek_v4_flash_max",
+        "deepseek_v4_pro_max",
+        "glm_5_2_max",
+        "gpt_5_5_xhigh",
+        "gpt_5_6_sol_max",
+        "kimi_k3_max"
+      ],
+      "components": [
+        [
+          "claude_fable_5_max",
+          "claude_opus_4_8_max",
+          "glm_5_2_max",
+          "gpt_5_5_xhigh",
+          "gpt_5_6_sol_max",
+          "kimi_k3_max"
+        ],
+        [
+          "deepseek_v4_flash_max",
+          "deepseek_v4_pro_max"
+        ]
+      ],
+      "all_model_largest_component": 6
+    }
+  ]
+}

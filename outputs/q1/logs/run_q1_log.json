@@ -1,0 +1,27 @@
+{
+  "freeze_validation": {
+    "core_models": 10,
+    "benchmark_families": 14,
+    "exact_settings": 21,
+    "theoretical_cells": 210,
+    "nonmissing_core_records": 164,
+    "overall_coverage": 0.780952380952381,
+    "human_verified_true": 164,
+    "human_verified_false": 0,
+    "traceability": 1.0,
+    "freeze_version": "v1.0",
+    "freeze_date": "2026-08-17",
+    "checked_files": 16,
+    "sha256_passed": true
+  },
+  "weights_sum": 1.0,
+  "outputs_checked": [
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\tables\\table_q1_01_data_audit.xlsx",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\tables\\table_q1_11_sensitivity.xlsx",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\tables\\paper_table_6_overall_ranking.xlsx",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\figures\\figure_q1_10_kimi_advantage_gap.png",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\diagnostics\\model_diagnostics.json",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\results_summary.json",
+    "D:\\study\\xiaosai\\b\\outputs\\q1\\results_summary.md"
+  ]
+}

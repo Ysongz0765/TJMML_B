@@ -1,0 +1,288 @@
+{
+  "status": "PASS",
+  "workbooksChecked": 24,
+  "sheetsRendered": 86,
+  "integratedWorkbookSheetCount": 33,
+  "previewDir": "D:\\study\\xiaosai\\b\\.stage4_work\\workbook_previews",
+  "formulaErrorMatches": 0,
+  "workbooks": [
+    {
+      "relativePath": "data/final/LLM_Benchmark_Evaluation_Dataset.xlsx",
+      "sheetCount": 33,
+      "sheetNames": [
+        "README",
+        "Models",
+        "Benchmarks",
+        "RawData",
+        "Sources",
+        "Comparability",
+        "Conflicts",
+        "Coverage",
+        "CoreBenchmarks",
+        "Matrix",
+        "CommonMatrix",
+        "ExtendedMatrix",
+        "StandardizedMatrix",
+        "CapabilityMapping",
+        "QC",
+        "NetworkQC",
+        "ModelPoolReview",
+        "SourceExpansion",
+        "CrossValidation",
+        "HumanVerificationPriority",
+        "FinalModelingMatrix",
+        "ModelingBenchmarkManifest",
+        "BenchmarkFamilies",
+        "LiveBenchAudit",
+        "SourceConcentration",
+        "BridgeEvidence",
+        "KimiAudit",
+        "RedundancyAudit",
+        "SpearmanQC",
+        "BTReadiness",
+        "ModelingReadinessGate",
+        "HumanVerificationLog",
+        "FinalTraceability"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B18\",\"rows\":18,\"cols\":2,\"nonEmpty\":36,\"text\":36,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"LLM Benchmark Evaluation Dataset - Frozen v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "data/final/final_modeling_matrix.xlsx",
+      "sheetCount": 5,
+      "sheetNames": [
+        "README",
+        "Matrix",
+        "Standardized",
+        "Lineage",
+        "VerificationLog"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Final Modeling Matrix - Fully Verified\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "data/processed/human_verification_final_checklist.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Checklist"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Human Verification Final Checklist\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "data/processed/modeling_readiness_gate.xlsx",
+      "sheetCount": 3,
+      "sheetNames": [
+        "README",
+        "Gate",
+        "NetworkQC"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Modeling Readiness Gate - Stage 4\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "data/processed/final_traceability_report.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Traceability"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Final Traceability Report\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/final_modeling_matrix_v1.0.xlsx",
+      "sheetCount": 4,
+      "sheetNames": [
+        "README",
+        "Matrix",
+        "Standardized",
+        "Lineage"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Final Modeling Matrix v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/raw_benchmark_data_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "RawData"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Raw Benchmark Data v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/source_registry_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Sources"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Source Registry v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/final_modeling_benchmark_manifest_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Manifest"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Final Modeling Benchmark Manifest v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/benchmark_family_manifest_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Families"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Benchmark Family Manifest v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/model_pool_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Models"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Model Pool v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/human_verification_log_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "VerificationLog"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Human Verification Log v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/modeling_readiness_gate_v1.0.xlsx",
+      "sheetCount": 3,
+      "sheetNames": [
+        "README",
+        "Gate",
+        "NetworkQC"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Frozen Modeling Readiness Gate v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "frozen/v1.0/data_freeze_manifest_v1.0.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "FreezeManifest"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B17\",\"rows\":17,\"cols\":2,\"nonEmpty\":34,\"text\":34,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Data Freeze Manifest v1.0\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/paper_table_data_sources.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "DataSources"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Paper Table - Data Sources\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/appendix_A_benchmark_system.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "AppendixA"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Appendix A - Benchmark System\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/appendix_B_source_mapping.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "AppendixB"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Appendix B - Source Mapping\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/source_reference_mapping.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "References"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Source Reference Mapping\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/appendix_C_model_versions.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "AppendixC"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Appendix C - Model Versions\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/data_section/data_source_table.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "DataSources"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Data Source Table\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/data_section/benchmark_system_table.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Benchmarks"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Benchmark System Table\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/data_section/model_versions_table.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Models"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Model Versions Table\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "paper_materials/data_section/source_mapping_table.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Sources"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Source Mapping Table\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    },
+    {
+      "relativePath": "submission_support/02_sources/source_location_registry.xlsx",
+      "sheetCount": 2,
+      "sheetNames": [
+        "README",
+        "Locations"
+      ],
+      "errorScan": "{\"kind\":\"notice\",\"message\":\"Cell search matched 0 entries.\"}",
+      "keyRegion": "{\"kind\":\"region\",\"sheet\":\"README\",\"address\":\"A1:B16\",\"rows\":16,\"cols\":2,\"nonEmpty\":32,\"text\":32,\"maxTextLength\":100,\"preview\":[[\"Item\",\"Value\"],[\"Artifact\",\"Source Location Registry\"],[\"Dataset status\",\"FULLY_MODELING_READY\"],[\"Freeze version\",\"v1.0\"],[\"Freeze date\",\"2026-08-17\"]],\"previewAddress\":\"A1:B5\",\"previewRows\":5,\"previewCols\":2}"
+    }
+  ]
+}

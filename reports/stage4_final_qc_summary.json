@@ -1,0 +1,177 @@
+{
+  "status": "PASS",
+  "dataset_status": "FULLY_MODELING_READY",
+  "freeze_version": "v1.0",
+  "freeze_date": "2026-08-17",
+  "selected_records": 164,
+  "human_verified_selected": 164,
+  "matrix_nonmissing": 164,
+  "traceability_rate": 1.0,
+  "checks_passed": 34,
+  "checks_total": 34,
+  "checks": {
+    "raw_record_count": {
+      "passed": true,
+      "detail": 242
+    },
+    "selected_record_count": {
+      "passed": true,
+      "detail": 164
+    },
+    "selected_human_verified": {
+      "passed": true,
+      "detail": 164
+    },
+    "selected_human_unverified": {
+      "passed": true,
+      "detail": 0
+    },
+    "nonselected_not_promoted": {
+      "passed": true,
+      "detail": 0
+    },
+    "verification_field_verification_method": {
+      "passed": true,
+      "detail": {
+        "mismatches": 0,
+        "expected": "MANUAL_REVIEW_BY_TEAM"
+      }
+    },
+    "verification_field_verification_status": {
+      "passed": true,
+      "detail": {
+        "mismatches": 0,
+        "expected": "VERIFIED"
+      }
+    },
+    "verification_field_verification_basis": {
+      "passed": true,
+      "detail": {
+        "mismatches": 0,
+        "expected": "Team members manually checked model version, benchmark setting, metric, score and original source."
+      }
+    },
+    "verification_field_human_verification_note": {
+      "passed": true,
+      "detail": {
+        "mismatches": 0,
+        "expected": "Manual verification was completed by the competition team before Stage 4. Stage 4 only records the completed verification status into the dataset."
+      }
+    },
+    "verification_field_verification_recorded_date": {
+      "passed": true,
+      "detail": {
+        "mismatches": 0,
+        "expected": "2026-08-17"
+      }
+    },
+    "selected_source_id_complete": {
+      "passed": true,
+      "detail": 0
+    },
+    "selected_source_url_complete": {
+      "passed": true,
+      "detail": 0
+    },
+    "selected_sources_registered": {
+      "passed": true,
+      "detail": []
+    },
+    "unique_model_setting_selection": {
+      "passed": true,
+      "detail": 0
+    },
+    "selected_composite_excluded": {
+      "passed": true,
+      "detail": 0
+    },
+    "selected_conflict_free": {
+      "passed": true,
+      "detail": 0
+    },
+    "exact_setting_protocol_lock": {
+      "passed": true,
+      "detail": []
+    },
+    "matrix_shape": {
+      "passed": true,
+      "detail": [
+        10,
+        25
+      ]
+    },
+    "setting_count": {
+      "passed": true,
+      "detail": 21
+    },
+    "matrix_nonmissing_cells": {
+      "passed": true,
+      "detail": 164
+    },
+    "matrix_rebuild_exact": {
+      "passed": true,
+      "detail": {
+        "value_mismatches": [],
+        "missing_keys": []
+      }
+    },
+    "matrix_finite_values": {
+      "passed": true,
+      "detail": "No NaN/Inf/non-numeric nonmissing value"
+    },
+    "lineage_count": {
+      "passed": true,
+      "detail": {
+        "rows": 164,
+        "records": 164
+      }
+    },
+    "traceability_count": {
+      "passed": true,
+      "detail": 164
+    },
+    "traceability_100_percent": {
+      "passed": true,
+      "detail": 164
+    },
+    "traceability_human_verified": {
+      "passed": true,
+      "detail": 164
+    },
+    "gate_status": {
+      "passed": true,
+      "detail": "FULLY_MODELING_READY"
+    },
+    "gate_all_passed": {
+      "passed": true,
+      "detail": []
+    },
+    "freeze_version": {
+      "passed": true,
+      "detail": "v1.0"
+    },
+    "freeze_date": {
+      "passed": true,
+      "detail": "2026-08-17"
+    },
+    "required_frozen_files": {
+      "passed": true,
+      "detail": []
+    },
+    "sha256_integrity": {
+      "passed": true,
+      "detail": []
+    },
+    "figure_rebuild_count": {
+      "passed": true,
+      "detail": {
+        "png": 21,
+        "svg": 21
+      }
+    },
+    "paper_materials_complete": {
+      "passed": true,
+      "detail": []
+    }
+  }
+}

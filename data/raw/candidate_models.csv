@@ -1,0 +1,16 @@
+﻿model_id,model_family,model_full_name,organization,release_date,open_or_closed,api_available,reason_for_inclusion,preliminary_data_availability
+kimi_k3_max,Kimi,Kimi K3 (max reasoning),Moonshot AI,2026-07-23,Open-weight,Yes,Mandatory by task; official Kimi K3 README provides broad benchmark table.,Structured benchmark records available
+gpt_5_6_sol_max,GPT,GPT-5.6 Sol (max),OpenAI,Unknown,Closed,Yes,Representative OpenAI frontier model with public comparison scores in Kimi K3 report.,Structured benchmark records available
+gpt_5_5_xhigh,GPT,GPT-5.5 (xhigh),OpenAI,Unknown,Closed,Yes,OpenAI family comparator with multiple public scores in Kimi K3 report.,Structured benchmark records available
+claude_fable_5_max,Claude,"Claude Fable 5 (max, with fallback)",Anthropic,Unknown,Closed,Yes,Representative Anthropic frontier model in Kimi K3 horizontal table.,Structured benchmark records available
+claude_opus_4_8_max,Claude,Claude Opus 4.8 (max),Anthropic,Unknown,Closed,Yes,Second Anthropic frontier comparator; avoids over-weighting one Claude variant.,Structured benchmark records available
+gemini_3_1_pro_high,Gemini,Gemini-3.1-Pro (High),Google DeepMind,Unknown,Closed,Yes,Representative Google model covered by DeepSeek-V4 official horizontal table.,Structured benchmark records available
+gemini_3_5_flash,Gemini,Gemini 3.5 Flash,Google DeepMind,Unknown,Closed,Yes,"Representative Google fast model, but no locally parsed authoritative benchmark table in this run.",Candidate only or insufficient parsed public data
+deepseek_v4_pro_max,DeepSeek,DeepSeek-V4-Pro Max,DeepSeek,2026-06-23,Open-weight/Unknown,Yes,Representative DeepSeek high-reasoning mode with broad official table.,Structured benchmark records available
+deepseek_v4_flash_max,DeepSeek,DeepSeek-V4-Flash Max,DeepSeek,2026-06-23,Open-weight/Unknown,Yes,Second DeepSeek variant; useful for cost/performance comparison.,Structured benchmark records available
+qwen3_235b_a22b_base,Qwen,Qwen3-235B-A22B (Base / report setting),Alibaba Qwen,2025-05-14,Open-weight,Yes,Representative Alibaba/Qwen model with official technical report tables.,Structured benchmark records available
+glm_5_2_max,GLM,GLM-5.2 (max),Zhipu AI / Z.ai,Unknown,Unknown,Yes,Representative Chinese frontier comparator in Kimi K3 report.,Structured benchmark records available
+kimi_k2_6_thinking,Kimi,Kimi K2.6 (Thinking),Moonshot AI,Unknown,Unknown,Yes,"Covered by DeepSeek table, but Kimi K3 is the required Moonshot core model.",Candidate only or insufficient parsed public data
+llama_4_maverick_base,Llama,Llama-4-Maverick (Base),Meta,Unknown,Open-weight,Unknown,Included in Qwen candidate comparison but not required vendor coverage and limited final cross-benchmark data.,Candidate only or insufficient parsed public data
+qwen3_8_max,Qwen,Qwen3.8-Max,Alibaba Qwen,2026-08-10,Closed/Unknown,Yes,Current representative candidate but official page was dynamic and not parsed into reliable benchmark records.,Candidate only or insufficient parsed public data
+opus_4_6_max,Claude,Opus-4.6 (Max),Anthropic,Unknown,Closed,Yes,DeepSeek comparator; excluded to avoid too many Anthropic versions.,Candidate only or insufficient parsed public data

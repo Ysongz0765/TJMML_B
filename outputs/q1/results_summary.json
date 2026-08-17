@@ -1,0 +1,1140 @@
+{
+  "data": {
+    "core_models": 10,
+    "benchmark_families": 14,
+    "exact_settings": 21,
+    "theoretical_cells": 210,
+    "nonmissing_core_records": 164,
+    "overall_coverage": 0.780952380952381,
+    "human_verified_true": 164,
+    "human_verified_false": 0,
+    "traceability": 1.0,
+    "freeze_version": "v1.0",
+    "freeze_date": "2026-08-17",
+    "checked_files": 16,
+    "sha256_passed": true
+  },
+  "correlation": {
+    "high_redundancy_candidates": [
+      {
+        "dimension": "C1 Complex reasoning",
+        "benchmark_family": "LiveBench Logic",
+        "coverage": 1.0,
+        "max_abs_spearman": 0.9276336570439174,
+        "highest_corr_partner": "ProgramBench",
+        "common_n": 6,
+        "redundancy_flag": true,
+        "network_role": "STANDARD_INFORMATION",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C1 Complex reasoning",
+        "benchmark_family": "LiveBench Math",
+        "coverage": 1.0,
+        "max_abs_spearman": 1.0,
+        "highest_corr_partner": "CorpusQA",
+        "common_n": 3,
+        "redundancy_flag": true,
+        "network_role": "STANDARD_INFORMATION",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C2 Knowledge and factual reliability",
+        "benchmark_family": "AA-Omniscience",
+        "coverage": 1.0,
+        "max_abs_spearman": 0.942857142857143,
+        "highest_corr_partner": "Humanity's Last Exam",
+        "common_n": 6,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C2 Knowledge and factual reliability",
+        "benchmark_family": "Humanity's Last Exam",
+        "coverage": 1.0,
+        "max_abs_spearman": 0.942857142857143,
+        "highest_corr_partner": "AA-Omniscience",
+        "common_n": 6,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C3 Long context",
+        "benchmark_family": "CorpusQA",
+        "coverage": 1.0,
+        "max_abs_spearman": 1.0,
+        "highest_corr_partner": "LiveBench Math",
+        "common_n": 3,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C3 Long context",
+        "benchmark_family": "MRCR",
+        "coverage": 1.0,
+        "max_abs_spearman": 1.0,
+        "highest_corr_partner": "CorpusQA",
+        "common_n": 3,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C4 Code and software engineering",
+        "benchmark_family": "LiveBench Coding",
+        "coverage": 1.0,
+        "max_abs_spearman": 0.8857142857142858,
+        "highest_corr_partner": "AA-Omniscience",
+        "common_n": 6,
+        "redundancy_flag": true,
+        "network_role": "STANDARD_INFORMATION",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C4 Code and software engineering",
+        "benchmark_family": "ProgramBench",
+        "coverage": 1.0,
+        "max_abs_spearman": 0.9276336570439175,
+        "highest_corr_partner": "LiveBench Logic",
+        "common_n": 6,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C5 Multimodal",
+        "benchmark_family": "MMMU-Pro",
+        "coverage": 1.0,
+        "max_abs_spearman": 1.0,
+        "highest_corr_partner": "MathVision",
+        "common_n": 3,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      },
+      {
+        "dimension": "C5 Multimodal",
+        "benchmark_family": "MathVision",
+        "coverage": 1.0,
+        "max_abs_spearman": 1.0,
+        "highest_corr_partner": "MMMU-Pro",
+        "common_n": 3,
+        "redundancy_flag": true,
+        "network_role": "STRUCTURAL_BRIDGE",
+        "retain_reason": "Retained: frozen v1.0 formal family mapping is fixed; redundancy is reported, not silently removed."
+      }
+    ],
+    "threshold_sensitivity": [
+      {
+        "threshold": 0.8,
+        "flagged_families": 10
+      },
+      {
+        "threshold": 0.85,
+        "flagged_families": 10
+      },
+      {
+        "threshold": 0.9,
+        "flagged_families": 9
+      }
+    ]
+  },
+  "dimension_weights": [
+    {
+      "dimension": "C1 Complex reasoning",
+      "information": 0.07540975529256178,
+      "non_redundancy": 0.6581073284749497,
+      "stability": 0.06690783598556295,
+      "raw_weight": 0.003320482854747789,
+      "final_weight": 0.013407997606785757
+    },
+    {
+      "dimension": "C2 Knowledge and factual reliability",
+      "information": 0.136024331882188,
+      "non_redundancy": 0.6188794334667616,
+      "stability": 1.0,
+      "raw_weight": 0.08418266145294326,
+      "final_weight": 0.33992674338914847
+    },
+    {
+      "dimension": "C3 Long context",
+      "information": 0.06195553894412442,
+      "non_redundancy": 0.798061418453008,
+      "stability": 1.0,
+      "raw_weight": 0.04944432529076852,
+      "final_weight": 0.19965451537261913
+    },
+    {
+      "dimension": "C4 Code and software engineering",
+      "information": 0.08123512668205335,
+      "non_redundancy": 0.5950465179831583,
+      "stability": 0.3075578359994291,
+      "raw_weight": 0.014866939591375222,
+      "final_weight": 0.060032199888147945
+    },
+    {
+      "dimension": "C5 Multimodal",
+      "information": 0.16513109864256026,
+      "non_redundancy": 0.5803571428571428,
+      "stability": 1.0,
+      "raw_weight": 0.09583501260505728,
+      "final_weight": 0.38697854374329876
+    }
+  ],
+  "dimension_scores": [
+    {
+      "model_id": "kimi_k3_max",
+      "C1_theta": 0.023575390459888254,
+      "C1_score": 80.22246611688637,
+      "C1_applicable": true,
+      "C2_theta": 0.028973731877515417,
+      "C2_score": 46.25746211394311,
+      "C2_applicable": true,
+      "C3_theta": 0.055297226350198604,
+      "C3_score": 66.36155480567838,
+      "C3_applicable": true,
+      "C4_theta": 0.08582277010444776,
+      "C4_score": 93.7799430615481,
+      "C4_applicable": true,
+      "C5_theta": -0.03587378629399259,
+      "C5_score": 34.56856016386749,
+      "C5_applicable": true,
+      "model_full_name": "Kimi K3 (max reasoning)"
+    },
+    {
+      "model_id": "gpt_5_6_sol_max",
+      "C1_theta": 0.024094837868875268,
+      "C1_score": 80.61841813896953,
+      "C1_applicable": true,
+      "C2_theta": 0.06850012615374458,
+      "C2_score": 59.35824195831793,
+      "C2_applicable": true,
+      "C3_theta": 0.00936884634747162,
+      "C3_score": 54.027946711038894,
+      "C3_applicable": true,
+      "C4_theta": 0.0378198844634077,
+      "C4_score": 73.95492598314146,
+      "C4_applicable": true,
+      "C5_theta": 0.18157704429928098,
+      "C5_score": 100.0,
+      "C5_applicable": true,
+      "model_full_name": "GPT-5.6 Sol (max)"
+    },
+    {
+      "model_id": "gpt_5_5_xhigh",
+      "C1_theta": 0.0350881728198479,
+      "C1_score": 88.99815616050248,
+      "C1_applicable": true,
+      "C2_theta": -0.0005644625136405263,
+      "C2_score": 36.467209580040624,
+      "C2_applicable": true,
+      "C3_theta": 0.02315848882240687,
+      "C3_score": 57.73101758009519,
+      "C3_applicable": true,
+      "C4_theta": -0.04789146949213971,
+      "C4_score": 38.55644871890536,
+      "C4_applicable": true,
+      "C5_theta": -0.127578827746833,
+      "C5_score": 6.974308690462572,
+      "C5_applicable": true,
+      "model_full_name": "GPT-5.5 (xhigh)"
+    },
+    {
+      "model_id": "claude_fable_5_max",
+      "C1_theta": -0.01868612548418522,
+      "C1_score": 48.008362427373925,
+      "C1_applicable": true,
+      "C2_theta": 0.19112047177571867,
+      "C2_score": 100.0,
+      "C2_applicable": true,
+      "C3_theta": -0.001672797235364975,
+      "C3_score": 51.06282352003342,
+      "C3_applicable": true,
+      "C4_theta": 0.10088357336713336,
+      "C4_score": 100.0,
+      "C4_applicable": true,
+      "C5_theta": 0.05333418205539982,
+      "C5_score": 61.41143677202628,
+      "C5_applicable": true,
+      "model_full_name": "Claude Fable 5 (max, with fallback)"
+    },
+    {
+      "model_id": "claude_opus_4_8_max",
+      "C1_theta": 0.04952143482578415,
+      "C1_score": 100.0,
+      "C1_applicable": true,
+      "C2_theta": 0.027020190262893345,
+      "C2_score": 45.609972782355385,
+      "C2_applicable": true,
+      "C3_theta": -0.039819494894206726,
+      "C3_score": 40.818908559372474,
+      "C3_applicable": true,
+      "C4_theta": -0.03221166623572066,
+      "C4_score": 45.03215040211417,
+      "C4_applicable": true,
+      "C5_theta": -0.15075681712553368,
+      "C5_score": 0.0,
+      "C5_applicable": true,
+      "model_full_name": "Claude Opus 4.8 (max)"
+    },
+    {
+      "model_id": "gemini_3_1_pro_high",
+      "C1_theta": 0.044237178484170595,
+      "C1_score": 95.97204269870555,
+      "C1_applicable": true,
+      "C2_theta": 0.013297054773238354,
+      "C2_score": 41.061524078229155,
+      "C2_applicable": true,
+      "C3_theta": -0.19182256887109406,
+      "C3_score": 0.0,
+      "C3_applicable": true,
+      "C4_theta": -0.013748996970943492,
+      "C4_score": 52.65716561941289,
+      "C4_applicable": true,
+      "C5_theta": 0.04699904770235941,
+      "C5_score": 59.50518071798478,
+      "C5_applicable": true,
+      "model_full_name": "Gemini-3.1-Pro (High)"
+    },
+    {
+      "model_id": "deepseek_v4_pro_max",
+      "C1_theta": -0.0326487045518814,
+      "C1_score": 37.365299588477896,
+      "C1_applicable": true,
+      "C2_theta": -0.11058976796394768,
+      "C2_score": 0.0,
+      "C2_applicable": true,
+      "C3_theta": 0.1805614054720557,
+      "C3_score": 100.0,
+      "C3_applicable": true,
+      "C4_theta": 0.08432851235532739,
+      "C4_score": 93.16282004904058,
+      "C4_applicable": true,
+      "C5_theta": null,
+      "C5_score": null,
+      "C5_applicable": false,
+      "model_full_name": "DeepSeek-V4-Pro Max"
+    },
+    {
+      "model_id": "deepseek_v4_flash_max",
+      "C1_theta": -0.08166804774185302,
+      "C1_score": 0.0,
+      "C1_applicable": true,
+      "C2_theta": -0.06045617221681044,
+      "C2_score": 16.61647141654705,
+      "C2_applicable": true,
+      "C3_theta": -0.0070495668403233675,
+      "C3_score": 49.61894570159547,
+      "C3_applicable": true,
+      "C4_theta": -0.14124931081244554,
+      "C4_score": 0.0,
+      "C4_applicable": true,
+      "C5_theta": null,
+      "C5_score": null,
+      "C5_applicable": false,
+      "model_full_name": "DeepSeek-V4-Flash Max"
+    },
+    {
+      "model_id": "qwen3_8_max",
+      "C1_theta": -0.00029060320200487085,
+      "C1_score": 62.030463835309725,
+      "C1_applicable": true,
+      "C2_theta": -0.07628959821445747,
+      "C2_score": 11.368579925920463,
+      "C2_applicable": true,
+      "C3_theta": -0.026348741915778674,
+      "C3_score": 44.43634483658853,
+      "C3_applicable": true,
+      "C4_theta": 0.009050436007802433,
+      "C4_score": 62.073248468298715,
+      "C4_applicable": true,
+      "C5_theta": 0.03229915710931904,
+      "C5_score": 55.081950858103056,
+      "C5_applicable": true,
+      "model_full_name": "Qwen3.8-Max"
+    },
+    {
+      "model_id": "glm_5_2_max",
+      "C1_theta": -0.04322353347864165,
+      "C1_score": 29.304570389924805,
+      "C1_applicable": true,
+      "C2_theta": -0.08101157393425427,
+      "C2_score": 9.803510167641388,
+      "C2_applicable": true,
+      "C3_theta": -0.0016727972353649764,
+      "C3_score": 51.06282352003342,
+      "C3_applicable": true,
+      "C4_theta": -0.08280373278686926,
+      "C4_score": 24.137811030338977,
+      "C4_applicable": true,
+      "C5_theta": null,
+      "C5_score": null,
+      "C5_applicable": false,
+      "model_full_name": "GLM-5.2 (max)"
+    }
+  ],
+  "overall_ranking": [
+    {
+      "rank": 1,
+      "model_id": "gpt_5_6_sol_max",
+      "model": "GPT-5.6 Sol (max)",
+      "overall_score": 75.18284023049947,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 80.61841813896953,
+      "C2_score": 59.35824195831793,
+      "C3_score": 54.027946711038894,
+      "C4_score": 73.95492598314146,
+      "C5_score": 100.0,
+      "bootstrap_score_low": 72.67644458820324,
+      "bootstrap_score_high": 77.28864127181235,
+      "bootstrap_rank_low": 1.0,
+      "bootstrap_rank_high": 2.0,
+      "top3_probability": 1.0
+    },
+    {
+      "rank": 2,
+      "model_id": "claude_fable_5_max",
+      "model": "Claude Fable 5 (max, with fallback)",
+      "overall_score": 74.59942199093382,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 48.008362427373925,
+      "C2_score": 100.0,
+      "C3_score": 51.06282352003342,
+      "C4_score": 100.0,
+      "C5_score": 61.41143677202628,
+      "bootstrap_score_low": 73.2558050901295,
+      "bootstrap_score_high": 75.54089874005977,
+      "bootstrap_rank_low": 1.0,
+      "bootstrap_rank_high": 2.0,
+      "top3_probability": 1.0
+    },
+    {
+      "rank": 3,
+      "model_id": "kimi_k3_max",
+      "model": "Kimi K3 (max reasoning)",
+      "overall_score": 49.05626251053252,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 80.22246611688637,
+      "C2_score": 46.25746211394311,
+      "C3_score": 66.36155480567838,
+      "C4_score": 93.7799430615481,
+      "C5_score": 34.56856016386749,
+      "bootstrap_score_low": 47.911410539883164,
+      "bootstrap_score_high": 50.096244508291214,
+      "bootstrap_rank_low": 3.0,
+      "bootstrap_rank_high": 3.0,
+      "top3_probability": 1.0
+    },
+    {
+      "rank": 4,
+      "model_id": "deepseek_v4_pro_max",
+      "model": "DeepSeek-V4-Pro Max",
+      "overall_score": 42.509465458475546,
+      "effective_weight_coverage": 0.6130214562567012,
+      "number_of_available_dimensions": 4,
+      "C1_score": 37.365299588477896,
+      "C2_score": 0.0,
+      "C3_score": 100.0,
+      "C4_score": 93.16282004904058,
+      "C5_score": null,
+      "bootstrap_score_low": 39.165111627143695,
+      "bootstrap_score_high": 44.588078279468085,
+      "bootstrap_rank_low": 4.0,
+      "bootstrap_rank_high": 5.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 5,
+      "model_id": "gemini_3_1_pro_high",
+      "model": "Gemini-3.1-Pro (High)",
+      "overall_score": 41.43305674876561,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 95.97204269870555,
+      "C2_score": 41.061524078229155,
+      "C3_score": 0.0,
+      "C4_score": 52.65716561941289,
+      "C5_score": 59.50518071798478,
+      "bootstrap_score_low": 40.14349211337132,
+      "bootstrap_score_high": 42.809121100734984,
+      "bootstrap_rank_low": 4.0,
+      "bootstrap_rank_high": 5.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 6,
+      "model_id": "qwen3_8_max",
+      "model": "Qwen3.8-Max",
+      "overall_score": 38.61003234447295,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 62.030463835309725,
+      "C2_score": 11.368579925920463,
+      "C3_score": 44.43634483658853,
+      "C4_score": 62.073248468298715,
+      "C5_score": 55.081950858103056,
+      "bootstrap_score_low": 36.26600381818357,
+      "bootstrap_score_high": 40.46407150321667,
+      "bootstrap_rank_low": 6.0,
+      "bootstrap_rank_high": 6.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 7,
+      "model_id": "gpt_5_5_xhigh",
+      "model": "GPT-5.5 (xhigh)",
+      "overall_score": 30.129261451885082,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 88.99815616050248,
+      "C2_score": 36.467209580040624,
+      "C3_score": 57.73101758009519,
+      "C4_score": 38.55644871890536,
+      "C5_score": 6.974308690462572,
+      "bootstrap_score_low": 28.27869746631997,
+      "bootstrap_score_high": 32.149139006362844,
+      "bootstrap_rank_low": 7.0,
+      "bootstrap_rank_high": 7.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 8,
+      "model_id": "claude_opus_4_8_max",
+      "model": "Claude Opus 4.8 (max)",
+      "overall_score": 27.697907735445966,
+      "effective_weight_coverage": 1.0,
+      "number_of_available_dimensions": 5,
+      "C1_score": 100.0,
+      "C2_score": 45.609972782355385,
+      "C3_score": 40.818908559372474,
+      "C4_score": 45.03215040211417,
+      "C5_score": 0.0,
+      "bootstrap_score_low": 25.347338187029354,
+      "bootstrap_score_high": 30.373094955982932,
+      "bootstrap_rank_low": 8.0,
+      "bootstrap_rank_high": 10.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 9,
+      "model_id": "deepseek_v4_flash_max",
+      "model": "DeepSeek-V4-Flash Max",
+      "overall_score": 25.37436400282281,
+      "effective_weight_coverage": 0.6130214562567012,
+      "number_of_available_dimensions": 4,
+      "C1_score": 0.0,
+      "C2_score": 16.61647141654705,
+      "C3_score": 49.61894570159547,
+      "C4_score": 0.0,
+      "C5_score": null,
+      "bootstrap_score_low": 24.489300461572814,
+      "bootstrap_score_high": 26.401091485113582,
+      "bootstrap_rank_low": 8.0,
+      "bootstrap_rank_high": 10.0,
+      "top3_probability": 0.0
+    },
+    {
+      "rank": 10,
+      "model_id": "glm_5_2_max",
+      "model": "GLM-5.2 (max)",
+      "overall_score": 25.07148798454839,
+      "effective_weight_coverage": 0.6130214562567012,
+      "number_of_available_dimensions": 4,
+      "C1_score": 29.304570389924805,
+      "C2_score": 9.803510167641388,
+      "C3_score": 51.06282352003342,
+      "C4_score": 24.137811030338977,
+      "C5_score": null,
+      "bootstrap_score_low": 23.579219740322795,
+      "bootstrap_score_high": 26.618425475621866,
+      "bootstrap_rank_low": 8.0,
+      "bootstrap_rank_high": 10.0,
+      "top3_probability": 0.0
+    }
+  ],
+  "kimi_k3": {
+    "rank": 3,
+    "overall_score": 49.05626251053252,
+    "top3_probability": 1.0,
+    "strongest_dimension": "C4 Code and software engineering",
+    "weakest_dimension": "C5 Multimodal",
+    "dimension_profile": [
+      {
+        "dimension": "C1 Complex reasoning",
+        "model_id": "kimi_k3_max",
+        "model_full_name": "Kimi K3 (max reasoning)",
+        "score": 80.22246611688637,
+        "dimension_rank": 5.0,
+        "applicable": true,
+        "median_score": 71.12646497609805,
+        "best_score": 100.0,
+        "gap_vs_median": 9.096001140788317,
+        "gap_vs_best": -19.777533883113634
+      },
+      {
+        "dimension": "C2 Knowledge and factual reliability",
+        "model_id": "kimi_k3_max",
+        "model_full_name": "Kimi K3 (max reasoning)",
+        "score": 46.25746211394311,
+        "dimension_rank": 3.0,
+        "applicable": true,
+        "median_score": 38.764366829134886,
+        "best_score": 100.0,
+        "gap_vs_median": 7.493095284808227,
+        "gap_vs_best": -53.74253788605689
+      },
+      {
+        "dimension": "C3 Long context",
+        "model_id": "kimi_k3_max",
+        "model_full_name": "Kimi K3 (max reasoning)",
+        "score": 66.36155480567838,
+        "dimension_rank": 2.0,
+        "applicable": true,
+        "median_score": 51.06282352003342,
+        "best_score": 100.0,
+        "gap_vs_median": 15.298731285644962,
+        "gap_vs_best": -33.63844519432162
+      },
+      {
+        "dimension": "C4 Code and software engineering",
+        "model_id": "kimi_k3_max",
+        "model_full_name": "Kimi K3 (max reasoning)",
+        "score": 93.7799430615481,
+        "dimension_rank": 2.0,
+        "applicable": true,
+        "median_score": 57.365207043855804,
+        "best_score": 100.0,
+        "gap_vs_median": 36.41473601769229,
+        "gap_vs_best": -6.220056938451904
+      },
+      {
+        "dimension": "C5 Multimodal",
+        "model_id": "kimi_k3_max",
+        "model_full_name": "Kimi K3 (max reasoning)",
+        "score": 34.56856016386749,
+        "dimension_rank": 5.0,
+        "applicable": true,
+        "median_score": 55.081950858103056,
+        "best_score": 100.0,
+        "gap_vs_median": -20.513390694235568,
+        "gap_vs_best": -65.43143983613251
+      }
+    ],
+    "sensitivity_ranks": [
+      {
+        "scenario": "main",
+        "rank": 3,
+        "overall_score": 49.05626251053252
+      },
+      {
+        "scenario": "lambda=0.1",
+        "rank": 3,
+        "overall_score": 55.165194949961375
+      },
+      {
+        "scenario": "lambda=0.3",
+        "rank": 3,
+        "overall_score": 51.77857347791674
+      },
+      {
+        "scenario": "lambda=1",
+        "rank": 3,
+        "overall_score": 49.05626251053252
+      },
+      {
+        "scenario": "lambda=3",
+        "rank": 3,
+        "overall_score": 48.49521452584066
+      },
+      {
+        "scenario": "lambda=10",
+        "rank": 3,
+        "overall_score": 48.12536338463584
+      },
+      {
+        "scenario": "margin=none",
+        "rank": 4,
+        "overall_score": 47.659160881582515
+      },
+      {
+        "scenario": "margin=range",
+        "rank": 3,
+        "overall_score": 49.05626251053252
+      },
+      {
+        "scenario": "margin=robust_iqr",
+        "rank": 3,
+        "overall_score": 51.45269940143376
+      },
+      {
+        "scenario": "remove LiveBench",
+        "rank": 3,
+        "overall_score": 49.18896411978764
+      },
+      {
+        "scenario": "remove AA-LCR",
+        "rank": 4,
+        "overall_score": 45.61070976489487
+      },
+      {
+        "scenario": "exclude C5",
+        "rank": 3,
+        "overall_score": 58.20183139572849
+      },
+      {
+        "scenario": "complete-case C1-C5",
+        "rank": 3,
+        "overall_score": 49.05626251053252
+      },
+      {
+        "scenario": "equal dimension weights",
+        "rank": 3,
+        "overall_score": 64.2379972523847
+      }
+    ]
+  },
+  "bootstrap": {
+    "B": 2000,
+    "scores": [
+      {
+        "model_id": "claude_fable_5_max",
+        "model": "Claude Fable 5 (max, with fallback)",
+        "overall_score": 74.59942199093382,
+        "mean_score": 74.51975386870811,
+        "median_score": 74.59864196314324,
+        "score_sd": 0.611031252294593,
+        "score_ci_low": 73.2558050901295,
+        "score_ci_high": 75.54089874005977
+      },
+      {
+        "model_id": "claude_opus_4_8_max",
+        "model": "Claude Opus 4.8 (max)",
+        "overall_score": 27.697907735445966,
+        "mean_score": 27.979048583735853,
+        "median_score": 27.846333432016742,
+        "score_sd": 1.623708296594908,
+        "score_ci_low": 25.347338187029354,
+        "score_ci_high": 30.373094955982932
+      },
+      {
+        "model_id": "deepseek_v4_flash_max",
+        "model": "DeepSeek-V4-Flash Max",
+        "overall_score": 25.37436400282281,
+        "mean_score": 25.318607518854215,
+        "median_score": 25.290247292151896,
+        "score_sd": 0.4708681116762318,
+        "score_ci_low": 24.489300461572814,
+        "score_ci_high": 26.401091485113582
+      },
+      {
+        "model_id": "deepseek_v4_pro_max",
+        "model": "DeepSeek-V4-Pro Max",
+        "overall_score": 42.509465458475546,
+        "mean_score": 42.09749736874526,
+        "median_score": 42.38791366175999,
+        "score_sd": 1.3341838360745595,
+        "score_ci_low": 39.165111627143695,
+        "score_ci_high": 44.588078279468085
+      },
+      {
+        "model_id": "gemini_3_1_pro_high",
+        "model": "Gemini-3.1-Pro (High)",
+        "overall_score": 41.43305674876561,
+        "mean_score": 41.413589107562025,
+        "median_score": 41.4005842415848,
+        "score_sd": 0.8388876816626364,
+        "score_ci_low": 40.14349211337132,
+        "score_ci_high": 42.809121100734984
+      },
+      {
+        "model_id": "glm_5_2_max",
+        "model": "GLM-5.2 (max)",
+        "overall_score": 25.07148798454839,
+        "mean_score": 24.99220112588013,
+        "median_score": 25.03370392184987,
+        "score_sd": 0.7405571065391533,
+        "score_ci_low": 23.579219740322795,
+        "score_ci_high": 26.618425475621866
+      },
+      {
+        "model_id": "gpt_5_5_xhigh",
+        "model": "GPT-5.5 (xhigh)",
+        "overall_score": 30.129261451885082,
+        "mean_score": 30.3058978603089,
+        "median_score": 30.22850472860625,
+        "score_sd": 1.2662817510407305,
+        "score_ci_low": 28.27869746631997,
+        "score_ci_high": 32.149139006362844
+      },
+      {
+        "model_id": "gpt_5_6_sol_max",
+        "model": "GPT-5.6 Sol (max)",
+        "overall_score": 75.18284023049947,
+        "mean_score": 74.96511381507624,
+        "median_score": 75.00155174532979,
+        "score_sd": 1.4578198768562114,
+        "score_ci_low": 72.67644458820324,
+        "score_ci_high": 77.28864127181235
+      },
+      {
+        "model_id": "kimi_k3_max",
+        "model": "Kimi K3 (max reasoning)",
+        "overall_score": 49.05626251053252,
+        "mean_score": 49.036137544738196,
+        "median_score": 49.099265163537325,
+        "score_sd": 0.6854305886970351,
+        "score_ci_low": 47.911410539883164,
+        "score_ci_high": 50.096244508291214
+      },
+      {
+        "model_id": "qwen3_8_max",
+        "model": "Qwen3.8-Max",
+        "overall_score": 38.61003234447295,
+        "mean_score": 38.40235922901092,
+        "median_score": 38.399447079295854,
+        "score_sd": 1.159735762846266,
+        "score_ci_low": 36.26600381818357,
+        "score_ci_high": 40.46407150321667
+      }
+    ],
+    "ranks": [
+      {
+        "model_id": "claude_fable_5_max",
+        "model": "Claude Fable 5 (max, with fallback)",
+        "main_rank": 2,
+        "mean_rank": 1.5275,
+        "median_rank": 2.0,
+        "rank_ci_low": 1.0,
+        "rank_ci_high": 2.0,
+        "top1_probability": 0.4725,
+        "top3_probability": 1.0
+      },
+      {
+        "model_id": "claude_opus_4_8_max",
+        "model": "Claude Opus 4.8 (max)",
+        "main_rank": 8,
+        "mean_rank": 8.2785,
+        "median_rank": 8.0,
+        "rank_ci_low": 8.0,
+        "rank_ci_high": 10.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "deepseek_v4_flash_max",
+        "model": "DeepSeek-V4-Flash Max",
+        "main_rank": 9,
+        "mean_rank": 9.0655,
+        "median_rank": 9.0,
+        "rank_ci_low": 8.0,
+        "rank_ci_high": 10.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "deepseek_v4_pro_max",
+        "model": "DeepSeek-V4-Pro Max",
+        "main_rank": 4,
+        "mean_rank": 4.294,
+        "median_rank": 4.0,
+        "rank_ci_low": 4.0,
+        "rank_ci_high": 5.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "gemini_3_1_pro_high",
+        "model": "Gemini-3.1-Pro (High)",
+        "main_rank": 5,
+        "mean_rank": 4.706,
+        "median_rank": 5.0,
+        "rank_ci_low": 4.0,
+        "rank_ci_high": 5.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "glm_5_2_max",
+        "model": "GLM-5.2 (max)",
+        "main_rank": 10,
+        "mean_rank": 9.656,
+        "median_rank": 10.0,
+        "rank_ci_low": 8.0,
+        "rank_ci_high": 10.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "gpt_5_5_xhigh",
+        "model": "GPT-5.5 (xhigh)",
+        "main_rank": 7,
+        "mean_rank": 7.0,
+        "median_rank": 7.0,
+        "rank_ci_low": 7.0,
+        "rank_ci_high": 7.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      },
+      {
+        "model_id": "gpt_5_6_sol_max",
+        "model": "GPT-5.6 Sol (max)",
+        "main_rank": 1,
+        "mean_rank": 1.4725,
+        "median_rank": 1.0,
+        "rank_ci_low": 1.0,
+        "rank_ci_high": 2.0,
+        "top1_probability": 0.5275,
+        "top3_probability": 1.0
+      },
+      {
+        "model_id": "kimi_k3_max",
+        "model": "Kimi K3 (max reasoning)",
+        "main_rank": 3,
+        "mean_rank": 3.0,
+        "median_rank": 3.0,
+        "rank_ci_low": 3.0,
+        "rank_ci_high": 3.0,
+        "top1_probability": 0.0,
+        "top3_probability": 1.0
+      },
+      {
+        "model_id": "qwen3_8_max",
+        "model": "Qwen3.8-Max",
+        "main_rank": 6,
+        "mean_rank": 6.0,
+        "median_rank": 6.0,
+        "rank_ci_low": 6.0,
+        "rank_ci_high": 6.0,
+        "top1_probability": 0.0,
+        "top3_probability": 0.0
+      }
+    ]
+  },
+  "sensitivity": [
+    {
+      "scenario": "main",
+      "spearman_rank_correlation": 0.9999999999999999,
+      "kendall_tau": 0.9999999999999999,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "lambda=0.1",
+      "spearman_rank_correlation": 0.9757575757575757,
+      "kendall_tau": 0.911111111111111,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "lambda=0.3",
+      "spearman_rank_correlation": 0.9757575757575757,
+      "kendall_tau": 0.911111111111111,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "lambda=1",
+      "spearman_rank_correlation": 0.9999999999999999,
+      "kendall_tau": 0.9999999999999999,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "lambda=3",
+      "spearman_rank_correlation": 0.9878787878787878,
+      "kendall_tau": 0.9555555555555554,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "lambda=10",
+      "spearman_rank_correlation": 0.9878787878787878,
+      "kendall_tau": 0.9555555555555554,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "margin=none",
+      "spearman_rank_correlation": 0.8787878787878788,
+      "kendall_tau": 0.7333333333333333,
+      "kimi_rank_change": 1,
+      "top3_overlap": 2
+    },
+    {
+      "scenario": "margin=range",
+      "spearman_rank_correlation": 0.9999999999999999,
+      "kendall_tau": 0.9999999999999999,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "margin=robust_iqr",
+      "spearman_rank_correlation": 0.9757575757575757,
+      "kendall_tau": 0.911111111111111,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "remove LiveBench",
+      "spearman_rank_correlation": 0.9999999999999999,
+      "kendall_tau": 0.9999999999999999,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "remove AA-LCR",
+      "spearman_rank_correlation": 0.8424242424242423,
+      "kendall_tau": 0.6888888888888888,
+      "kimi_rank_change": 1,
+      "top3_overlap": 2
+    },
+    {
+      "scenario": "exclude C5",
+      "spearman_rank_correlation": 0.7939393939393938,
+      "kendall_tau": 0.6444444444444444,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "complete-case C1-C5",
+      "spearman_rank_correlation": 1.0,
+      "kendall_tau": 1.0,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    },
+    {
+      "scenario": "equal dimension weights",
+      "spearman_rank_correlation": 0.9757575757575757,
+      "kendall_tau": 0.911111111111111,
+      "kimi_rank_change": 0,
+      "top3_overlap": 3
+    }
+  ],
+  "network_diagnostics": {
+    "model_diagnostics": [
+      {
+        "dimension": "C1 Complex reasoning",
+        "n_families": 3,
+        "n_settings": 6,
+        "n_models": 10,
+        "n_pairwise": 253,
+        "connected": true,
+        "largest_connected_component": 10,
+        "separation_warning": false,
+        "optimization_converged": true,
+        "lambda": 1.0,
+        "condition_note": "OK"
+      },
+      {
+        "dimension": "C2 Knowledge and factual reliability",
+        "n_families": 2,
+        "n_settings": 2,
+        "n_models": 10,
+        "n_pairwise": 60,
+        "connected": true,
+        "largest_connected_component": 10,
+        "separation_warning": true,
+        "optimization_converged": true,
+        "lambda": 1.0,
+        "condition_note": "C2 separation risk is checked with ridge BT."
+      },
+      {
+        "dimension": "C3 Long context",
+        "n_families": 3,
+        "n_settings": 3,
+        "n_models": 10,
+        "n_pairwise": 51,
+        "connected": true,
+        "largest_connected_component": 10,
+        "separation_warning": true,
+        "optimization_converged": true,
+        "lambda": 1.0,
+        "condition_note": "FRAGILE_CONNECTED: AA-LCR leave-out diagnostic required."
+      },
+      {
+        "dimension": "C4 Code and software engineering",
+        "n_families": 4,
+        "n_settings": 8,
+        "n_models": 10,
+        "n_pairwise": 256,
+        "connected": true,
+        "largest_connected_component": 10,
+        "separation_warning": false,
+        "optimization_converged": true,
+        "lambda": 1.0,
+        "condition_note": "LiveBench bridge dependence checked by leave-LiveBench-out."
+      },
+      {
+        "dimension": "C5 Multimodal",
+        "n_families": 2,
+        "n_settings": 2,
+        "n_models": 7,
+        "n_pairwise": 20,
+        "connected": true,
+        "largest_connected_component": 7,
+        "separation_warning": true,
+        "optimization_converged": true,
+        "lambda": 1.0,
+        "condition_note": "C5 only estimated for applicable multimodal models; missing scores remain NA."
+      }
+    ],
+    "special_network_diagnostics": [
+      {
+        "diagnostic": "C3 leave-AA-LCR-out",
+        "dimension": "C3 Long context",
+        "connected": true,
+        "largest_connected_component": 3,
+        "active_models": [
+          "deepseek_v4_flash_max",
+          "deepseek_v4_pro_max",
+          "gemini_3_1_pro_high"
+        ],
+        "components": [
+          [
+            "deepseek_v4_flash_max",
+            "deepseek_v4_pro_max",
+            "gemini_3_1_pro_high"
+          ]
+        ],
+        "all_model_largest_component": 3
+      },
+      {
+        "diagnostic": "C4 leave-LiveBench-out",
+        "dimension": "C4 Code and software engineering",
+        "connected": false,
+        "largest_connected_component": 6,
+        "active_models": [
+          "claude_fable_5_max",
+          "claude_opus_4_8_max",
+          "deepseek_v4_flash_max",
+          "deepseek_v4_pro_max",
+          "glm_5_2_max",
+          "gpt_5_5_xhigh",
+          "gpt_5_6_sol_max",
+          "kimi_k3_max"
+        ],
+        "components": [
+          [
+            "claude_fable_5_max",
+            "claude_opus_4_8_max",
+            "glm_5_2_max",
+            "gpt_5_5_xhigh",
+            "gpt_5_6_sol_max",
+            "kimi_k3_max"
+          ],
+          [
+            "deepseek_v4_flash_max",
+            "deepseek_v4_pro_max"
+          ]
+        ],
+        "all_model_largest_component": 6
+      }
+    ]
+  }
+}
