@@ -58,12 +58,18 @@ def price_perturbation_sensitivity(pricing: pd.DataFrame, workload: pd.DataFrame
     return pd.DataFrame(rows)
 
 
+def _as_dataframe(value, **read_csv_kwargs) -> pd.DataFrame:
+    if isinstance(value, pd.DataFrame):
+        return value.copy()
+    return pd.read_csv(value, **read_csv_kwargs)
+
+
 def run_sensitivity(pricing_path, workload_path, utility_path, output_path) -> pd.DataFrame:
-    pricing = pd.read_csv(pricing_path, keep_default_na=False)
-    workload = pd.read_csv(workload_path, keep_default_na=False)
+    pricing = _as_dataframe(pricing_path, keep_default_na=False)
+    workload = _as_dataframe(workload_path, keep_default_na=False)
     utilities = None
-    if utility_path is not None and utility_path.exists():
-        utilities = pd.read_csv(utility_path, keep_default_na=False)
+    if utility_path is not None and (isinstance(utility_path, pd.DataFrame) or utility_path.exists()):
+        utilities = _as_dataframe(utility_path, keep_default_na=False)
         utilities["utility"] = pd.to_numeric(utilities.get("utility"), errors="coerce")
         utilities = utilities.dropna(subset=["utility"])
     result = pd.concat(
@@ -77,4 +83,3 @@ def run_sensitivity(pricing_path, workload_path, utility_path, output_path) -> p
     output_path.parent.mkdir(parents=True, exist_ok=True)
     result.to_csv(output_path, index=False)
     return result
-

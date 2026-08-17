@@ -1,0 +1,31 @@
+﻿scenario,scenario_name,rank,model_id,model_name,model_setting,utility,source_version
+Research,科研长文本分析,1,claude_fable_5_max,"Claude Fable 5 (max, with fallback)","max, with fallback",0.9183374822531004,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,2,kimi_k3_max,Kimi K3 (max reasoning),max reasoning,0.9012926282950031,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,3,gpt_5_6_sol_max,GPT-5.6 Sol (max),max,0.8992413504614967,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,4,gpt_5_5_xhigh,GPT-5.5 (xhigh),xhigh,0.8861624515886894,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,5,claude_opus_4_8_max,Claude Opus 4.8 (max),max,0.8794135287469893,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,6,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Max,0.8777936799153787,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,7,qwen3_8_max,Qwen3.8-Max,Max,0.8397485755751156,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,8,glm_5_2_max,GLM-5.2 (max),max,0.8335860041360706,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,9,gemini_3_1_pro_high,Gemini-3.1-Pro (High),High,0.8281204723179951,Q2_SCENARIO_UTILITY_v1.0
+Research,科研长文本分析,10,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Max,0.8272893300307572,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,1,claude_fable_5_max,"Claude Fable 5 (max, with fallback)","max, with fallback",0.932418708623976,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,2,gpt_5_6_sol_max,GPT-5.6 Sol (max),max,0.932145427852394,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,3,kimi_k3_max,Kimi K3 (max reasoning),max reasoning,0.8687069582921643,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,4,gemini_3_1_pro_high,Gemini-3.1-Pro (High),High,0.8661586954130576,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,5,qwen3_8_max,Qwen3.8-Max,Max,0.8383797086565321,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,6,claude_opus_4_8_max,Claude Opus 4.8 (max),max,0.8383394649502275,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,7,gpt_5_5_xhigh,GPT-5.5 (xhigh),xhigh,0.837174749199171,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,8,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Max,0.6542860728359404,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,9,glm_5_2_max,GLM-5.2 (max),max,0.6481379677469584,Q2_SCENARIO_UTILITY_v1.0
+General,大众日常通用对话,10,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Max,0.6468756848029605,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,1,kimi_k3_max,Kimi K3 (max reasoning),max reasoning,0.9813020054113565,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,2,claude_fable_5_max,"Claude Fable 5 (max, with fallback)","max, with fallback",0.9762038301568621,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,3,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Max,0.9610626303156368,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,4,gpt_5_6_sol_max,GPT-5.6 Sol (max),max,0.9512731717446156,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,5,gemini_3_1_pro_high,Gemini-3.1-Pro (High),High,0.9259813234950288,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,6,qwen3_8_max,Qwen3.8-Max,Max,0.9257001776879481,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,7,claude_opus_4_8_max,Claude Opus 4.8 (max),max,0.9163907203396128,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,8,gpt_5_5_xhigh,GPT-5.5 (xhigh),xhigh,0.9025140728523974,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,9,glm_5_2_max,GLM-5.2 (max),max,0.8587896658995123,Q2_SCENARIO_UTILITY_v1.0
+Coding,计算机代码开发,10,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Max,0.8155773752485842,Q2_SCENARIO_UTILITY_v1.0

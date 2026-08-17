@@ -1,0 +1,25 @@
+model_id,model_name,scenario,workload_level,utility,input_cost,output_cost,cost,input_tokens,output_tokens,input_output_ratio,cost_observability,included_in_main_pareto,exclusion_reason,total_cost,cost_basis
+kimi_k3_max,Kimi K3 (max reasoning),Research,baseline_template,0.9012926282950032,0.04748,0.05935,0.10683000000000001,16000,4000,0.25,FULL,True,,0.10683000000000001,complete official base API cost
+kimi_k3_max,Kimi K3 (max reasoning),General,baseline_template,0.8687069582921643,0.005935,0.0148375,0.0207725,2000,1000,0.5,FULL,True,,0.0207725,complete official base API cost
+kimi_k3_max,Kimi K3 (max reasoning),Coding,baseline_template,0.9813020054113564,0.017805,0.089025,0.10683000000000001,6000,6000,1.0,FULL,True,,0.10683000000000001,complete official base API cost
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Research,baseline_template,0.8992413504614967,0.08,0.12,0.2,16000,4000,0.25,FULL,True,,0.2,complete official base API cost
+gpt_5_6_sol_max,GPT-5.6 Sol (max),General,baseline_template,0.932145427852394,0.01,0.03,0.04,2000,1000,0.5,FULL,True,,0.04,complete official base API cost
+gpt_5_6_sol_max,GPT-5.6 Sol (max),Coding,baseline_template,0.9512731717446156,0.03,0.18,0.21,6000,6000,1.0,FULL,True,,0.21,complete official base API cost
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Research,baseline_template,0.8861624515886894,0.08,0.12,0.2,16000,4000,0.25,FULL,True,,0.2,complete official base API cost
+gpt_5_5_xhigh,GPT-5.5 (xhigh),General,baseline_template,0.837174749199171,0.01,0.03,0.04,2000,1000,0.5,FULL,True,,0.04,complete official base API cost
+gpt_5_5_xhigh,GPT-5.5 (xhigh),Coding,baseline_template,0.9025140728523974,0.03,0.18,0.21,6000,6000,1.0,FULL,True,,0.21,complete official base API cost
+claude_opus_4_8_max,Claude Opus 4.8 (max),Research,baseline_template,0.8794135287469893,0.08,0.1,0.18,16000,4000,0.25,FULL,True,,0.18,complete official base API cost
+claude_opus_4_8_max,Claude Opus 4.8 (max),General,baseline_template,0.8383394649502275,0.01,0.025,0.035,2000,1000,0.5,FULL,True,,0.035,complete official base API cost
+claude_opus_4_8_max,Claude Opus 4.8 (max),Coding,baseline_template,0.9163907203396128,0.03,0.15,0.18,6000,6000,1.0,FULL,True,,0.18,complete official base API cost
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Research,baseline_template,0.8281204723179951,0.032,0.048,0.08,16000,4000,0.25,FULL,True,,0.08,complete official base API cost
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),General,baseline_template,0.8661586954130576,0.004,0.012,0.016,2000,1000,0.5,FULL,True,,0.016,complete official base API cost
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),Coding,baseline_template,0.9259813234950288,0.012,0.072,0.08399999999999999,6000,6000,1.0,FULL,True,,0.08399999999999999,complete official base API cost
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Research,baseline_template,0.8777936799153787,0.02112,0.01584,0.03696,16000,4000,0.25,FULL,True,,0.03696,complete official base API cost
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,General,baseline_template,0.6542860728359404,0.00264,0.00396,0.0066,2000,1000,0.5,FULL,True,,0.0066,complete official base API cost
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,Coding,baseline_template,0.9610626303156368,0.00792,0.02376,0.03168,6000,6000,1.0,FULL,True,,0.03168,complete official base API cost
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Research,baseline_template,0.8272893300307572,0.00704,0.00528,0.012320000000000001,16000,4000,0.25,FULL,True,,0.012320000000000001,complete official base API cost
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,General,baseline_template,0.6468756848029605,0.00088,0.00132,0.0022,2000,1000,0.5,FULL,True,,0.0022,complete official base API cost
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,Coding,baseline_template,0.8155773752485842,0.00264,0.00792,0.01056,6000,6000,1.0,FULL,True,,0.01056,complete official base API cost
+qwen3_8_max,Qwen3.8-Max,Research,baseline_template,0.8397485755751156,0.028488,0.021366,0.049853999999999996,16000,4000,0.25,FULL,True,,0.049853999999999996,complete official base API cost
+qwen3_8_max,Qwen3.8-Max,General,baseline_template,0.8383797086565321,0.003561,0.0053415,0.0089025,2000,1000,0.5,FULL,True,,0.0089025,complete official base API cost
+qwen3_8_max,Qwen3.8-Max,Coding,baseline_template,0.925700177687948,0.010683,0.032049,0.042732,6000,6000,1.0,FULL,True,,0.042732,complete official base API cost

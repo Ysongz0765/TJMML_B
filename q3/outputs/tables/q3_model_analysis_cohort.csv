@@ -1,0 +1,11 @@
+model_id,model_name,utility_available,pricing_available,cost_observability,pricing_status,sku_mapping_status,config_mapping_status,fallback_issue,fallback_rate,included_in_main_pareto,exclusion_reason
+claude_opus_4_8_max,Claude Opus 4.8 (max),True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+deepseek_v4_flash_max,DeepSeek-V4-Flash Max,True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+deepseek_v4_pro_max,DeepSeek-V4-Pro Max,True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+gemini_3_1_pro_high,Gemini-3.1-Pro (High),True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+gpt_5_5_xhigh,GPT-5.5 (xhigh),True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+gpt_5_6_sol_max,GPT-5.6 Sol (max),True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+kimi_k3_max,Kimi K3 (max reasoning),True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+qwen3_8_max,Qwen3.8-Max,True,True,FULL,READY,EXACT,SUPPORTED_CONFIG,False,0,True,
+claude_fable_5_max,"Claude Fable 5 (max, with fallback)",True,True,PARTIAL,SPECIAL_CASE,EXACT,FALLBACK_DEPENDENT,True,0.1625_to_0.40_observed_aggregate,False,base model price exists but benchmark configuration has unresolved special billing
+glm_5_2_max,GLM-5.2 (max),True,False,MISSING,MISSING,EXACT,SUPPORTED_CONFIG,False,0,False,official input/output price is missing or not publicly observable

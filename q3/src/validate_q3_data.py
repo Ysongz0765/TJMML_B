@@ -81,8 +81,13 @@ def validate_q3_data(pricing_path: Path, workload_path: Path, utility_path: Path
                 _issue(issues, "ERROR", str(pricing_path), col, row.get("model_id", ""), "Price must be non-negative")
             missing = pricing[nums.isna()]
             for _, row in missing.iterrows():
-                severity = "WARNING" if col == "cached_input_price" else "BLOCKING_INPUT_MISSING"
-                _issue(issues, severity, str(pricing_path), col, row.get("model_id", ""), "Price is missing; final Q3 cost and Pareto run cannot use this model")
+                if col == "cached_input_price":
+                    severity = "WARNING"
+                    message = "Cached-input price is unavailable; baseline uses uncached input pricing"
+                else:
+                    severity = "COHORT_EXCLUDED"
+                    message = "Input/output price is unavailable; model is excluded from the FULL-cost cohort without imputation"
+                _issue(issues, severity, str(pricing_path), col, row.get("model_id", ""), message)
 
     for col in ["price_date", "source_url", "exact_version"]:
         if col in pricing.columns:

@@ -1,0 +1,25 @@
+scenario,budget_lower,budget_upper,optimal_model_id,optimal_model_name,utility,cost
+Coding,0.0,0.01056,NO_FEASIBLE_MODEL,NO_FEASIBLE_MODEL,,
+Coding,0.01056,0.03168,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,0.8155773752485842,0.01056
+Coding,0.03168,0.042732,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.9610626303156368,0.03168
+Coding,0.042732,0.0839999999999999,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.9610626303156368,0.03168
+Coding,0.0839999999999999,0.10683,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.9610626303156368,0.03168
+Coding,0.10683,0.18,kimi_k3_max,Kimi K3 (max reasoning),0.9813020054113564,0.10683
+Coding,0.18,0.21,kimi_k3_max,Kimi K3 (max reasoning),0.9813020054113564,0.10683
+Coding,0.21,inf,kimi_k3_max,Kimi K3 (max reasoning),0.9813020054113564,0.10683
+General,0.0,0.0022,NO_FEASIBLE_MODEL,NO_FEASIBLE_MODEL,,
+General,0.0022,0.0066,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,0.6468756848029605,0.0022
+General,0.0066,0.0089025,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.6542860728359404,0.0066
+General,0.0089025,0.016,qwen3_8_max,Qwen3.8-Max,0.8383797086565321,0.0089025
+General,0.016,0.0207725,gemini_3_1_pro_high,Gemini-3.1-Pro (High),0.8661586954130576,0.016
+General,0.0207725,0.035,kimi_k3_max,Kimi K3 (max reasoning),0.8687069582921643,0.0207725
+General,0.035,0.04,kimi_k3_max,Kimi K3 (max reasoning),0.8687069582921643,0.0207725
+General,0.04,inf,gpt_5_6_sol_max,GPT-5.6 Sol (max),0.932145427852394,0.04
+Research,0.0,0.01232,NO_FEASIBLE_MODEL,NO_FEASIBLE_MODEL,,
+Research,0.01232,0.03696,deepseek_v4_flash_max,DeepSeek-V4-Flash Max,0.8272893300307572,0.01232
+Research,0.03696,0.0498539999999999,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.8777936799153787,0.03696
+Research,0.0498539999999999,0.08,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.8777936799153787,0.03696
+Research,0.08,0.10683,deepseek_v4_pro_max,DeepSeek-V4-Pro Max,0.8777936799153787,0.03696
+Research,0.10683,0.18,kimi_k3_max,Kimi K3 (max reasoning),0.9012926282950032,0.10683
+Research,0.18,0.2,kimi_k3_max,Kimi K3 (max reasoning),0.9012926282950032,0.10683
+Research,0.2,inf,kimi_k3_max,Kimi K3 (max reasoning),0.9012926282950032,0.10683

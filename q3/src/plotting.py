@@ -28,7 +28,15 @@ def plot_cost_utility_scatter(pareto_df: pd.DataFrame, output_dir: Path) -> list
             ax.annotate(str(row["model_id"]), (row["cost"], row["utility"]), fontsize=6, xytext=(3, 3), textcoords="offset points")
         ax.set_xlabel("Workload cost (USD)")
         ax.set_ylabel("Scenario utility")
-        ax.set_title(f"Cost-utility frontier: {scenario}")
+        ax.set_title(f"Cost-utility frontier: {scenario} (FULL cost cohort)")
+        ax.text(
+            0.01,
+            0.01,
+            "PARTIAL/MISSING models excluded; see q3_model_analysis_cohort.csv",
+            transform=ax.transAxes,
+            fontsize=6,
+            color="#555555",
+        )
         ax.legend(frameon=False)
         fig.tight_layout()
         for ext in ["png", "pdf"]:

@@ -4,25 +4,25 @@ This directory is an isolated implementation of Q3: scenario utility vs. workloa
 
 ## Inputs
 
-- `q3/data/model_pricing.csv`: model-level pricing table in `USD / 1M billable tokens`.
-- `q3/data/pricing_audit.csv`: per-model pricing mapping audit, including candidate API SKU, match type, source, confidence, and unresolved status.
-- `q3/data/pricing_human_check.csv`: one-page manual verification table.
-- `q3/data/fable_fallback_audit.csv`: Claude Fable 5 fallback evidence audit.
-- `q3/data/workload_config.csv`: parameterized workload templates for Research, General, and Coding.
-- `q3/data/scenario_utility.csv`: optional formal Q2 output. If absent, Q3 stays in waiting mode.
-- `q2/data/q2_model_master_table.csv`: Q1-to-Q2 model identity and capability reference.
+- `data/scenario_utility.csv`: frozen nominal Q2 utility interface.
+- `data/scenario_utility_bootstrap.csv`: frozen Q2 bootstrap utility interface.
+- `data/q2_interface_provenance.json`: source commit and SHA-256 provenance.
+- `data/model_pricing.csv`: model-level pricing in `USD / 1M billable tokens`.
+- `data/pricing_audit.csv`: SKU/configuration and price-readiness audit.
+- `data/workload_config.csv`: Research, General, and Coding baselines.
 
-## Current status
+## Current Status
 
-- Q3 framework is in place.
-- Q2 formal scenario utility is not present yet.
-- Pricing mapping separates SKU identity, reasoning/configuration identity, and price readiness.
-- All 10 benchmark models now have non-UNRESOLVED SKU and configuration mapping statuses.
-- Standard prices are ready for 8 ordinary rows. Claude Fable 5 remains a fallback-dependent special case, and GLM-5.2 has official SKU/config evidence but no publicly observable official standard input/output price.
-- No pricing row is human-verified yet.
-- Workload baselines are documented for Research, General, and Coding, with explicit sensitivity rows.
-- `output_tokens` means billable output tokens, including reasoning/thinking tokens when provider billing rules include them.
-- See `q3/PRICING_HUMAN_VERIFICATION.md` and `q3/WORKLOAD_BASELINE_JUSTIFICATION.md` before final reporting.
+- Formal Q2 utility: found and validated.
+- Main analysis cohort: 8 `FULL` models.
+- Transparent exclusions: Claude Fable 5 is `PARTIAL`; GLM-5.2 is `MISSING`.
+- Pricing mapping: complete for all 10 models, but no pricing row is human
+  verified.
+- Q3 result status: provisional, not final human-verified.
+
+The `FULL` cohort restriction is deliberate. The partial and missing models stay
+visible in `outputs/tables/q3_model_analysis_cohort.csv` and
+`outputs/tables/scenario_costs.csv`, with their exclusion reasons.
 
 ## Run
 
@@ -30,7 +30,7 @@ This directory is an isolated implementation of Q3: scenario utility vs. workloa
 python q3/src/run_q3.py
 ```
 
-When `q3/data/scenario_utility.csv` is added, the runner will compute:
+The runner computes:
 
 - workload cost
 - Pareto frontier
@@ -39,6 +39,11 @@ When `q3/data/scenario_utility.csv` is added, the runner will compute:
 - cost-performance fits
 - sensitivity analysis
 - plots and tables
+
+The generated tables and figures are under `q3/outputs/`. The full
+interpretation, caveats, and paper-ready wording are in
+`q3/Q3_RESULTS_REPORT.md`, `q3/paper/q3_results.tex`, and
+`q3/paper/q3_discussion.tex`.
 
 ## Notes
 

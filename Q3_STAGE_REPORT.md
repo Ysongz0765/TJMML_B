@@ -5,8 +5,15 @@ Q3_PRICING_MAPPING_READY = TRUE
 Q3_PRICING_DATA_READY = FALSE
 Q3_PRICING_HUMAN_VERIFIED = FALSE
 Q3_WORKLOAD_BASELINE_READY = TRUE
-Q3_SCENARIO_UTILITY_READY = FALSE
-Q3_WAITING_FOR_Q2_SCENARIO_UTILITY = TRUE
-Q3_READY_FOR_FINAL_RUN = FALSE
+Q2_FORMAL_SCENARIO_UTILITY_FOUND = TRUE
+Q2_SCENARIO_UTILITY_VALIDATED = TRUE
+Q2_BOOTSTRAP_UTILITY_FOUND = TRUE
+Q3_READY_FOR_FINAL_RUN = TRUE
+Q3_MAIN_ANALYSIS_COHORT_READY = TRUE
+Q3_PROVISIONAL_RESULTS_READY = TRUE
+Q3_FINAL_HUMAN_VERIFIED_RESULTS_READY = FALSE
 
-See `q3/Q3_STAGE_REPORT.md` for details. Mapping is now separated from pricing data readiness. The remaining blockers are Claude Fable fallback cost resolution, GLM-5.2 publicly observable official price, absent human verification, and missing formal Q2 scenario utility files.
+See `q3/Q3_STAGE_REPORT.md` for details. Formal Q2 utility was synchronized and
+validated, and the provisional Q3 run is complete on the 8-model FULL cohort.
+Claude Fable fallback cost, GLM-5.2 public pricing, and human verification remain
+open release gates.
