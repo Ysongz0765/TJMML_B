@@ -1,22 +1,23 @@
 # Q3 Price Collection TODO
 
-Pricing was not filled with formal values because the repository model names are exact future/specific configurations and their official API prices were not confirmed during framework setup.
+Audit date: 2026-08-17
 
-Required verification sources:
+The current pricing audit separates SKU mapping, configuration mapping, and pricing readiness.
 
-- OpenAI: https://openai.com/api/pricing/
-- Anthropic: https://docs.anthropic.com/en/docs/about-claude/pricing
-- Google Gemini API: https://ai.google.dev/gemini-api/docs/pricing
-- Moonshot / Kimi: https://platform.moonshot.cn/docs/pricing
-- DeepSeek: https://api-docs.deepseek.com/quick_start/pricing
-- Alibaba / Qwen / DashScope: https://help.aliyun.com/zh/model-studio/billing-for-model-studio
-- Zhipu / GLM: https://docs.bigmodel.cn/cn/guide/models/price
+## Resolved Mapping
 
-Rules:
+All 10 benchmark models have non-UNRESOLVED SKU and configuration mapping statuses in `q3/data/pricing_audit.csv`.
 
-- Verify exact model/version/configuration against Q1/Q2 names.
-- Record `price_date`.
-- Use standard realtime API price, not batch or cached price, as the primary input/output price.
-- Convert non-USD units to `USD / 1M tokens` and record conversion date/source in `notes`.
-- Leave unknown values as `NA`; never infer prices from nearby model names.
+## Remaining Price Blockers
 
+- `claude_fable_5_max`: base `claude-fable-5` price is available, but the benchmark configuration includes fallback. Local frozen evidence gives only aggregate fallback or downgraded rates, not fallback target models or token traces.
+- `glm_5_2_max`: official docs confirm `glm-5.2` and `reasoning_effort=max`, but a public official standard input/output API price was not observable from checked official sources.
+
+## Rules
+
+- Use standard realtime API price as the primary input/output price unless a row is explicitly a special case.
+- Price unit is `USD / 1M billable tokens`.
+- Preserve original currency, original prices, FX rate, FX date, and FX source when converting non-USD prices.
+- Treat `output_tokens` as billable output tokens, including reasoning/thinking tokens when provider billing rules include them.
+- Leave unknown values as `NA`; never infer prices from nearby model names or third-party aggregators.
+- Do not set `human_verified=TRUE`; final verification must be written back by a human.
