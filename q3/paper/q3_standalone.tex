@@ -299,6 +299,27 @@ DeepSeek-V4-Pro Max 到 Qwen3.8-Max 的 ICER 仅为 0.012507，而
 Gemini-3.1-Pro (High) 到 Kimi K3 的效用增量只有 0.002548，对应
 1.872844 USD/utility，表现出明显不同的边际升级特征。
 
+\begin{figure}[p]
+\centering
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{q3_icer_Research.pdf}
+\caption{Research}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{q3_icer_General.pdf}
+\caption{General}
+\end{subfigure}
+\begin{subfigure}{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth]{q3_icer_Coding.pdf}
+\caption{Coding}
+\end{subfigure}
+\caption{三类场景 Pareto 前沿相邻升级的增量成本效益}
+\label{fig:icer}
+\end{figure}
+
 \section{成本--性能变化规律}
 
 为避免仅依赖样本内拟合优度，分别对全体 FULL cohort 和 Pareto 子集比较
@@ -340,27 +361,6 @@ Linear 和 Log，说明其样本内拟合优势并不具有稳定的外推表现
 Coding 的 Pareto 前沿只有 3 个点，前沿拟合因此标记为“前沿样本不足”。
 综合样本规模、指标差异和前沿样本不足，当前数据没有提供跨场景统一的
 成本边际收益递减规律证据。
-
-\begin{figure}[p]
-\centering
-\begin{subfigure}{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{q3_cost_performance_fit_Research.pdf}
-\caption{Research}
-\end{subfigure}
-\begin{subfigure}{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{q3_cost_performance_fit_General.pdf}
-\caption{General}
-\end{subfigure}
-\begin{subfigure}{0.32\textwidth}
-\centering
-\includegraphics[width=\linewidth]{q3_cost_performance_fit_Coding.pdf}
-\caption{Coding}
-\end{subfigure}
-\caption{全体 FULL cohort 的成本--性能拟合诊断}
-\label{fig:fit}
-\end{figure}
 
 上述关系来自同一时间截面的模型性能与价格数据，只反映成本与场景效用
 之间的统计关联，不构成成本导致性能提升的因果证据。
