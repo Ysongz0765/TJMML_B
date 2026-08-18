@@ -1,0 +1,77 @@
+\subsection{为什么场景效用还不能决定部署}
+
+问题二给出了模型在不同任务场景中的适配程度，但高效用不等于高性价比，更不等于在预算约束下可执行。输入 Token、输出 Token、调用次数和模型单价共同决定一次标准任务的成本；如果只比较 API 单价，可能忽略工作负载比例带来的成本放大。因此，本问沿用问题二的场景效用，只增加成本维度。
+
+\subsection{工作负载成本}
+
+设模型 \(i\) 的输入、输出单价为 \(p_{\mathrm{in},i}\) 和 \(p_{\mathrm{out},i}\)，场景 \(s\) 的调用次数、计费输入 Token 和计费输出 Token 为 \(N_s,L_{\mathrm{in}}^{(s)},L_{\mathrm{out}}^{(s)}\)。价格单位为 USD/1M billable tokens，则标准任务成本为
+\[
+C_i^{(s)}
+=\frac{N_s}{10^6}
+\left[
+L_{\mathrm{in}}^{(s)}p_{\mathrm{in},i}
++L_{\mathrm{out}}^{(s)}p_{\mathrm{out},i}
+\right].
+\]
+其中输出 Token 按供应商计费规则计算，包含 reasoning/thinking Token。三类标准工作负载如下：
+
+\begin{table}[htbp]
+\centering
+\caption{Q3 标准化基准工作负载}
+\label{tab:q3workload}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+场景 & \(N_s\) & \(L_{\mathrm{in}}\) & \(L_{\mathrm{out}}\) & \(L_{\mathrm{out}}/L_{\mathrm{in}}\)\\
+\midrule
+科研 & 1 & 16000 & 4000 & 0.25\\
+日常 & 1 & 2000 & 1000 & 0.50\\
+代码 & 1 & 6000 & 6000 & 1.00\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+代码场景的输出/输入比例为 \(1.00\)，因此输出单价差异会被充分传递到任务成本。图~\ref{fig:q3cost}按总成本从低到高排列成本信息完整且可核验的模型，并将输入、输出两部分分别编码。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.84\textwidth]{fig_q3_cost_components.pdf}
+\caption{代码场景标准任务的输入/输出成本构成。输入成本为雾蓝，输出成本为奶油米，右端标注总成本。}
+\label{fig:q3cost}
+\end{figure}
+
+\subsection{成本信息完整性}
+
+严格 Pareto 分析只使用成本信息完整且能够核验的模型集合。Claude Fable 5 的基础 SKU 单价虽然可见，但 max-with-fallback 配置缺少完整的 fallback 目标和二次计费轨迹；GLM-5.2 缺少可复核的公开标准 input/output API 单价。因此二者保留在价格说明中，却不被人工补价，也不被当作零成本模型。该处理使 Q2 的效用优势与 Q3 的部署可决策性保持区分：效用高并不自动意味着成本信息足够完整。
+
+\subsection{Pareto 前沿与场景决策}
+
+在同一场景内，若模型 \(a\) 满足
+\[
+U_a^{(s)}\ge U_b^{(s)},\qquad C_a^{(s)}\le C_b^{(s)}
+\]
+且至少一项严格不等，则称 \(a\) 支配 \(b\)。未被任何模型支配的模型构成 Pareto 前沿。图~\ref{fig:q3pareto}保留三个场景的散点表达：绿色点是前沿节点，浅色点是被支配模型，细实线连接按成本排序的前沿。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_q3_pareto.pdf}
+\caption{科研、日常和代码场景的效用--成本 Pareto 前沿。颜色仅用于区分前沿节点与被支配点，不改变正式效用和成本。}
+\label{fig:q3pareto}
+\end{figure}
+
+科研场景的前沿依次经过 DeepSeek-V4-Flash、DeepSeek-V4-Pro 和 Kimi K3；日常场景的前沿包含更多节点，并最终到达 GPT-5.6 Sol；代码场景同样由 DeepSeek-V4-Flash、DeepSeek-V4-Pro 和 Kimi K3 构成。以代码任务为例，DeepSeek-V4-Pro 在成本 \(0.03168\) USD 时达到 \(0.9611\) 效用，Kimi K3 在成本 \(0.10683\) USD 时达到 \(0.9813\) 效用。前者代表中等预算下的高效用节点，后者代表更高预算下的效用上限；二者不能用单一“性价比”分数替代。
+
+\subsection{预算约束下的推荐策略}
+
+图~\ref{fig:q3budget}将预算切换点改写为连续的决策区间带。每个区间表示在该预算上限内效用最高的可行节点，分界线直接来自正式预算结果，而不是根据图形外观调整。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{fig_q3_budget_steps.pdf}
+\caption{预算决策区间带。每一行表示一个场景，分界线标注正式预算阈值；区间内文字表示该预算下的最优可行节点。}
+\label{fig:q3budget}
+\end{figure}
+
+以代码任务为例，当预算低于 \(0.01056\) USD 时，严格成本队列中不存在可行节点；预算达到 \(0.01056\) USD 后，DeepSeek-V4-Flash 首先进入可行集合；预算提高到 \(0.03168\) USD 时，DeepSeek-V4-Pro 以更高效用替代前者；达到 \(0.10683\) USD 后，Kimi K3 成为效用最高的可行方案。科研场景的对应阈值为 \(0.01232\)、\(0.03696\) 和 \(0.10683\) USD；日常场景的切换依次经过 DeepSeek-V4-Flash、DeepSeek-V4-Pro、Qwen3.8-Max、Gemini-3.1-Pro、Kimi K3 和 GPT-5.6 Sol。
+
+因此，Pareto 前沿不是一个静态榜单，而是一组随预算变化的最优候选。Q3 的最终输出不是“价格最低的模型”，而是给定任务场景和预算上限后的可执行推荐。

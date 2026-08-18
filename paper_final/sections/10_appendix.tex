@@ -1,0 +1,90 @@
+\appendix
+\section{补充稳健性与价格快照}
+
+\subsection{完整排名概率矩阵}
+
+正文图 5 使用排名分布表达 Bootstrap 不确定性；完整的 \(P(\mathrm{rank}=r)\) 矩阵保留在附录，以便复核每个模型在每个名次上的经验概率。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{appendix_archive/fig_q1_rank_stability_v2.pdf}
+\caption{Ranking A 的完整 Bootstrap 排名概率矩阵。该图为正文旧版的附录保留，不作为正文主结论图。}
+\label{fig:appendix_rank_probability}
+\end{figure}
+
+\subsection{其他补充图形}
+
+旧版 CES 效用曲线、原始预算阶梯图和完整场景效用点线图均保留在论文工作区的附录图形目录中，其数值与正式结果一致，但不再承担正文的主要解释任务。正文优先保留能够区分数据结构、能力评价、不确定性、场景迁移、参数稳健性、成本、Pareto 和预算决策的信息图形。
+
+\subsection{LOSO 稳健性}
+LOSO 结果直接读取 Q1 正式输出。有效比较保留共同模型数、与完整 Ranking A 的 Spearman 相关、Kimi 的其他排名和前三重叠数；比较网络断开时以 $\times$ 标记，不将其填充为数值。
+
+\begin{table}[htbp]
+\centering
+\caption{LOSO 场景/来源删除审计。数据源：\texttt{outputs/q1\_v1.2/tables/table\_q1\_v12\_loso.xlsx}，sheet \texttt{Scenario\_Summary}。}
+\label{tab:loso}
+\small
+\begin{tabularx}{\textwidth}{lrrrrl}
+\toprule
+删除对象 & Common-N & Spearman & Kimi 其他排名 & Top-3 重叠 & 状态\\
+\midrule
+LiveBench & $\times$ & -- & -- & -- & -- \\
+Artificial Analysis & $\times$ & -- & -- & -- & -- \\
+Kimi official/technical comparison & $\times$ & -- & -- & -- & -- \\
+DeepSeek technical report & 10 & 1.000 & 3 & 3 & OK \\
+OpenRouter & 10 & 0.988 & 3 & 3 & OK \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{等权敏感性}
+将 Q1 综合权重替换为五维等权后，Ranking A 前三模型及其顺序保持不变；完整十模型的名次变化见表~\ref{tab:equalweight}。该表只报告正式等权敏感性输出，不重新估计任何分数。
+
+\begin{table}[htbp]
+\centering
+\caption{等权敏感性的逐模型比较。}
+\label{tab:equalweight}
+\small
+\begin{tabularx}{\textwidth}{rXrrrr}
+\toprule
+完整排名 & 模型 & 等权排名 & 名次变化 & 原得分 & 等权得分\\
+\midrule
+1 & GPT-5.6 Sol & 1 & 0 & 80.5 & 73.6 \\
+2 & Claude Fable 5 & 2 & 0 & 70.8 & 72.1 \\
+3 & Kimi K3 & 3 & 0 & 53.7 & 64.2 \\
+4 & Gemini-3.1-Pro & 4 & 0 & 52.3 & 49.8 \\
+5 & Qwen3.8-Max & 5 & 0 & 46.6 & 47.0 \\
+6 & GPT-5.5 & 8 & +2 & 33.5 & 45.7 \\
+7 & Claude Opus 4.8 & 6 & -1 & 32.5 & 46.3 \\
+8 & DeepSeek-V4-Pro & 7 & -1 & 28.1 & 46.1 \\
+9 & GLM-5.2 & 9 & 0 & 14.9 & 22.9 \\
+10 & DeepSeek-V4-Flash & 10 & 0 & 9.5 & 13.2 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{动态价格记录}
+价格只用于 Q3 成本审计，冻结快照日期、API SKU、评测配置和供应商官方来源均保留在表~\ref{tab:pricing_snapshot}。其中 \texttt{SPECIAL\_CASE} 和缺失价格不会被视为零成本，也不进入严格 FULL 主 Pareto。
+
+\begin{table}[htbp]
+\centering
+\caption{Q3 动态价格快照与 SKU/configuration 记录。数据源：\texttt{q3/frozen/v1.0/model\_pricing.csv}；price\_date 为冻结/快照日期。}
+\label{tab:pricing_snapshot}
+\scriptsize
+\begin{tabularx}{\textwidth}{p{3.0cm}p{1.6cm}p{6.0cm}X}
+\toprule
+模型 & 快照日期 & SKU / exact configuration & 官方来源\\
+\midrule
+Kimi K3 (max reasoning) & 2026-08-17 & kimi-k3 reasoning\_effort=max / kimi-k3 & \href{https://platform.kimi.com/docs/pricing/chat-k3.md}{official} \\
+GPT-5.6 Sol (max) & 2026-08-17 & gpt-5.6-sol reasoning.effort=max / gpt-5.6-sol & \href{https://developers.openai.com/api/docs/models/gpt-5.6-sol}{official} \\
+GPT-5.5 (xhigh) & 2026-08-17 & gpt-5.5 reasoning.effort=xhigh / gpt-5.5 & \href{https://developers.openai.com/api/docs/models/gpt-5.5}{official} \\
+Claude Fable 5 (max, with fallback) & 2026-08-17 & claude-fable-5 base model with benchmark fallback / claude-fable-5 & \href{https://docs.anthropic.com/en/docs/about-claude/pricing}{official} \\
+Claude Opus 4.8 (max) & 2026-08-17 & claude-opus-4-8 effort=max / claude-opus-4-8 & \href{https://docs.anthropic.com/en/docs/about-claude/pricing}{official} \\
+Gemini-3.1-Pro (High) & 2026-08-17 & gemini-3.1-pro-preview thinking\_level=high / gemini-3.1-pro-preview & \href{https://ai.google.dev/gemini-api/docs/pricing}{official} \\
+DeepSeek-V4-Pro Max & 2026-08-17 & DeepSeek-V4-Pro-0813 thinking mode / deepseek-v4-pro & \href{https://api-docs.deepseek.com/quick_start/pricing}{official} \\
+DeepSeek-V4-Flash Max & 2026-08-17 & DeepSeek-V4-Flash-0731 thinking mode / deepseek-v4-flash & \href{https://api-docs.deepseek.com/quick_start/pricing}{official} \\
+Qwen3.8-Max & 2026-08-17 & qwen3.8-max thinking or non-thinking mode / qwen3.8-max & \href{https://help.aliyun.com/zh/model-studio/model-pricing}{official} \\
+GLM-5.2 (max) & 2026-08-17 & glm-5.2 reasoning\_effort=max / glm-5.2 & \href{https://docs.bigmodel.cn/cn/guide/models/text/glm-5.2.md}{official} \\
+\bottomrule
+\end{tabularx}
+\end{table}

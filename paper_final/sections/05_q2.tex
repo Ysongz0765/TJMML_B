@@ -1,0 +1,77 @@
+\subsection{为什么综合排名还不能回答场景选择}
+
+问题一得到的是总体能力评价，而题目第二问要求把模型放入具体使用场景。综合排名不能直接表达科研长文本分析、日常通用对话和计算机代码开发对能力组合的差异。若采用线性加权，某一关键能力的不足可以被其他高分能力完全补偿；这与科研和代码任务中短板会限制整体表现的实际特征不符。因此，本问在问题一的能力结果之上，引入场景权重和 CES 聚合。
+
+\subsection{场景需求与 CES 聚合}
+
+设问题一得到的归一化权重先验为 \(\bar w^{Q1}\)。对于场景 \(s\)，在题设约束的可行集合 \(\mathcal C_s\) 上求 KL 最小信息投影：
+\[
+w^{(s)}=\arg\min_wD_{\mathrm{KL}}(w\Vert\bar w^{Q1}),\qquad
+\sum_dw_d=1,\quad w_d\ge0,\quad w\in\mathcal C_s.
+\]
+正式场景需求为
+\[
+\begin{aligned}
+\text{科研：}\quad &(w_{C1},w_{C2},w_{C3})=(0.3439,0.3250,0.3311),\quad \rho=-0.50,\\
+\text{日常：}\quad &(w_{C1},w_{C2},w_{C3},w_{C5})=(0.2417,0.3833,0.1000,0.2750),\quad \rho=0,\\
+\text{代码：}\quad &(w_{C1},w_{C4})=(0.3500,0.6500),\quad \rho=-0.40.
+\end{aligned}
+\]
+这些权重不是重新主观打分，而是在问题一客观权重基础上施加场景支持集约束后的最小信息调整。科研场景保留 C1--C3，是因为长文本分析同时需要推理、事实可靠性和上下文处理；代码场景将 C4 置于核心位置，并保留 C1 作为复杂程序任务的推理支撑；日常场景使用更宽的能力集合，以反映通用对话的复合需求。
+
+将各维潜在能力转为同维度内的正值
+\[
+z_{ij}=\exp(\theta_{ij}-\max_i\theta_{ij}),
+\]
+并定义
+\[
+U_i^{(s)}=
+\begin{cases}
+\left[\displaystyle\sum_{j\in J_s}w_j(s)(z_{ij}+\varepsilon)^{\rho_s}\right]^{1/\rho_s}, & \rho_s\ne0,\\[6pt]
+\exp\!\left(\displaystyle\sum_{j\in J_s}w_j(s)\ln(z_{ij}+\varepsilon)\right), & \rho_s=0,
+\end{cases}
+\qquad \varepsilon=10^{-6}.
+\]
+当 \(\rho_s<0\) 时，短板会更明显地拖累效用；因此 CES 能够表达“关键能力必须同时达到一定水平”的互补关系。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{fig_q2_weight_matrix.pdf}
+\caption{三类场景的能力需求权重。行表示场景，列表示 \(C_1\)--\(C_5\)；短横线表示该场景不使用该维度，浅色背景不被解释为权重为零的观测值。}
+\label{fig:q2weight}
+\end{figure}
+
+\subsection{场景效用结果}
+
+图~\ref{fig:q2utility}将三类场景放在同一矩阵中，但每一列单独进行颜色归一化。单元格数字是正式 CES 效用，颜色只表示对应场景内的相对位置，不用于跨场景绝对比较；边框突出 Top-1 和 Top-3。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{fig_q2_utility_panels.pdf}
+\caption{场景效用排名矩阵。单元格数字为正式 CES 效用，颜色仅表示对应场景内的相对效用位置，不用于科研、日常和代码之间的绝对比较。}
+\label{fig:q2utility}
+\end{figure}
+
+科研场景中 Claude Fable 5 取得最高效用 \(0.918\)，其次为 Kimi K3 和 GPT-5.6 Sol。其优势并非来自某一单项能力的极端领先，而是 C1--C3 在科研场景权重约束下具有较均衡的组合；当 \(\rho=-0.50\) 时，这种均衡性能够减弱短板惩罚。日常场景中 Claude Fable 5 与 GPT-5.6 Sol 几乎并列第一，说明较高的总体能力和较完整的通用能力组合在该场景中都能转化为效用。代码场景中 Kimi K3 以 \(0.981\) 居首，原因在于 C4 权重达到 \(0.6500\)，其代码工程优势被场景需求直接放大；Claude Fable 5 和 DeepSeek-V4-Pro 分列第二、三位。
+
+\subsection{排名迁移：从总体能力到任务适配}
+
+图~\ref{fig:q2migration}使用 Bump Chart 表示 Ranking A、科研、日常和代码四个阶段的名次迁移。GPT-5.6 Sol 的综合排名为第一，但在科研和代码场景分别调整至第三和第四；Kimi K3 则由综合第三升至代码第一。该变化不是综合模型失稳，而是能力需求映射的结果：综合排名回答“总体上谁更强”，场景排名回答“谁的能力组合更匹配当前任务”。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{fig_q2_rank_migration.pdf}
+\caption{Bump Chart：Ranking A 到科研、日常和代码场景的排名迁移。重点模型使用高透明度，其余模型保留为低透明度背景线；右端直接标注模型名称。}
+\label{fig:q2migration}
+\end{figure}
+
+\subsection{CES 排名稳定性}
+
+改变 \(\rho\) 可以检验场景结论是否依赖单一替代弹性点。图~\ref{fig:q2rho}以场景内排名而非效用曲线编码相对位置。测试区间内，科研场景头部模型未出现结构性名次反转；代码场景中 Kimi K3 保持领先。因此，正式结论并非由某一个精确的替代弹性参数点单独驱动。需要强调的是，该检验回答的是参数敏感性，不能替代问题一 Bootstrap 对排名不确定性的检验。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{fig_q2_rho_sensitivity.pdf}
+\caption{CES 排名稳定性热图。颜色和格内数字表示场景内排名，竖虚线标出正式 \(\rho\)；颜色不表示跨场景效用的绝对大小。}
+\label{fig:q2rho}
+\end{figure}

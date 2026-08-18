@@ -1,0 +1,99 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}问题重述}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}问题一：主流模型的综合性能评价}{1}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}问题二：不同任务场景下的模型选择}{1}{subsection.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}问题三：成本约束下的部署决策}{2}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}问题分析}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}从题目要求到建模路线}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}全文建模框架}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}模型假设与符号}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}模型假设}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 全文建模框架。第一层统一公开评测并识别模型能力，第二层将五维能力映射为场景需求，第三层在工作负载成本和预算约束下形成部署决策。}}{3}{figure.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:framework}{{1}{3}{全文建模框架。第一层统一公开评测并识别模型能力，第二层将五维能力映射为场景需求，第三层在工作负载成本和预算约束下形成部署决策。}{figure.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}主要符号}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}问题一：缺失感知的五维能力评价}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}为什么问题一需要缺失感知的比较体系}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Q1 数据覆盖矩阵。横轴使用简短 Benchmark 标签，上方按 \(C_1\)--\(C_5\) 分组；深色为 observed，浅色为 ordinary missing，带纹理的浅灰单元格仅表示有适用性审计依据的 structural NA。}}{4}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:q1coverage}{{2}{4}{Q1 数据覆盖矩阵。横轴使用简短 Benchmark 标签，上方按 \(C_1\)--\(C_5\) 分组；深色为 observed，浅色为 ordinary missing，带纹理的浅灰单元格仅表示有适用性审计依据的 structural NA。}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}缺失感知相关性与 Benchmark Family 平衡}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 缺失感知 Spearman 相关矩阵。下三角颜色表示 \(\rho _{ab}\)，上三角数字表示共同有效模型数 Common-N；较小的 Common-N 不作复杂纹理叠加，而在正文中单独解释。}}{5}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:q1spearman}{{3}{5}{缺失感知 Spearman 相关矩阵。下三角颜色表示 \(\rho _{ab}\)，上三角数字表示共同有效模型数 Common-N；较小的 Common-N 不作复杂纹理叠加，而在正文中单独解释。}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}正则化 Bradley--Terry 能力估计}{6}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}综合权重与 Ranking A}{6}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Q1 结果：能力结构与综合评价}{6}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 各模型五维能力结构与 Ranking A 综合得分。左图展示能力组合，右图为综合得分条形长度及正式 Bootstrap 95\% 置信区间；区间不是市场名次的预测区间。}}{7}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:q1radar}{{4}{7}{各模型五维能力结构与 Ranking A 综合得分。左图展示能力组合，右图为综合得分条形长度及正式 Bootstrap 95\% 置信区间；区间不是市场名次的预测区间。}{figure.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Ranking A 主要结果}}{7}{table.caption.5}\protected@file@percent }
+\newlabel{tab:q1ranking}{{1}{7}{Ranking A 主要结果}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}不确定性与结构稳健性}{8}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Ranking A 的 Bootstrap 排名分布。小提琴表示经验分布，箱体表示 IQR，圆点为 Ranking A 点估计排名；排名 1 位于横轴左侧。}}{8}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:q1stability}{{5}{8}{Ranking A 的 Bootstrap 排名分布。小提琴表示经验分布，箱体表示 IQR，圆点为 Ranking A 点估计排名；排名 1 位于横轴左侧。}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces LOFO 稳健性：删除单一 Benchmark 后与完整 Ranking A 的秩相关。浅色参考线为 \(\rho =0.95\)，叉号表示比较网络断开。}}{8}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:q1robust}{{6}{8}{LOFO 稳健性：删除单一 Benchmark 后与完整 Ranking A 的秩相关。浅色参考线为 \(\rho =0.95\)，叉号表示比较网络断开。}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}问题二：考虑能力互补的场景效用}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}为什么综合排名还不能回答场景选择}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}场景需求与 CES 聚合}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}场景效用结果}{9}{subsection.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 三类场景的能力需求权重。行表示场景，列表示 \(C_1\)--\(C_5\)；短横线表示该场景不使用该维度，浅色背景不被解释为权重为零的观测值。}}{10}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:q2weight}{{7}{10}{三类场景的能力需求权重。行表示场景，列表示 \(C_1\)--\(C_5\)；短横线表示该场景不使用该维度，浅色背景不被解释为权重为零的观测值。}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 场景效用排名矩阵。单元格数字为正式 CES 效用，颜色仅表示对应场景内的相对效用位置，不用于科研、日常和代码之间的绝对比较。}}{10}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:q2utility}{{8}{10}{场景效用排名矩阵。单元格数字为正式 CES 效用，颜色仅表示对应场景内的相对效用位置，不用于科研、日常和代码之间的绝对比较。}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}排名迁移：从总体能力到任务适配}{11}{subsection.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Bump Chart：Ranking A 到科研、日常和代码场景的排名迁移。重点模型使用高透明度，其余模型保留为低透明度背景线；右端直接标注模型名称。}}{11}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:q2migration}{{9}{11}{Bump Chart：Ranking A 到科研、日常和代码场景的排名迁移。重点模型使用高透明度，其余模型保留为低透明度背景线；右端直接标注模型名称。}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}CES 排名稳定性}{11}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}问题三：成本约束下的 Pareto 决策}{11}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}为什么场景效用还不能决定部署}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces CES 排名稳定性热图。颜色和格内数字表示场景内排名，竖虚线标出正式 \(\rho \)；颜色不表示跨场景效用的绝对大小。}}{12}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:q2rho}{{10}{12}{CES 排名稳定性热图。颜色和格内数字表示场景内排名，竖虚线标出正式 \(\rho \)；颜色不表示跨场景效用的绝对大小。}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}工作负载成本}{12}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Q3 标准化基准工作负载}}{12}{table.caption.12}\protected@file@percent }
+\newlabel{tab:q3workload}{{2}{12}{Q3 标准化基准工作负载}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}成本信息完整性}{12}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Pareto 前沿与场景决策}{12}{subsection.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces 代码场景标准任务的输入/输出成本构成。输入成本为雾蓝，输出成本为奶油米，右端标注总成本。}}{13}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:q3cost}{{11}{13}{代码场景标准任务的输入/输出成本构成。输入成本为雾蓝，输出成本为奶油米，右端标注总成本。}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces 科研、日常和代码场景的效用--成本 Pareto 前沿。颜色仅用于区分前沿节点与被支配点，不改变正式效用和成本。}}{13}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:q3pareto}{{12}{13}{科研、日常和代码场景的效用--成本 Pareto 前沿。颜色仅用于区分前沿节点与被支配点，不改变正式效用和成本。}{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}预算约束下的推荐策略}{13}{subsection.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces 预算决策区间带。每一行表示一个场景，分界线标注正式预算阈值；区间内文字表示该预算下的最优可行节点。}}{14}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:q3budget}{{13}{14}{预算决策区间带。每一行表示一个场景，分界线标注正式预算阈值；区间内文字表示该预算下的最优可行节点。}{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}模型评价与改进}{14}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}模型优点}{14}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}局限与改进方向}{14}{subsection.7.2}\protected@file@percent }
+\bibcite{BradleyTerry1952}{1}
+\bibcite{Spearman1904}{2}
+\bibcite{ArrowEtAl1961}{3}
+\bibcite{Pareto1906}{4}
+\bibcite{GPQA}{5}
+\bibcite{LiveBench}{6}
+\@writefile{toc}{\contentsline {section}{\numberline {8}结论}{15}{section.8}\protected@file@percent }
+\bibcite{HLE}{7}
+\bibcite{MMMUPro}{8}
+\bibcite{MathVision}{9}
+\bibcite{OpenAIOfficial}{10}
+\bibcite{AnthropicOfficial}{11}
+\bibcite{GoogleOfficial}{12}
+\bibcite{DeepSeekOfficial}{13}
+\bibcite{KimiOfficial}{14}
+\bibcite{QwenOfficial}{15}
+\bibcite{GLMOfficial}{16}
+\@writefile{toc}{\contentsline {section}{\numberline {A}补充稳健性与价格快照}{16}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.1}完整排名概率矩阵}{16}{subsection.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.2}其他补充图形}{16}{subsection.A.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Ranking A 的完整 Bootstrap 排名概率矩阵。该图为正文旧版的附录保留，不作为正文主结论图。}}{17}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:appendix_rank_probability}{{14}{17}{Ranking A 的完整 Bootstrap 排名概率矩阵。该图为正文旧版的附录保留，不作为正文主结论图。}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.3}LOSO 稳健性}{17}{subsection.A.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces LOSO 场景/来源删除审计。数据源：\texttt  {outputs/q1\_v1.2/tables/table\_q1\_v12\_loso.xlsx}，sheet \texttt  {Scenario\_Summary}。}}{17}{table.caption.18}\protected@file@percent }
+\newlabel{tab:loso}{{3}{17}{LOSO 场景/来源删除审计。数据源：\texttt {outputs/q1\_v1.2/tables/table\_q1\_v12\_loso.xlsx}，sheet \texttt {Scenario\_Summary}。}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.4}等权敏感性}{17}{subsection.A.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.5}动态价格记录}{17}{subsection.A.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces 等权敏感性的逐模型比较。}}{18}{table.caption.19}\protected@file@percent }
+\newlabel{tab:equalweight}{{4}{18}{等权敏感性的逐模型比较。}{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Q3 动态价格快照与 SKU/configuration 记录。数据源：\texttt  {q3/frozen/v1.0/model\_pricing.csv}；price\_date 为冻结/快照日期。}}{18}{table.caption.20}\protected@file@percent }
+\newlabel{tab:pricing_snapshot}{{5}{18}{Q3 动态价格快照与 SKU/configuration 记录。数据源：\texttt {q3/frozen/v1.0/model\_pricing.csv}；price\_date 为冻结/快照日期。}{table.caption.20}{}}
+\gdef \@abspage@last{18}

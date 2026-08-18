@@ -1,0 +1,31 @@
+\subsection{模型假设}
+\begin{enumerate}[label=(\arabic*),leftmargin=2.5em]
+\item 每个 Benchmark/Exact Setting 内的公开分数可以用于模型间相对比较，但不同 Benchmark/Exact Setting 的原始分数不直接相加。
+\item 缺失值保持缺失。结构性能力缺位只在综合能力可用性层单独编码，不将其解释为原始 Benchmark 得分为零。
+\item Benchmark Family 内部的多个 Exact Setting 可能重复表达同一能力，因此在成对比较阶段进行 Family 平衡。
+\item Q2 的场景效用只用于同一场景内比较；不同场景的效用尺度不作跨场景绝对比较。
+\item Q3 的工作负载是用于模型间可比性的标准化任务包，不等同于任意真实用户的平均调用量。
+\item Q3 主 Pareto 分析只使用成本信息完整且人工核验通过的模型集合；价格缺失或配置账单不完整的模型不进行插补。
+\end{enumerate}
+
+\subsection{主要符号}
+\begin{center}
+\small
+\begin{tabularx}{0.94\textwidth}{>{\raggedright\arraybackslash}p{0.18\textwidth}Y}
+\toprule
+符号 & 含义\\
+\midrule
+$i,j$ & 模型索引\\
+$b$ & Benchmark/Exact Setting 索引\\
+$s$ & 场景索引，取 Research、General、Coding\\
+$d$ & 能力维度索引，$C_1$--$C_5$\\
+$x_{ib}$ & 模型 $i$ 在 Exact Setting $b$ 上的公开分数\\
+$\theta_{id}$ & 模型 $i$ 在能力维度 $d$ 上的 BT 潜在能力\\
+$S_{id}$ & 由 $\theta_{id}$ 转换得到的 0--100 维度得分\\
+$w_d$ & Q1 综合评价权重；$w_d(s)$ 为 Q2 场景权重\\
+$U_i^{(s)}$ & 模型 $i$ 在场景 $s$ 下的 CES 效用\\
+$C_i^{(s)}$ & 模型 $i$ 在场景 $s$ 下的标准任务成本\\
+$N_s,L_{\mathrm{in}}^{(s)},L_{\mathrm{out}}^{(s)}$ & 场景调用次数、输入 Token 数和输出 Token 数\\
+\bottomrule
+\end{tabularx}
+\end{center}

@@ -1,0 +1,127 @@
+\subsection{为什么问题一需要缺失感知的比较体系}
+
+题目要求依据公开评测结果评价候选模型，但不同 Benchmark 的量纲、难度和测试协议并不相同，模型公开成绩也不是完整矩阵。当前数据包含 10 个模型、21 个 Exact Setting 和 14 个 Benchmark Family，理论上有 \(210\) 个模型--设置组合，其中只有 \(164\) 个有效观测，覆盖率为
+\[
+\eta=\frac{164}{10\times21}=0.780952.
+\]
+若采用完整案例删除，将同时损失模型和 Benchmark 信息；若把缺失填为 0，又会把“未公开”或“不适用”误解释为“能力最低”。因此，本问先保留缺失语义，再在同一测试设置内建立模型间可比的相对关系。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_q1_coverage.pdf}
+\caption{Q1 数据覆盖矩阵。横轴使用简短 Benchmark 标签，上方按 \(C_1\)--\(C_5\) 分组；深色为 observed，浅色为 ordinary missing，带纹理的浅灰单元格仅表示有适用性审计依据的 structural NA。}
+\label{fig:q1coverage}
+\end{figure}
+
+图~\ref{fig:q1coverage}表明，缺失并非均匀分布在所有能力维度上。C5 的部分模型由于不具备题设定义下的原生多模态能力而出现结构性缺位，不能与普通未公开成绩混为一谈。该数据结构决定了问题一必须采用缺失感知的评价方法。
+
+\subsection{缺失感知相关性与 Benchmark Family 平衡}
+
+不同 Benchmark 可能重复反映相近能力。若直接把所有 Exact Setting 等权相加，一个包含更多设置的 Family 会获得隐含的重复权重。为此，对两个设置 \(a,b\) 在共同有效模型集合
+\[
+I_{ab}=\{i:x_{ia}\ \text{和}\ x_{ib}\ \text{均有效}\}
+\]
+上计算 Spearman 秩相关 \(\rho_{ab}\)，并同时记录共同样本数 \(N_{ab}=|I_{ab}|\)。图~\ref{fig:q1spearman}的下三角表示秩相关，上三角给出 Common-N。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{fig_q1_spearman.pdf}
+\caption{缺失感知 Spearman 相关矩阵。下三角颜色表示 \(\rho_{ab}\)，上三角数字表示共同有效模型数 Common-N；较小的 Common-N 不作复杂纹理叠加，而在正文中单独解释。}
+\label{fig:q1spearman}
+\end{figure}
+
+高 \(|\rho|\) 只说明潜在信息冗余，不能自动推出应删除某个 Benchmark。若 Common-N 较小，相关性可能不稳定；若某设置承担不同模型群体之间的桥接作用，删除后还可能使比较网络断开。因此，本文只将相关分析作为冗余证据，并结合 Family 平衡和后续 LOFO 检验决定其影响。
+
+\subsection{正则化 Bradley--Terry 能力估计}
+
+不同测试的原始分数不宜直接相加，但同一 Exact Setting 内的模型相对优劣仍具有可比性。设模型 \(i,j\) 在设置 \(b\) 上的相对结果为
+\[
+y_{ijb}=
+\begin{cases}
+1,&x_{ib}>x_{jb},\\
+0.5,&x_{ib}=x_{jb},\\
+0,&x_{ib}<x_{jb}.
+\end{cases}
+\]
+任一模型缺失该设置时不构造成对关系。为保留领先幅度，按同一设置内的相对差值构造 margin 权重，再在能力维度内对 Family 和 Setting 分层归一化。
+
+令 \(\theta_{id}\) 为模型 \(i\) 在维度 \(d\) 上的潜在能力，则
+\[
+P(i\succ j)=
+\frac{\exp(\theta_{id})}
+{\exp(\theta_{id})+\exp(\theta_{jd})}.
+\]
+在全部有效成对比较上，求解带 \(L_2\) 正则项且满足 \(\sum_i\theta_{id}=0\) 的加权极大似然：
+\[
+\widehat{\boldsymbol\theta}_d
+=\arg\min_{\boldsymbol\theta}
+\left\{
+-\sum_r\omega_r[y_r\log p_r+(1-y_r)\log(1-p_r)]
++\frac{\lambda}{2}\sum_i\theta_{id}^{2}
+\right\},\qquad \lambda=1.
+\]
+随后在维度内部将 \(\theta\) 转换为 \(0\)--\(100\) 的 \(S_{id}\)。该转换只用于维度内表达，不把不同 Benchmark 的原始分数强行放到同一量纲。
+
+\subsection{综合权重与 Ranking A}
+
+五个维度的区分信息、非冗余程度和估计稳定性并不相同。若只采用等权，可能忽略当前正式数据中不同维度的有效信息贡献；若只依据离散程度，又可能放大重复测试的影响。因此定义
+\[
+q_d=I_dR_dT_d,\qquad
+w_d=\frac{q_d}{\sum_kq_k},
+\]
+其中 \(I_d\)、\(R_d\)、\(T_d\) 分别表示信息量、非冗余度和稳定度。Ranking A 的正式权重为
+\[
+(w_{C1},w_{C2},w_{C3},w_{C4},w_{C5})
+=(0.1282,0.2034,0.1234,0.1182,0.4268).
+\]
+权重的含义是当前公开评价数据中的信息贡献，不是对实际任务重要性的主观排序；场景任务权重将在问题二中重新映射。
+
+\subsection{Q1 结果：能力结构与综合评价}
+
+图~\ref{fig:q1radar}同时展示五维能力结构和 Ranking A 综合结果。GPT-5.6 Sol 得分 \(80.5\)，Claude Fable 5 得分 \(70.8\)，Kimi K3 得分 \(53.7\)，三者构成当前正式数据下的前三名。Kimi K3 的 C4 得分为 \(93.8\)，显示其代码与软件工程能力突出；但 C5 得分为 \(34.6\)，形成相对短板。因此，综合评价第一并不由某一项极端优势单独决定，而取决于多维能力组合及其有效信息权重。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_q1_radar_ranking.pdf}
+\caption{各模型五维能力结构与 Ranking A 综合得分。左图展示能力组合，右图为综合得分条形长度及正式 Bootstrap 95\% 置信区间；区间不是市场名次的预测区间。}
+\label{fig:q1radar}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Ranking A 主要结果}
+\label{tab:q1ranking}
+\small
+\begin{tabular}{rllrr}
+\toprule
+排名 & 模型 & 综合得分 & 95\% CI 下界 & 95\% CI 上界\\
+\midrule
+1 & GPT-5.6 Sol & 80.5 & 19.5 & 84.4\\
+2 & Claude Fable 5 & 70.8 & 20.0 & 86.0\\
+3 & Kimi K3 & 53.7 & 17.0 & 81.8\\
+4 & Gemini-3.1-Pro & 52.3 & 17.1 & 80.1\\
+5 & Qwen3.8-Max & 46.6 & 19.4 & 76.2\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{不确定性与结构稳健性}
+
+点估计给出的是当前正式数据下的中心评价，而不是绝对稳定的市场名次。图~\ref{fig:q1stability}用 Bootstrap rank 分布展示这一点：小提琴形状反映排名样本的整体分布，箱体表示 IQR，圆点表示 Ranking A 点估计名次。Kimi K3 的 Top-3 经验概率为 \(0.4225\)，排名样本覆盖 \([1,10]\)，说明其第三名位置存在较大的采样不确定性。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{fig_q1_rank_stability.pdf}
+\caption{Ranking A 的 Bootstrap 排名分布。小提琴表示经验分布，箱体表示 IQR，圆点为 Ranking A 点估计排名；排名 1 位于横轴左侧。}
+\label{fig:q1stability}
+\end{figure}
+
+LOFO 衡量的是对单一 Benchmark 删除的结构鲁棒性。图~\ref{fig:q1robust}显示，在有效情景中，删除单个 Benchmark 后与完整 Ranking A 的秩相关总体较高；删除承担桥接作用的设置时，比较网络可能断开，图中以“network disconnected”直接标记。由此可见，LOFO 说明整体排序结构对单个指标删除具有较强鲁棒性，但不能证明 Bootstrap 下前三名的具体名次稳定。两类检验回答的是不同问题。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{fig_q1_robustness.pdf}
+\caption{LOFO 稳健性：删除单一 Benchmark 后与完整 Ranking A 的秩相关。浅色参考线为 \(\rho=0.95\)，叉号表示比较网络断开。}
+\label{fig:q1robust}
+\end{figure}
+
